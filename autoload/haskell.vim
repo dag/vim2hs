@@ -3,6 +3,28 @@ function! haskell#includeexpr(fname) " {{{
 endfunction " }}}
 
 
+function! haskell#literate() " {{{
+  syntax include @haskell syntax/haskell.vim
+
+  syntax region hsLiterate matchgroup=hsLiterateDelimiter
+    \ start="^>" end="$"
+    \ keepend contains=@haskell
+
+  highlight! link hsLiterateDelimiter Delimiter
+endfunction " }}}
+
+
+function! haskell#gfm() " {{{
+  syntax include @haskell syntax/haskell.vim
+
+  syntax region mkdnHaskell matchgroup=mkdnHaskellBlock
+    \ start="^```haskell" end="^```$"
+    \ contains=@haskell
+
+  highlight! link mkdnHaskellBlock Delimiter
+endfunction " }}}
+
+
 function! haskell#keywords(kwdops) " {{{
   setlocal iskeyword=a-z,A-Z,_,'
 
