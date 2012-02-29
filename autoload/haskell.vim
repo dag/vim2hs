@@ -26,7 +26,7 @@ endfunction " }}}
 
 
 function! haskell#keywords(kwdops) " {{{
-  setlocal iskeyword=a-z,A-Z,_,'
+  setlocal iskeyword=a-z,A-Z,48-57,_,'
 
   syntax keyword hsStructure
     \ module import data family class
@@ -62,7 +62,14 @@ endfunction " }}}
 
 
 function! haskell#bindings() " {{{
-  syntax match hsIdentifier "^\k\+\(.*\(\n\s.*\)*=\)\@="
+  syntax match hsType
+    \ "^\k\+\s*::.*\(\n\s.*\)*"
+    \ contains=TOP
+
+  syntax match hsIdentifier
+    \ "^\k\+\(.*\(\n\s.*\)*=[[:punct:]]\@!\)\@="
+
+  highlight! link hsType Type
   highlight! link hsIdentifier Identifier
 endfunction " }}}
 
