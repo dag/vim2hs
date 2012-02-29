@@ -111,11 +111,16 @@ endfunction " }}}
 function! haskell#jmacro() " {{{
   syntax include @jmacro syntax/jmacro.vim
 
+  syntax region hsJmacroSplice matchgroup=hsJmacroAntiQuote
+    \ start="`(" end=")`"
+    \ keepend contained contains=TOP
+
   syntax region hsJmacro matchgroup=hsJmacroQuote
     \ start="\[\$\?jmacroE\?|" end="|\]"
-    \ keepend contains=@jmacro
+    \ keepend contains=hsJmacroSplice,@jmacro
 
   highlight! link hsJmacroQuote PreProc
+  highlight! link hsJmacroAntiQuote PreProc
 endfunction " }}}
 
 
