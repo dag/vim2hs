@@ -61,6 +61,12 @@ function! haskell#keywords(kwdops) " {{{
 endfunction " }}}
 
 
+function! haskell#bindings() " {{{
+  syntax match hsIdentifier "^\k\+\(.*\(\n\s.*\)*=\)\@="
+  highlight! link hsIdentifier Identifier
+endfunction " }}}
+
+
 function! haskell#strings() " {{{
   syntax match hsSpecialChar
     \ contained

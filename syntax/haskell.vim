@@ -36,6 +36,8 @@ endif
 
 call haskell#keywords(1)
 
+call haskell#bindings()
+
 call haskell#strings()
 
 if g:haskell_cpp
