@@ -1,9 +1,9 @@
-function jmacro#keywords()
+function jmacro#keywords() " {{{
   syntax keyword javaScriptFunction fun
-endfunction
+endfunction " }}}
 
 
-function! jmacro#conceal()
+function! jmacro#conceal() " {{{
   syntax match jmacroConceal
     \ "\\\ze[[:alpha:][:space:]_([]"
     \ conceal cchar=λ
@@ -18,4 +18,4 @@ function! jmacro#conceal()
 
   highlight! link jmacroConceal Operator
   highlight! link Conceal Operator
-endfunction
+endfunction " }}}

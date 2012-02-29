@@ -1,4 +1,4 @@
-function! cabal#constants()
+function! cabal#constants() " {{{
   setlocal iskeyword=a-z,A-Z,-
 
   syntax match cabalConstant
@@ -11,20 +11,20 @@ function! cabal#constants()
 
   highlight! link cabalConstant Constant
   highlight! link cabalDelimiter Delimiter
-endfunction
+endfunction " }}}
 
 
-function! cabal#statements()
+function! cabal#statements() " {{{
   syntax region cabalIdentifier matchgroup=cabalStatement
     \ start="\c^\(flag\|source-repository\|test-suite\|executable\|library\)"
     \ end="$"
 
   highlight! link cabalIdentifier Identifier
   highlight! link cabalStatement Statement
-endfunction
+endfunction " }}}
 
 
-function! cabal#conditionals()
+function! cabal#conditionals() " {{{
   syntax keyword cabalKeyword contained true false
 
   syntax region cabalIdentifier matchgroup=cabalKeyword
@@ -40,4 +40,4 @@ function! cabal#conditionals()
   highlight! link cabalKeyword Keyword
   highlight! link cabalIdentifier Identifier
   highlight! link cabalConditional Conditional
-endfunction
+endfunction " }}}
