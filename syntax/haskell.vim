@@ -13,10 +13,6 @@ call lib#letdefault('g:haskell_conceal_wide' , 0)
 call lib#letdefault('g:haskell_conceal_bad'  , 0)
 
 
-call haskell#keywords(1)
-call haskell#bindings()
-call haskell#strings()
-
 if g:haskell_cpp
   call haskell#cpp()
 endif
@@ -48,6 +44,10 @@ endif
 if g:haskell_conceal
   call haskell#conceal(g:haskell_conceal_wide, g:haskell_conceal_bad)
 endif
+
+call haskell#keywords(1)
+call haskell#bindings()
+call haskell#strings()
 
 
 let b:current_syntax = "haskell"

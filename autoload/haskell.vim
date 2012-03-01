@@ -131,10 +131,13 @@ endfunction "}}}
 
 
 function! haskell#th() " {{{
+  syntax match hsTHMacro "^\k\+\%(.*=\|.*::\)\@!"
+
   syntax region hsTHContent matchgroup=hsTHSplice
     \ start="\$(" end=")"
     \ contains=TOP
 
+  highlight! link hsTHMacro Macro
   highlight! link hsTHSplice Macro
 endfunction " }}}
 
