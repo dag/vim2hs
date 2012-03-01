@@ -107,13 +107,18 @@ function! haskell#strings() " {{{
     \ "^'\%([^\\]\|\\[^']\+\|\\'\)'"
     \ contains=hsSpecialChar,hsSpecialCharError
 
+  syntax region hsStringError
+    \ start=+"+ skip=+\\\\\|\\"+ end=+"\@!$+
+    \ contains=hsSpecialChar,@Spell
+
   syntax region hsString
     \ start=+"+ skip=+\\\\\|\\"+ end=+"+
-    \ contains=hsSpecialChar,@Spell
+    \ oneline contains=hsSpecialChar,@Spell
 
   highlight! link hsSpecialChar SpecialChar
   highlight! link hsSpecialCharError Error
   highlight! link hsCharacter Character
+  highlight! link hsStringError Error
   highlight! link hsString String
 endfunction " }}}
 
