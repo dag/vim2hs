@@ -73,7 +73,7 @@ function! haskell#bindings() " {{{
     \ contains=TOP
 
   syntax match hsIdentifier
-    \ "^\k\+\(.*\(\n\s.*\)*=[[:punct:]]\@!\)\@="
+    \ "^\k\+\(.*\(\n\s.*\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
 
   highlight! link hsType Type
   highlight! link hsIdentifier Identifier
