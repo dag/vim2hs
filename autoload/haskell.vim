@@ -24,7 +24,7 @@ function! haskell#gfm() " {{{
   unlet b:current_syntax
 
   syntax region mkdnHaskell matchgroup=mkdnHaskellBlock
-    \ start="^```haskell" end="^```$"
+    \ start="^```\(haskell\|hs\)$" end="^```$"
     \ contains=@haskell
 
   highlight! link mkdnHaskellBlock Delimiter
