@@ -56,7 +56,7 @@ function! haskell#keywords(kwdops) " {{{
   endif
 
   syntax match hsDelimiter
-    \ "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
+    \ "(\|)\|,\|;\|_\|{\|}"
 
   highlight! link hsStructure Structure
   highlight! link hsTypedef Typedef
