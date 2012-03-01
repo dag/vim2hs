@@ -6,6 +6,7 @@ call lib#letdefault('g:haskell_th'           , 1)
 call lib#letdefault('g:haskell_quasi'        , 1)
 call lib#letdefault('g:haskell_jmacro'       , 1)
 call lib#letdefault('g:haskell_shqq'         , 1)
+call lib#letdefault('g:haskell_sql'          , 1)
 call lib#letdefault('g:haskell_hsp'          , 1)
 call lib#letdefault('g:haskell_conceal'      , 1)
 call lib#letdefault('g:haskell_conceal_wide' , 0)
@@ -34,6 +35,10 @@ endif
 
 if g:haskell_shqq
   call haskell#shqq()
+endif
+
+if g:haskell_sql
+  call haskell#sql()
 endif
 
 if g:haskell_hsp

@@ -177,6 +177,23 @@ function! haskell#shqq() " {{{
 endfunction " }}}
 
 
+function! haskell#sql() " {{{
+  syntax include @sql syntax/sql.vim
+  unlet b:current_syntax
+
+  syntax region hsSQLSplice matchgroup=hsSQLSpliceQuote
+    \ start="\$[si]\?(" end=")"
+    \ contains=TOP
+
+  syntax region hsSQL matchgroup=hsSQLQuote
+    \ start="\[\$\?\(sql\|sqlStmts\?\|pgsqlStmts\?\|sqlExpr\)|" end="|\]"
+    \ keepend contains=hsSQLSplice,@sql
+
+  highlight! link hsSQLQuote Preproc
+  highlight! link hsSQLSpliceQuote Preproc
+endfunction " }}}
+
+
 function! haskell#hsp() " {{{
   syntax match hspTag
     \ "<%>\|</%>\|</\w\+>"
