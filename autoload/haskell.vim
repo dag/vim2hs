@@ -135,7 +135,7 @@ endfunction " }}}
 
 function! haskell#quasi() " {{{
   syntax region hsQuasi matchgroup=hsQuasiQuote
-    \ start="\[\$\?\i\+|" end="|\]"
+    \ start="\[\$\?\k\+|" end="|\]"
     \ keepend
 
   highlight! link hsQuasiQuote Macro
@@ -145,6 +145,7 @@ endfunction " }}}
 
 function! haskell#jmacro() " {{{
   syntax include @jmacro syntax/jmacro.vim
+  unlet b:current_syntax
 
   syntax region hsJmacroSplice matchgroup=hsJmacroAntiQuote
     \ start="`(" end=")`"
@@ -156,6 +157,23 @@ function! haskell#jmacro() " {{{
 
   highlight! link hsJmacroQuote PreProc
   highlight! link hsJmacroAntiQuote PreProc
+endfunction " }}}
+
+
+function! haskell#shqq() " {{{
+  syntax include @shell syntax/sh.vim
+  unlet b:current_syntax
+
+  syntax match hsShQQInterpolation
+    \ "\$+\?\({\k\+}\|\k\+\)"
+    \ contained
+
+  syntax region hsShQQ matchgroup=hsShQQuote
+    \ start="\[\$\?shc\?|" end="|\]"
+    \ keepend contains=hsShQQInterpolation,@shell
+
+  highlight! link hsShQQuote PreProc
+  highlight! link hsShQQInterpolation Identifier
 endfunction " }}}
 
 

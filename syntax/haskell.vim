@@ -17,6 +17,10 @@ if !exists('g:haskell_jmacro')
   let g:haskell_jmacro = 1
 endif
 
+if !exists('g:haskell_shqq')
+  let g:haskell_shqq = 1
+end
+
 if !exists('g:haskell_hsp')
   let g:haskell_hsp = 1
 endif
@@ -54,6 +58,10 @@ endif
 
 if g:haskell_jmacro
   call haskell#jmacro()
+endif
+
+if g:haskell_shqq
+  call haskell#shqq()
 endif
 
 if g:haskell_hsp
