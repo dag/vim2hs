@@ -16,7 +16,7 @@ endfunction " }}}
 
 function! cabal#statements() " {{{
   syntax region cabalIdentifier matchgroup=cabalStatement
-    \ start="\c^\(flag\|source-repository\|test-suite\|executable\|library\)"
+    \ start="\c^\%(flag\|source-repository\|test-suite\|executable\|library\)"
     \ end="$"
 
   highlight! link cabalIdentifier Identifier
@@ -28,12 +28,12 @@ function! cabal#conditionals() " {{{
   syntax keyword cabalKeyword contained true false
 
   syntax region cabalIdentifier matchgroup=cabalKeyword
-    \ start="\(os\|arch\|impl\|flag\)("
+    \ start="\%(os\|arch\|impl\|flag\)("
     \ end=")"
     \ contained contains=cabalIdentifier
 
   syntax region cabalIdentifier matchgroup=cabalConditional
-    \ start="\c^\s*\(if\|else\|endif\)"
+    \ start="\c^\s*\%(if\|else\|endif\)"
     \ end="$"
     \ contains=cabalIdentifier,cabalKeyword
 

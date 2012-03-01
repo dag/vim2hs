@@ -12,7 +12,7 @@ function! haskell#literate() " {{{
     \ contained
 
   syntax region hsLiterate matchgroup=hsLiterateDelimiter
-    \ start="^>" end="\(^[^>]\)\@="
+    \ start="^>" end="\%(^[^>]\)\@="
     \ contains=hsLiterateDelimiter,@haskell
 
   highlight! link hsLiterateDelimiter Delimiter
@@ -24,7 +24,7 @@ function! haskell#gfm() " {{{
   unlet b:current_syntax
 
   syntax region mkdnHaskell matchgroup=mkdnHaskellBlock
-    \ start="^```\(haskell\|hs\)$" end="^```$"
+    \ start="^```\%(haskell\|hs\)$" end="^```$"
     \ contains=@haskell
 
   highlight! link mkdnHaskellBlock Delimiter
@@ -52,7 +52,7 @@ function! haskell#keywords(kwdops) " {{{
 
   if a:kwdops
     syntax match hsStructure
-      \ "\s\(=>\|->\|<-\|=\|::\)\_s"
+      \ "\s\%(=>\|->\|<-\|=\|::\)\_s"
   endif
 
   syntax match hsDelimiter
@@ -69,11 +69,11 @@ endfunction " }}}
 
 function! haskell#bindings() " {{{
   syntax match hsType
-    \ "^\k\+\s*::.*\(\n\s.*\)*"
+    \ "^\k\+\s*::.*\%(\n\s.*\)*"
     \ contains=TOP
 
   syntax match hsIdentifier
-    \ "^\k\+\(.*\(\n\s.*\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
+    \ "^\k\+\%(.*\%(\n\s.*\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
 
   highlight! link hsType Type
   highlight! link hsIdentifier Identifier
@@ -83,13 +83,13 @@ endfunction " }}}
 function! haskell#strings() " {{{
   syntax match hsSpecialChar
     \ contained
-    \ "\\\([0-9]\+\|o[0-7]\+\|
+    \ "\\\%([0-9]\+\|o[0-7]\+\|
         \x[0-9a-fA-F]\+\|[\"\\'&\\abfnrtv]\|
         \^[A-Z^_\[\\\]]\)"
 
   syntax match hsSpecialChar
     \ contained
-    \ "\\\(NUL\|SOH\|STX\|ETX\|EOT\|ENQ\|ACK\|
+    \ "\\\%(NUL\|SOH\|STX\|ETX\|EOT\|ENQ\|ACK\|
         \BEL\|BS\|HT\|LF\|VT\|FF\|CR\|SO\|SI\|
         \DLE\|DC1\|DC2\|DC3\|DC4\|NAK\|SYN\|
         \ETB\|CAN\|EM\|SUB\|ESC\|FS\|GS\|
@@ -100,11 +100,11 @@ function! haskell#strings() " {{{
     \ "\\&\|'''\+"
 
   syntax match hsCharacter
-    \ "[^a-zA-Z0-9_']'\([^\\]\|\\[^']\+\|\\'\)'"lc=1
+    \ "[^a-zA-Z0-9_']'\%([^\\]\|\\[^']\+\|\\'\)'"lc=1
     \ contains=hsSpecialChar,hsSpecialCharError
 
   syntax match hsCharacter
-    \ "^'\([^\\]\|\\[^']\+\|\\'\)'"
+    \ "^'\%([^\\]\|\\[^']\+\|\\'\)'"
     \ contains=hsSpecialChar,hsSpecialCharError
 
   syntax region hsString
@@ -119,10 +119,10 @@ endfunction " }}}
 
 
 function! haskell#cpp() " {{{
-  syntax match cppPreCondit "^#\s*\(else\|endif\)$"
+  syntax match cppPreCondit "^#\s*\%(else\|endif\)$"
 
   syntax region cppPreCondit
-    \ start="^#\s*\(if\|ifdef\|ifndef\|elif\)\>"
+    \ start="^#\s*\%(if\|ifdef\|ifndef\|elif\)\>"
     \ skip="\\$"
     \ end="$"
 
@@ -171,7 +171,7 @@ function! haskell#shqq() " {{{
   unlet b:current_syntax
 
   syntax match hsShQQInterpolation
-    \ "\$+\?\({\k\+}\|\k\+\)"
+    \ "\$+\?\%({\k\+}\|\k\+\)"
     \ contained
 
   syntax region hsShQQ matchgroup=hsShQQuote
@@ -192,7 +192,7 @@ function! haskell#sql() " {{{
     \ contains=TOP
 
   syntax region hsSQL matchgroup=hsSQLQuote
-    \ start="\[\$\?\(sql\|sqlStmts\?\|pgsqlStmts\?\|sqlExpr\)|" end="|\]"
+    \ start="\[\$\?\%(sql\|sqlStmts\?\|pgsqlStmts\?\|sqlExpr\)|" end="|\]"
     \ keepend contains=hsSQLSplice,@sql
 
   highlight! link hsSQLQuote Preproc
@@ -217,7 +217,7 @@ function! haskell#hsp() " {{{
     \ contains=hspAttrName,hspAttrValue
 
   syntax region hspHaskell matchgroup=hspSplice
-    \ start="<%>\@!" end="\(</\)\@!%>"
+    \ start="<%>\@!" end="\%(</\)\@!%>"
     \ contains=TOP
 
   highlight! link hspTag PreProc
