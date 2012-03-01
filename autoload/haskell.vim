@@ -5,10 +5,15 @@ endfunction " }}}
 
 function! haskell#literate() " {{{
   syntax include @haskell syntax/haskell.vim
+  unlet b:current_syntax
+
+  syntax match hsLiterateDelimiter
+    \ "^>"
+    \ contained
 
   syntax region hsLiterate matchgroup=hsLiterateDelimiter
-    \ start="^>" end="$"
-    \ keepend contains=@haskell
+    \ start="^>" end="\(^[^>]\)\@="
+    \ contains=hsLiterateDelimiter,@haskell
 
   highlight! link hsLiterateDelimiter Delimiter
 endfunction " }}}
@@ -16,6 +21,7 @@ endfunction " }}}
 
 function! haskell#gfm() " {{{
   syntax include @haskell syntax/haskell.vim
+  unlet b:current_syntax
 
   syntax region mkdnHaskell matchgroup=mkdnHaskellBlock
     \ start="^```haskell" end="^```$"
