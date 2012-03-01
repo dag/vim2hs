@@ -52,7 +52,7 @@ function! haskell#keywords(kwdops) " {{{
 
   if a:kwdops
     syntax match hsStructure
-      \ "\s\%(=>\|->\|<-\|=\|::\)\_s"
+      \ "[[:punct:]]\@<!\%(=>\|->\|<-\|=\|::\)[[:punct:]]\@!"
   endif
 
   syntax match hsDelimiter
