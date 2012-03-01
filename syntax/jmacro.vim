@@ -1,9 +1,7 @@
 runtime! syntax/javascript.vim
 
 
-if !exists('g:jmacro_conceal')
-  let g:jmacro_conceal = 1
-endif
+call lib#letdefault('g:jmacro_conceal', 1)
 
 
 call jmacro#keywords()
