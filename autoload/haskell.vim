@@ -288,7 +288,7 @@ function! haskell#hsp() " {{{
     \ contained contains=TOP
 
   syntax match hspAttrName
-    \ "\w\+="me=e-1
+    \ "\w\+="
     \ contained
 
   syntax region hspAttr matchgroup=hspTag
