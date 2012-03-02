@@ -123,6 +123,22 @@ function! haskell#strings() " {{{
 endfunction " }}}
 
 
+function! haskell#comments() " {{{
+  syntax region hsComment
+    \ start="--" end="$"
+
+  syntax region hsComment
+    \ start="{-" end="-}"
+    \ contains=hsComment
+
+  syntax region hsPragma
+    \ start="{-#" end="#-}"
+
+  highlight! link hsComment Comment
+  highlight! link hsPragma PreProc
+endfunction " }}}
+
+
 function! haskell#cpp() " {{{
   syntax match cppPreCondit "^#\s*\%(else\|endif\)$"
 

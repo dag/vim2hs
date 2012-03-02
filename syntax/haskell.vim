@@ -48,6 +48,7 @@ endif
 call haskell#keywords(1)
 call haskell#bindings()
 call haskell#strings()
+call haskell#comments()
 
 
 let b:current_syntax = "haskell"
