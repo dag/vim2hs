@@ -1,6 +1,7 @@
 syntax clear
 
 
+call lib#letdefault('g:haskell_haddock'      , 1)
 call lib#letdefault('g:haskell_cpp'          , 1)
 call lib#letdefault('g:haskell_th'           , 1)
 call lib#letdefault('g:haskell_quasi'        , 1)
@@ -49,6 +50,10 @@ call haskell#keywords(1)
 call haskell#bindings()
 call haskell#strings()
 call haskell#comments()
+
+if g:haskell_haddock
+  call haskell#haddock()
+endif
 
 
 let b:current_syntax = "haskell"

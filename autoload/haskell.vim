@@ -124,8 +124,8 @@ endfunction " }}}
 
 
 function! haskell#comments() " {{{
-  syntax region hsComment
-    \ start="--" end="$"
+  syntax match hsComment
+    \ /--.*/
 
   syntax region hsComment
     \ start="{-" end="-}"
@@ -136,6 +136,61 @@ function! haskell#comments() " {{{
 
   highlight! link hsComment Comment
   highlight! link hsPragma PreProc
+endfunction " }}}
+
+
+function! haskell#haddock() " {{{
+  syntax match haddockHeading
+    \ "\*\+.*\%(-}\)\@=\|\*\+.*$"
+    \ contained containedin=hsComment
+
+  syntax match haddockChunk
+    \ "\$[[:alnum:]]\+"
+    \ contained containedin=hsComment
+
+  syntax match haddockAnnotation
+    \ "[|^].*\%(-}\)\@=\|[|^].*$"
+    \ contained containedin=hsComment
+
+  syntax match haddockIdentifier
+    \ "'\%(\k\|\.\)\+'"ms=s+1,me=e-1
+    \ contained containedin=hsComment
+
+  syntax match haddockModule
+    \ /"[A-Z]\%(\k\|\.\)\+"/ms=s+1,me=e-1
+    \ contained containedin=hsComment
+
+  syntax match haddockEmphasis
+    \ "\/.\+/"ms=s+1,me=e-1
+    \ contained containedin=hsComment
+
+  syntax match haddockURL
+    \ "<\S\+>"ms=s+1,me=e-1
+    \ contained containedin=hsComment
+
+  syntax region haddockExample matchgroup=haddockREPL
+    \ start=">\%(>>\)\?" end="$"
+    \ contained contains=TOP containedin=hsComment
+
+  syntax match haddockLabel
+    \ /#\S\+#/
+    \ contained containedin=hsComment
+
+  syntax match haddockAnchor
+    \ "[A-Z]\%(\k\|\.\)\+#\S\+"
+    \ contained containedin=hsComment
+
+  highlight! link haddockHeading Title
+  highlight! link haddockChunk PreProc
+  highlight! link haddockAnnotation Title
+  highlight! link haddockIdentifier Underlined
+  highlight! link haddockModule Underlined
+  highlight! link haddockURL Underlined
+  highlight! link haddockREPL Delimiter
+  highlight! link haddockLabel Label
+  highlight! link haddockAnchor Underlined
+
+  highlight haddockEmphasis term=bold gui=bold
 endfunction " }}}
 
 
