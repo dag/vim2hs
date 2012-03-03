@@ -3,6 +3,6 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
-setlocal includeexpr=haskell#includeexpr(v:fname)
+call haskell#includes()
 
 command -buffer -nargs=* HLint call haskell#hlint(<q-args>)

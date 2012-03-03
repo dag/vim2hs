@@ -1,5 +1,7 @@
-function! haskell#includeexpr(fname) " {{{
-  return substitute(a:fname, '\.', '/', 'g') . '.hs'
+function! haskell#includes() " {{{
+  setlocal include=^import\\s*\\(qualified\\)\\?\\s*
+  setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+  setlocal suffixesadd=.hs,.lhs,.hsc
 endfunction " }}}
 
 
