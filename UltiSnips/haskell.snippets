@@ -1,0 +1,39 @@
+snippet pragma "Compiler pragma"
+{-# $1 #-}
+endsnippet
+
+snippet lang "LANGUAGE pragma"
+{-# LANGUAGE $1 #-}
+endsnippet
+
+snippet ghcopt "GHC options"
+{-# OPTIONS_GHC $1 #-}
+endsnippet
+
+snippet preproc "Pre-processor"
+{-# OPTIONS_GHC -F -pgmF ${1:preprocessor} #-}
+endsnippet
+
+snippet iq "Qualified module import"
+import qualified ${1:module} as ${0:alias}
+endsnippet
+
+snippet cls "Type class definition"
+class ${1:name} where
+	$0
+endsnippet
+
+snippet inst "Instance definition"
+instance ${1:class} ${2:type} where
+	$0
+endsnippet
+
+snippet def "Function definition / top-level value binding"
+-- | ${1:documentation}
+${2:name} :: ${3:type}
+$2 ${4:args} = ${0:definition}
+endsnippet
+
+snippet qq "Quasi quote"
+[${1:quoter}| ${0:content} |]
+endsnippet
