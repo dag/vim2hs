@@ -252,6 +252,47 @@ function! haskell#quasi() " {{{
 endfunction " }}}
 
 
+function! haskell#interpolation() " {{{
+  syntax region hsStringQQ matchgroup=hsStringQQuote
+    \ start="\[\$\?[sq]|" end="|\]"
+    \ keepend contains=@Spell
+
+  syntax region hsP6Interpolation matchgroup=hsP6AntiQuote
+    \ start="{" end="}"
+    \ keepend contained contains=TOP
+
+  syntax match hsP6Identifier
+    \ "\$\k\+"
+    \ contained
+
+  syntax region hsP6QQ matchgroup=hsP6QQuote
+    \ start="\[\$\?qc|" end="|\]"
+    \ keepend contains=hsP6Interpolation,@Spell
+
+  syntax region hsP6QQ matchgroup=hsP6QQuote
+    \ start="\[\$\?qq|" end="|\]"
+    \ keepend contains=hsP6Identifier,hsP6Interpolation,@Spell
+
+  syntax region hsRubyInterpolation matchgroup=hsRubyAntiQuote
+    \ start="#{" end="}"
+    \ keepend contained contains=TOP
+
+  syntax region hsRubyQQ matchgroup=hsRubyQQuote
+    \ start="\[\$\?istr|" end="|\]"
+    \ keepend contains=hsRubyInterpolation,@Spell
+
+  highlight! link hsStringQQuote Delimiter
+  highlight! link hsStringQQ String
+  highlight! link hsP6QQuote Delimiter
+  highlight! link hsP6QQ String
+  highlight! link hsP6AntiQuote PreProc
+  highlight! link hsP6Identifier Identifier
+  highlight! link hsRubyQQuote Delimiter
+  highlight! link hsRubyQQ String
+  highlight! link hsRubyAntiQuote PreProc
+endfunction " }}}
+
+
 function! haskell#jmacro() " {{{
   syntax include @jmacro syntax/jmacro.vim
   unlet b:current_syntax

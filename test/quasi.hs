@@ -3,6 +3,15 @@ quote =
     Arbitrary unknown quasi-quoter.
   |]
 
+string =
+  [s| Simple string quote using string-qq package. |] ++
+  [q| Similarly, using interpolatedstring-perl6. |]
+
+interpolate name =
+  [qc| Hello, {name ++ "!"} |] ++
+  [qq| Hello, $name! |] ++
+  [istr| Hello, #{name ++ "!"} |]
+
 alert name =
   [jmacro|
     alert `((if name == "world" then "hello " else "bye ") ++ name)`
