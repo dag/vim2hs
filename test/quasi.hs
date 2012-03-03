@@ -12,6 +12,15 @@ interpolate name =
   [qq| Hello, $name! |] ++
   [istr| Hello, #{name ++ "!"} |]
 
+peano =
+  [rex| ^(?{ length . filter (=='S') } \s* (?:S\s+)* Z) \s* $ |]
+
+relit =
+  [re|\\(foo)\\(bar\.c)|]
+
+regexqq =
+  [rx|([aeiou]).*(er|ing|tion)([\.,\?]*)$|]
+
 alert name =
   [jmacro|
     alert `((if name == "world" then "hello " else "bye ") ++ name)`

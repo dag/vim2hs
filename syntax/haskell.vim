@@ -6,6 +6,7 @@ call lib#letdefault('g:haskell_cpp'           , 1)
 call lib#letdefault('g:haskell_th'            , 1)
 call lib#letdefault('g:haskell_quasi'         , 1)
 call lib#letdefault('g:haskell_interpolation' , 1)
+call lib#letdefault('g:haskell_regex'         , 1)
 call lib#letdefault('g:haskell_jmacro'        , 1)
 call lib#letdefault('g:haskell_shqq'          , 1)
 call lib#letdefault('g:haskell_sql'           , 1)
@@ -29,6 +30,10 @@ endif
 
 if g:haskell_interpolation
   call haskell#interpolation()
+endif
+
+if g:haskell_regex
+  call haskell#regex()
 endif
 
 if g:haskell_jmacro

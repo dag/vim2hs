@@ -293,6 +293,60 @@ function! haskell#interpolation() " {{{
 endfunction " }}}
 
 
+function! haskell#regex() " {{{
+  syntax match regexSpecialChar
+    \ /\\[a-zA-Z]/
+    \ contained
+
+  syntax match regexOperator
+    \ "[\(]\@<![.*+?]"
+    \ contained
+
+  syntax match regexDelimiter
+    \ "(\|)\|\[\|\]\|{\|}"
+    \ contained
+
+  syntax match regexStructure
+    \ "(\@<=?.\|[$^]"
+    \ contained
+
+  syntax cluster regex
+    \ contains=regexSpecialChar,regexOperator,
+              \regexDelimiter,regexStructure
+
+  syntax region hsRexMap matchgroup=hsRexMapQuote
+    \ start="(\@<=?{" end="}\%(.*)\)\@="
+    \ keepend contained contains=TOP
+
+  syntax region hsRex matchgroup=hsRexQuote
+    \ start="\[\$\?b\?rex|" end="|\]"
+    \ keepend contains=@regex,hsRexMap
+
+  syntax region hsRelit matchgroup=hsRelitQuote
+    \ start="\[\$\?b\?re|" end="|\]"
+    \ keepend contains=@regex
+
+  syntax region hsRegexQQ matchgroup=hsRegexQQuote
+    \ start="\[\$\?b\?rx|" end="|\]"
+    \ keepend contains=@regex
+
+  highlight! link regexSpecialChar SpecialChar
+  highlight! link regexOperator Operator
+  highlight! link regexDelimiter Delimiter
+  highlight! link regexStructure Structure
+
+  highlight! link hsRexQuote Delimiter
+  highlight! link hsRex String
+  highlight! link hsRexMapQuote PreProc
+
+  highlight! link hsRelitQuote PreProc
+  highlight! link hsRelit String
+
+  highlight! link hsRegexQQuote PreProc
+  highlight! link hsRegexQQ String
+endfunction " }}}
+
+
 function! haskell#jmacro() " {{{
   syntax include @jmacro syntax/jmacro.vim
   unlet b:current_syntax
