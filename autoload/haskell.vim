@@ -247,8 +247,8 @@ function! haskell#quasi() " {{{
     \ start="\[\$\?\k\+|" end="|\]"
     \ keepend
 
-  highlight! link hsQuasiQuote Macro
-  highlight! link hsQuasi String
+  highlight! link hsQuasiQuote Delimiter
+  highlight! link hsQuasi Macro
 endfunction " }}}
 
 
@@ -264,7 +264,7 @@ function! haskell#jmacro() " {{{
     \ start="\[\$\?jmacroE\?|" end="|\]"
     \ keepend contains=hsJmacroSplice,@jmacro
 
-  highlight! link hsJmacroQuote PreProc
+  highlight! link hsJmacroQuote Delimiter
   highlight! link hsJmacroAntiQuote PreProc
 endfunction " }}}
 
@@ -281,7 +281,7 @@ function! haskell#shqq() " {{{
     \ start="\[\$\?shc\?|" end="|\]"
     \ keepend contains=hsShQQInterpolation,@shell
 
-  highlight! link hsShQQuote PreProc
+  highlight! link hsShQQuote Delimiter
   highlight! link hsShQQInterpolation Identifier
 endfunction " }}}
 
@@ -298,7 +298,7 @@ function! haskell#sql() " {{{
     \ start="\[\$\?\%(sql\|sqlStmts\?\|pgsqlStmts\?\|sqlExpr\)|" end="|\]"
     \ keepend contains=hsSQLSplice,@sql
 
-  highlight! link hsSQLQuote Preproc
+  highlight! link hsSQLQuote Delimiter
   highlight! link hsSQLSpliceQuote Preproc
 endfunction " }}}
 
