@@ -3,6 +3,17 @@ function! haskell#includeexpr(fname) " {{{
 endfunction " }}}
 
 
+function! haskell#tabular() " {{{
+  AddTabularPattern! ( /^[^(]*\zs(/l1r0
+  AddTabularPattern! as / as /l0r0
+  AddTabularPattern! = /^[^=]*\zs=/
+  AddTabularPattern! :: / :: /l0r0
+  AddTabularPattern! : /^[^:]*\zs:/
+  AddTabularPattern! > / -> /l0r0
+  AddTabularPattern! < / <- /l0r0
+endfunction " }}}
+
+
 function! haskell#literate() " {{{
   syntax include @haskell syntax/haskell.vim
   unlet b:current_syntax
