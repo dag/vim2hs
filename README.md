@@ -15,18 +15,29 @@ Features
   string interpolation...
 * Liberal syntax highlighting for Cabal package descriptions, yielding less
   false-positives for mistakes than other syntax files for Cabal.
-* Haskell-module-aware `'includeexpr'`.
+* Makes Vim aware of Haskell modules and imports allowing you to `gf` with
+  the cursor on a module to "go" to its source "file", etc.
 * Support for using HLint both as a compiler and a command, integrated into
   the quickfix system in Vim.
 * Unicode conceals for various operators and syntax, such as lambda and
   function composition.
 * Integrates with third-party plugins, but doesn't require them:
   snippets for UltiSnips and patterns for Tabular.
+* Posts buffers and line-ranges to [hpaste.org](http://hpaste.org).
 * Highly configurable, most of the above can be disabled if it gets in the
   way.
 
-Screenshots
------------
+Installation
+------------
+
+You need at least Vim 7.3, and for the HPaste command Python 2, not too
+ancient.  Beyond that, just clone this repo and add it to your
+`'runtimepath'`.  [Vundle](https://github.com/gmarik/vundle) is great for
+automating that, [Pathogen](https://github.com/tpope/vim-pathogen) is also
+popular.
+
+Overview
+--------
 
 ### Quasi Quoting
 
@@ -108,3 +119,73 @@ gets wrong.
 
 There are currently no configuration options for this, but I might add one
 in the future if anyone is actually using the escaped newline syntax.
+
+### HLint
+
+HLint is provided as a compiler for Vim.
+
+```vim
+:compiler hlint
+:make
+```
+
+As a convenience there's also a command that does the above and then resets
+the compiler to its previous value.
+
+```vim
+:HLint
+```
+
+Either way any HLint suggestions and warnings will be put in Vim's quickfix
+list and you can jump between them with `:cn` and `:cp`, although I
+recommend setting up
+[FuzzyFinder](https://github.com/vim-scripts/FuzzyFinder) and using its
+`:FufQuickfix` command instead.
+
+### HPaste
+
+To pastebin the contents of the current buffer do this:
+
+```vim
+:HPaste
+```
+
+The newly created paste URL will be put in the `+` register, meaning your
+normal desktop clipboard.
+
+Alternatively, you can select a range of lines with Vim's VISUAL modes and
+type the same as above, which should result in this:
+
+```vim
+:'<,'>HPaste
+```
+
+Which of course will paste the selected lines only.
+
+If you get tired of entering your author name every time you can configure
+it globally like so:
+
+```vim
+let g:hpaste_author = 'donri'
+```
+
+### UltiSnips
+
+If you're using the excellent
+[UltiSnips](https://github.com/sirver/ultisnips) Vimscript, vim2hs provides
+some useful snippets for Haskell programming.  You can list all active
+snippets by hitting `Ctrl+Tab` in INPUT mode.
+
+### Tabular
+
+Another useful Vimscript is
+[Tabular](https://github.com/godlygeek/tabular).  If it's installed, vim2hs
+can provide some named patterns useful for aligning Haskell code.  This
+feature is disabled by default since patterns are global and override
+existing patterns in case of a name conflict.
+
+To enable them, use this configuration:
+
+```vim
+let g:haskell_tabular = 1
+```
