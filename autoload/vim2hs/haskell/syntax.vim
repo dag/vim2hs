@@ -10,7 +10,6 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
-  setlocal iskeyword=a-z,A-Z,48-57,_,'
   syntax case match
 
   syntax keyword hsStructure
@@ -115,12 +114,6 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#syntax#comments() " {{{
-  setlocal comments=s1:{-,mb:-,ex:-},:--
-  setlocal commentstring=--%s
-  setlocal formatoptions+=croqa1
-  setlocal formatoptions-=t
-  setlocal textwidth=75
-
   syntax match hsComment
     \ /--.*/
 

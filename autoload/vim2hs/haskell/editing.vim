@@ -5,6 +5,20 @@ function! vim2hs#haskell#editing#includes() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#editing#keywords() " {{{
+  setlocal iskeyword=a-z,A-Z,48-57,_,'
+endfunction " }}}
+
+
+function! vim2hs#haskell#editing#comments() " {{{
+  setlocal comments=s1:{-,mb:-,ex:-},:--
+  setlocal commentstring=--%s
+  setlocal formatoptions+=croqa1
+  setlocal formatoptions-=t
+  setlocal textwidth=75
+endfunction " }}}
+
+
 function! vim2hs#haskell#editing#hlint(args) " {{{
   if exists('b:current_compiler')
     let l:previous_compiler = b:current_compiler
