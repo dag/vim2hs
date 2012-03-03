@@ -16,6 +16,8 @@ call lib#letdefault('g:haskell_conceal_wide'  , 0)
 call lib#letdefault('g:haskell_conceal_bad'   , 0)
 
 
+call haskell#operators()
+
 if g:haskell_cpp
   call haskell#cpp()
 endif

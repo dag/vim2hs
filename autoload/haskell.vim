@@ -54,6 +54,17 @@ function! haskell#gfm() " {{{
 endfunction " }}}
 
 
+function! haskell#operators() " {{{
+  syntax match hsOperator
+    \ "[-!#$%&\*\+/<=>\?@\\^|~.][-!#$%&\*\+/<=>\?@\\^|~:.]*"
+
+  syntax match hsOperator
+    \ "`\k\%(\k\|\.\)*`"
+
+  highlight! link hsOperator Operator
+endfunction " }}}
+
+
 function! haskell#keywords(kwdops) " {{{
   setlocal iskeyword=a-z,A-Z,48-57,_,'
   syntax case match
