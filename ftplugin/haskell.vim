@@ -8,3 +8,7 @@ call vim2hs#haskell#editing#keywords()
 call vim2hs#haskell#editing#comments()
 
 command -buffer -nargs=* HLint call vim2hs#with_compiler('hlint', <q-args>)
+
+if has('python')
+  command -buffer -range=% HPaste call vim2hs#hpaste(<line1>, <line2>, <count>)
+endif
