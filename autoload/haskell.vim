@@ -173,6 +173,12 @@ endfunction " }}}
 
 
 function! haskell#comments() " {{{
+  setlocal comments=s1:{-,mb:-,ex:-},:--
+  setlocal commentstring=--%s
+  setlocal formatoptions+=croqa1
+  setlocal formatoptions-=t
+  setlocal textwidth=75
+
   syntax match hsComment
     \ /--.*/
 
