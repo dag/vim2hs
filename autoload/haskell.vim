@@ -56,7 +56,7 @@ endfunction " }}}
 
 function! haskell#operators() " {{{
   syntax match hsOperator
-    \ "[-!#$%&\*\+/<=>\?@\\^|~.][-!#$%&\*\+/<=>\?@\\^|~:.]*"
+    \ "[-!#$%&\*\+/=\?@\\^|~.][-!#$%&\*\+/=\?@\\^|~:.]*"
 
   syntax match hsOperator
     \ "`\k\%(\k\|\.\)*`"
