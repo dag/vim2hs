@@ -3,4 +3,4 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
-setlocal includeexpr=haskell#includeexpr(v:fname)
+call vim2hs#haskell#editing#includes()

@@ -3,6 +3,6 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
-call haskell#includes()
+call vim2hs#haskell#editing#includes()
 
-command -buffer -nargs=* HLint call haskell#hlint(<q-args>)
+command -buffer -nargs=* HLint call vim2hs#haskell#editing#hlint(<q-args>)

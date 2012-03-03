@@ -1,71 +1,79 @@
 syntax clear
 
 
-call lib#letdefault('g:haskell_haddock'       , 1)
-call lib#letdefault('g:haskell_cpp'           , 1)
-call lib#letdefault('g:haskell_th'            , 1)
-call lib#letdefault('g:haskell_quasi'         , 1)
-call lib#letdefault('g:haskell_interpolation' , 1)
-call lib#letdefault('g:haskell_regex'         , 1)
-call lib#letdefault('g:haskell_jmacro'        , 1)
-call lib#letdefault('g:haskell_shqq'          , 1)
-call lib#letdefault('g:haskell_sql'           , 1)
-call lib#letdefault('g:haskell_hsp'           , 1)
-call lib#letdefault('g:haskell_conceal'       , 1)
-call lib#letdefault('g:haskell_conceal_wide'  , 0)
-call lib#letdefault('g:haskell_conceal_bad'   , 0)
+call vim2hs#letdefault('g:haskell_haddock'       , 1)
+call vim2hs#letdefault('g:haskell_cpp'           , 1)
+call vim2hs#letdefault('g:haskell_th'            , 1)
+call vim2hs#letdefault('g:haskell_quasi'         , 1)
+call vim2hs#letdefault('g:haskell_interpolation' , 1)
+call vim2hs#letdefault('g:haskell_regex'         , 1)
+call vim2hs#letdefault('g:haskell_jmacro'        , 1)
+call vim2hs#letdefault('g:haskell_shqq'          , 1)
+call vim2hs#letdefault('g:haskell_sql'           , 1)
+call vim2hs#letdefault('g:haskell_hsp'           , 1)
+call vim2hs#letdefault('g:haskell_conceal'       , 1)
+call vim2hs#letdefault('g:haskell_conceal_wide'  , 0)
+call vim2hs#letdefault('g:haskell_conceal_bad'   , 0)
 
 
-call haskell#operators()
+call vim2hs#haskell#syntax#operators()
 
 if g:haskell_cpp
-  call haskell#cpp()
+  call vim2hs#haskell#syntax#cpp()
 endif
 
 if g:haskell_th
-  call haskell#th()
+  call vim2hs#haskell#syntax#th()
 endif
 
 if g:haskell_quasi
-  call haskell#quasi()
+  call vim2hs#haskell#quasi#quote()
 endif
 
 if g:haskell_interpolation
-  call haskell#interpolation()
+  call vim2hs#haskell#quasi#interpolation()
 endif
 
 if g:haskell_regex
-  call haskell#regex()
+  call vim2hs#haskell#quasi#regex()
 endif
 
 if g:haskell_jmacro
-  call haskell#jmacro()
+  call vim2hs#haskell#quasi#jmacro()
 endif
 
 if g:haskell_shqq
-  call haskell#shqq()
+  call vim2hs#haskell#quasi#shqq()
 endif
 
 if g:haskell_sql
-  call haskell#sql()
+  call vim2hs#haskell#quasi#sql()
 endif
 
 if g:haskell_hsp
-  call haskell#hsp()
+  call vim2hs#haskell#syntax#hsp()
 endif
 
 if g:haskell_conceal
-  call haskell#conceal(g:haskell_conceal_wide, g:haskell_conceal_bad)
+  call vim2hs#haskell#conceal#simple()
+
+  if g:haskell_conceal_wide
+    call vim2hs#haskell#conceal#wide()
+  endif
+
+  if g:haskell_conceal_bad
+    call vim2hs#haskell#conceal#bad()
+  endif
 endif
 
-call haskell#keywords(1)
-call haskell#numbers()
-call haskell#bindings()
-call haskell#strings()
-call haskell#comments()
+call vim2hs#haskell#syntax#keywords(1)
+call vim2hs#haskell#syntax#numbers()
+call vim2hs#haskell#syntax#bindings()
+call vim2hs#haskell#syntax#strings()
+call vim2hs#haskell#syntax#comments()
 
 if g:haskell_haddock
-  call haskell#haddock()
+  call vim2hs#haskell#syntax#haddock()
 endif
 
 

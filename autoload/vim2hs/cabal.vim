@@ -1,4 +1,4 @@
-function! cabal#constants() " {{{
+function! vim2hs#cabal#constants() " {{{
   setlocal iskeyword=a-z,A-Z,-
 
   syntax match cabalConstant
@@ -14,7 +14,7 @@ function! cabal#constants() " {{{
 endfunction " }}}
 
 
-function! cabal#statements() " {{{
+function! vim2hs#cabal#statements() " {{{
   syntax region cabalIdentifier matchgroup=cabalStatement
     \ start="\c^\%(flag\|source-repository\|test-suite\|executable\|library\)"
     \ end="$"
@@ -24,7 +24,7 @@ function! cabal#statements() " {{{
 endfunction " }}}
 
 
-function! cabal#conditionals() " {{{
+function! vim2hs#cabal#conditionals() " {{{
   syntax keyword cabalKeyword contained true false
 
   syntax region cabalIdentifier matchgroup=cabalKeyword

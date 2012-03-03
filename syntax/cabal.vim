@@ -1,7 +1,7 @@
 syntax clear
 
-call cabal#constants()
-call cabal#statements()
-call cabal#conditionals()
+call vim2hs#cabal#constants()
+call vim2hs#cabal#statements()
+call vim2hs#cabal#conditionals()
 
 let b:current_syntax = "cabal"

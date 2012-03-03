@@ -1,13 +1,13 @@
 runtime! syntax/javascript.vim
 
 
-call lib#letdefault('g:jmacro_conceal', 1)
+call vim2hs#letdefault('g:jmacro_conceal', 1)
 
 
-call jmacro#keywords()
+call vim2hs#jmacro#keywords()
 
 if g:jmacro_conceal
-  call jmacro#conceal()
+  call vim2hs#jmacro#conceal()
 endif
 
 

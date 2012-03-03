@@ -1,9 +1,9 @@
-function jmacro#keywords() " {{{
+function vim2hs#jmacro#keywords() " {{{
   syntax keyword javaScriptFunction fun
 endfunction " }}}
 
 
-function! jmacro#conceal() " {{{
+function! vim2hs#jmacro#conceal() " {{{
   syntax match jmacroConceal
     \ "\\\ze[[:alpha:][:space:]_([]"
     \ conceal cchar=λ
