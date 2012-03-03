@@ -232,12 +232,11 @@ function! haskell#haddock() " {{{
   highlight! link haddockAnnotation Title
   highlight! link haddockIdentifier Underlined
   highlight! link haddockModule Underlined
+  highlight! link haddockEmphasis Todo
   highlight! link haddockURL Underlined
   highlight! link haddockREPL Delimiter
   highlight! link haddockLabel Label
   highlight! link haddockAnchor Underlined
-
-  highlight haddockEmphasis term=bold gui=bold
 endfunction " }}}
 
 
