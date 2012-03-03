@@ -7,4 +7,4 @@ call vim2hs#haskell#editing#includes()
 call vim2hs#haskell#editing#keywords()
 call vim2hs#haskell#editing#comments()
 
-command -buffer -nargs=* HLint call vim2hs#haskell#editing#hlint(<q-args>)
+command -buffer -nargs=* HLint call vim2hs#with_compiler('hlint', <q-args>)
