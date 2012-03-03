@@ -1,5 +1,5 @@
-Vim -> Haskell
-==============
+`vim2hs :: Vim -> Haskell`
+==========================
 
 *"Vim to Haskell": A collection of vimscripts for Haskell development.*
 
