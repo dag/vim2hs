@@ -59,6 +59,7 @@ if g:haskell_conceal
 endif
 
 call haskell#keywords(1)
+call haskell#numbers()
 call haskell#bindings()
 call haskell#strings()
 call haskell#comments()
