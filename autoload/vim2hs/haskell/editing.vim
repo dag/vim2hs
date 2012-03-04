@@ -13,7 +13,7 @@ endfunction " }}}
 function! vim2hs#haskell#editing#comments() " {{{
   setlocal comments=s1:{-,mb:-,ex:-},:--
   setlocal commentstring=--%s
-  setlocal formatoptions+=croq1
+  setlocal formatoptions+=croql1
   setlocal formatoptions-=t
   setlocal textwidth=75
 endfunction " }}}
