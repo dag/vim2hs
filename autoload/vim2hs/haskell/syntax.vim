@@ -159,7 +159,7 @@ function! vim2hs#haskell#syntax#haddock() " {{{
     \ contained containedin=hsComment
 
   syntax region haddockExample matchgroup=haddockREPL
-    \ start=">\%(>>\)\?" end="$"
+    \ start="\%(<\S\+\)\@<!>\%(>>\)\?" end="$"
     \ contained contains=TOP containedin=hsComment
 
   syntax match haddockLabel
