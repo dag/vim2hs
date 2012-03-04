@@ -31,7 +31,7 @@ endsnippet
 snippet def "Function definition / top-level value binding"
 -- | ${1:documentation}
 ${2:name} :: ${3:type}
-$2 ${4:args} = ${0:definition}
+$2 ${4:args} = ${0:error "undefined: $2"}
 endsnippet
 
 snippet qq "Quasi quote"
