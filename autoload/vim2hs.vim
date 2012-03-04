@@ -29,7 +29,7 @@ endfunction " }}}
 function! vim2hs#hpaste(line1, line2, count) " {{{
 python <<endpython
 try:
-  import urllib, urllib2
+  import sys, urllib, urllib2
 
   if int(vim.eval('a:count')):
     s = int(vim.eval('a:line1')) - 1
@@ -42,6 +42,10 @@ try:
   code = code.decode(enc, 'ignore').encode('utf-8')
 
   title = vim.eval('input("Title: ")')
+
+  if not title:
+    raise RuntimeError('aborted')
+
   author = vim.eval('vim2hs#get_hpaste_author()')
   language = vim.eval('&filetype')
   channel = vim.eval('input("Channel: ")')
@@ -52,20 +56,15 @@ try:
                            'channel': channel,
                            'paste': code,
                            'email': ''})
-
   try:
     res = urllib2.urlopen('http://hpaste.org/new', data)
     paste = res.geturl()
     print 'Created new paste %s' % paste
     vim.command('call setreg("+", %r)' % paste)
-  except Exception, e:
-    print e
   finally:
     res.close()
 
-except KeyboardInterrupt:
-  pass
-except Exception, e:
-  print e
+except:
+  print 'error:', sys.exc_info()[1]
 endpython
 endfunction " }}}
