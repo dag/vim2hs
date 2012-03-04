@@ -38,7 +38,7 @@ try:
   else:
     code = '\n'.join(vim.current.buffer)
 
-  enc = vim.eval('&fenc') or vim.eval('&enc')
+  enc = vim.eval('&fileencoding') or vim.eval('&encoding')
   code = code.decode(enc, 'ignore').encode('utf-8')
 
   title = vim.eval('input("Title: ")')
