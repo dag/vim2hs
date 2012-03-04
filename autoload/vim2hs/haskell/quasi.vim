@@ -95,10 +95,10 @@ function! vim2hs#haskell#quasi#regex() " {{{
   highlight! link hsRex String
   highlight! link hsRexMapQuote PreProc
 
-  highlight! link hsRelitQuote PreProc
+  highlight! link hsRelitQuote Delimiter
   highlight! link hsRelit String
 
-  highlight! link hsRegexQQuote PreProc
+  highlight! link hsRegexQQuote Delimiter
   highlight! link hsRegexQQ String
 endfunction " }}}
 
