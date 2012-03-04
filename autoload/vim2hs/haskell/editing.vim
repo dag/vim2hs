@@ -20,11 +20,11 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#editing#tabular() " {{{
-  AddTabularPattern! ( /^[^(]*\zs(/l1r0
-  AddTabularPattern! as / as /l0r0
-  AddTabularPattern! = /^[^=]*\zs=/
-  AddTabularPattern! :: / :: /l0r0
-  AddTabularPattern! : /^[^:]*\zs:/
-  AddTabularPattern! > / -> /l0r0
-  AddTabularPattern! < / <- /l0r0
+  AddTabularPattern! colon /^[^:]*\zs:/
+  AddTabularPattern! haskell_binding /^[^=]*\zs=/
+  AddTabularPattern! haskell_do_arrow / <- /l0r0
+  AddTabularPattern! haskell_function_arrow / -> /l0r0
+  AddTabularPattern! haskell_import_as / as /l0r0
+  AddTabularPattern! haskell_type / :: /l0r0
+  AddTabularPattern! parenthesis /^[^(]*\zs(/l1r0
 endfunction " }}}

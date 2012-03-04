@@ -180,12 +180,13 @@ snippets by hitting `Ctrl+Tab` in INPUT mode.
 
 Another useful Vimscript is
 [Tabular](https://github.com/godlygeek/tabular).  If it's installed, vim2hs
-can provide some named patterns useful for aligning Haskell code.  This
-feature is disabled by default since patterns are global and override
-existing patterns in case of a name conflict.
+adds some named patterns useful for maintaining layout in Haskell code.
+You can list all named patterns by tab-completing after entering the
+`:Tabularize` command.  You probably want to configure some mappings or
+commands for the ones you find useful.
 
-To enable them, use this configuration:
+To disable them, use this configuration:
 
 ```vim
-let g:haskell_tabular = 1
+let g:haskell_tabular = 0
 ```
