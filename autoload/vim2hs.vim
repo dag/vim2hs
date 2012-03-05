@@ -17,7 +17,7 @@ function! vim2hs#with_compiler(name, args) " {{{
 endfunction " }}}
 
 
-function! vim2hs#get_hpaste_author() " {{{
+function! s:GetHPasteAuthor() " {{{
   if exists('g:hpaste_author')
     return g:hpaste_author
   else
@@ -46,7 +46,7 @@ try:
   if not title:
     raise RuntimeError('aborted')
 
-  author = vim.eval('vim2hs#get_hpaste_author()')
+  author = vim.eval('s:GetHPasteAuthor()')
   language = vim.eval('&filetype')
   channel = vim.eval('input("Channel: ")')
 
