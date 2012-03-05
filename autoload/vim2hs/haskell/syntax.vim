@@ -70,6 +70,14 @@ function! vim2hs#haskell#syntax#bindings() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#syntax#folds() " {{{
+  syntax region hsFold
+    \ start="^\k\+\%(.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
+    \ end='^#\@!\S\@='
+    \ transparent fold
+endfunction " }}}
+
+
 function! vim2hs#haskell#syntax#strings() " {{{
   syntax match hsSpecialChar
     \ contained

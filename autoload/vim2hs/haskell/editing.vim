@@ -39,20 +39,8 @@ function! vim2hs#haskell#editing#indenting() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#editing#foldexpr(lnum) " {{{
-  let l:line = getline(a:lnum)
-  if l:line =~# '^\s*--'
-    return 2
-  elseif l:line =~# '^\s\+\|^#'
-    return 1
-  endif
-  return 0
-endfunction " }}}
-
-
 function! vim2hs#haskell#editing#folding() " {{{
-  setlocal foldexpr=vim2hs#haskell#editing#foldexpr(v:lnum)
-  setlocal foldmethod=expr
+  setlocal foldmethod=syntax
 endfunction " }}}
 
 
