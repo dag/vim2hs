@@ -33,6 +33,23 @@ function! vim2hs#haskell#editing#indentexpr() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#editing#foldexpr(lnum) " {{{
+  let l:line = getline(a:lnum)
+  if l:line =~# '^\s*--'
+    return 2
+  elseif l:line =~# '^\s\+\|^#'
+    return 1
+  endif
+  return 0
+endfunction " }}}
+
+
+function! vim2hs#haskell#editing#folding() " {{{
+  setlocal foldexpr=vim2hs#haskell#editing#foldexpr(v:lnum)
+  setlocal foldmethod=expr
+endfunction " }}}
+
+
 function! vim2hs#haskell#editing#keywords() " {{{
   setlocal iskeyword=a-z,A-Z,48-57,_,'
 endfunction " }}}
