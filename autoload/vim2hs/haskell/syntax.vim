@@ -13,20 +13,19 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
   syntax case match
 
   syntax keyword hsStructure
-    \ module import data family class
-    \ where instance default deriving
+    \ module let in where do deriving
 
   syntax keyword hsTypedef
-    \ type newtype
-
-  syntax keyword hsInfix
-    \ infix infixl infixr
+    \ type newtype data family class instance
 
   syntax keyword hsStatement
-    \ do case of let in
+    \ import infix infixl infixr
 
   syntax keyword hsConditional
-    \ if then else
+    \ if then else case of
+
+  syntax keyword hsKeyword
+    \ qualified safe as default
 
   if a:kwdops
     syntax match hsStructure
@@ -38,9 +37,9 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
 
   highlight! link hsStructure Structure
   highlight! link hsTypedef Typedef
-  highlight! link hsInfix Keyword
   highlight! link hsStatement Statement
   highlight! link hsConditional Conditional
+  highlight! link hsKeyword Keyword
   highlight! link hsDelimiter Delimiter
 endfunction " }}}
 
