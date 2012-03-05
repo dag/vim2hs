@@ -5,6 +5,34 @@ function! vim2hs#haskell#editing#includes() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#editing#indentexpr() " {{{
+  let l:line = getline(line('.') - 1)
+  let l:cur = match(l:line, '\S')
+
+  if l:line =~# '^\k\+.*=\s*\%(do\)\?$'
+    return &shiftwidth * 2
+  endif
+
+  if l:line =~# '\[[^\]]*$'
+    return match(l:line, '\[')
+  endif
+
+  if l:line =~# '{[^}]*$'
+    return match(l:line, '{')
+  endif
+
+  if l:line =~# '([^)]*$'
+    return matchend(l:line, '(\s*')
+  endif
+
+  if l:line =~# '\<\%(do\|let\|in\|where\)$\|\<if\>\|\<case\>.*\<of$'
+    return l:cur + &shiftwidth
+  endif
+
+  return l:cur
+endfunction " }}}
+
+
 function! vim2hs#haskell#editing#keywords() " {{{
   setlocal iskeyword=a-z,A-Z,48-57,_,'
 endfunction " }}}
