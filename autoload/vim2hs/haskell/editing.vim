@@ -33,6 +33,12 @@ function! vim2hs#haskell#editing#indentexpr() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#editing#indenting() " {{{
+  setlocal indentexpr=vim2hs#haskell#editing#indentexpr()
+  setlocal indentkeys=!^F,o,O
+endfunction " }}}
+
+
 function! vim2hs#haskell#editing#foldexpr(lnum) " {{{
   let l:line = getline(a:lnum)
   if l:line =~# '^\s*--'

@@ -3,5 +3,4 @@ if exists('b:did_indent')
 endif
 let b:did_indent = 1
 
-setlocal indentexpr=vim2hs#haskell#editing#indentexpr()
-setlocal indentkeys=!^F,o,O
+call vim2hs#haskell#editing#indenting()
