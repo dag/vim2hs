@@ -63,7 +63,7 @@ function! vim2hs#haskell#syntax#bindings() " {{{
     \ contains=TOP
 
   syntax match hsIdentifier
-    \ "^\k\+\%(.*\%(\n\s.*\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
+    \ "^\k\+\%(.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
 
   highlight! link hsType Type
   highlight! link hsIdentifier Identifier
