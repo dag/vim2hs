@@ -25,7 +25,19 @@ function! vim2hs#haskell#editing#indentexpr() " {{{
     return matchend(l:line, '(\s*')
   endif
 
-  if l:line =~# '\<\%(do\|let\|in\|where\)$\|\<if\>\|\<case\>.*\<of$'
+  if l:line =~# '\<case\>.*\<of$'
+    return match(l:line, '\<case\>') + &shiftwidth
+  endif
+
+  if l:line =~# '\<if\>'
+    return match(l:line, '\<if\>') + &shiftwidth
+  endif
+
+  if l:line =~# '\<where$'
+    return match(l:line, '\<where$') + &shiftwidth
+  endif
+
+  if l:line =~# '\<\%(do\|let\|in\)$'
     return l:cur + &shiftwidth
   endif
 
