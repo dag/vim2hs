@@ -62,7 +62,7 @@ function! vim2hs#haskell#syntax#bindings() " {{{
     \ contains=TOP
 
   syntax match hsIdentifier
-    \ "^\k\+\%(.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
+    \ "^\k\+\ze.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
 
   highlight! link hsType Type
   highlight! link hsIdentifier Identifier
@@ -71,8 +71,8 @@ endfunction " }}}
 
 function! vim2hs#haskell#syntax#folds() " {{{
   syntax region hsFold
-    \ start="^\k\+\%(.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!\)\@="
-    \ end='\%(\n\+#\@!\S\)\@='
+    \ start="^\k\+\ze.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
+    \ end='\ze\n\+#\@!\S'
     \ transparent fold
 endfunction " }}}
 
