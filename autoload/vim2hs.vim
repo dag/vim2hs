@@ -26,23 +26,17 @@ function! s:GetHPasteAuthor() " {{{
 endfunction " }}}
 
 
-function! vim2hs#hpaste(line1, line2, count) " {{{
+function! vim2hs#hpaste(line1, line2) " {{{
+  let l:code = join(getline(a:line1, a:line2), "\n")
+
 python <<endpython
 try:
   import sys, urllib, urllib2
 
-  if int(vim.eval('a:count')):
-    s = int(vim.eval('a:line1')) - 1
-    e = int(vim.eval('a:line2'))
-    code = '\n'.join(vim.current.buffer[s:e])
-  else:
-    code = '\n'.join(vim.current.buffer)
-
   enc = vim.eval('&fileencoding') or vim.eval('&encoding')
-  code = code.decode(enc, 'ignore').encode('utf-8')
+  code = vim.eval('l:code').decode(enc, 'ignore').encode('utf-8')
 
   title = vim.eval('input("Title: ")')
-
   if not title:
     raise RuntimeError('aborted')
 
@@ -50,12 +44,15 @@ try:
   language = vim.eval('&filetype')
   channel = vim.eval('input("Channel: ")')
 
-  data = urllib.urlencode({'title': title,
-                           'author': author,
-                           'language': language,
-                           'channel': channel,
-                           'paste': code,
-                           'email': ''})
+  data = urllib.urlencode({
+    'title'    : title,
+    'author'   : author,
+    'language' : language,
+    'channel'  : channel,
+    'paste'    : code,
+    'email'    : ''
+  })
+
   try:
     res = urllib2.urlopen('http://hpaste.org/new', data)
     paste = res.geturl()
