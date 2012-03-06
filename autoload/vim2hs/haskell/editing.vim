@@ -5,9 +5,8 @@ function! vim2hs#haskell#editing#includes() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#editing#indentexpr() " {{{
-  let l:line = getline(line('.') - 1)
-  let l:cur = match(l:line, '\S')
+function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
+  let l:line = getline(a:lnum - 1)
 
   if l:line =~# '^\k\+.*=\s*\%(do\)\?$'
     return &shiftwidth * 2
@@ -38,15 +37,15 @@ function! vim2hs#haskell#editing#indentexpr() " {{{
   endif
 
   if l:line =~# '\<\%(do\|let\|in\)$'
-    return l:cur + &shiftwidth
+    return indent(a:lnum) + &shiftwidth
   endif
 
-  return l:cur
+  return -1
 endfunction " }}}
 
 
 function! vim2hs#haskell#editing#indenting() " {{{
-  setlocal indentexpr=vim2hs#haskell#editing#indentexpr()
+  setlocal indentexpr=vim2hs#haskell#editing#indentexpr(v:lnum)
   setlocal indentkeys=!^F,o,O
 endfunction " }}}
 
