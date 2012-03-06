@@ -1,0 +1,37 @@
+Name          : vim2hs
+Version       : 0.1.0
+License       : BSD3
+Cabal-Version : >= 1.9.2
+Build-Type    : Simple
+
+Source-Repository head
+  Type     : git
+  Location : git://github.com/dag/vim2hs.git
+
+Test-Suite vim2hs-tests
+  Type          : exitcode-stdio-1.0
+  Main-Is       : vim2hs-tests.hs
+  Build-Depends :
+    base == 4.*,
+    checkers,
+    HUnit,
+    QuickCheck,
+    quickcheck-instances,
+    quickcheck-properties,
+    test-framework,
+    test-framework-provider-hunit,
+    test-framework-provider-quickcheck2,
+    test-framework-th
+
+Executable vim2hs
+  GHC-Options   : -Wall
+  Main-Is       : vim2hs.hs
+  Build-Depends :
+    base == 4.*
+
+Library
+  GHC-Options     : -Wall
+  Exposed-Modules :
+    Editor.Vim.Haskell
+  Build-Depends   :
+    base == 4.*
