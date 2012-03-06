@@ -50,8 +50,13 @@ function! vim2hs#haskell#editing#indenting() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#editing#foldtext() " {{{
+  return matchstr(getline(v:foldstart), '\k\+')
+endfunction " }}}
+
 function! vim2hs#haskell#editing#folding() " {{{
   setlocal foldmethod=syntax
+  setlocal foldtext=vim2hs#haskell#editing#foldtext()
 endfunction " }}}
 
 
