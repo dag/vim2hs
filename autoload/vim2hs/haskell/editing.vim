@@ -8,6 +8,10 @@ endfunction " }}}
 function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
   let l:line = getline(a:lnum - 1)
 
+  if l:line =~# '^\s*$'
+    return 0
+  endif
+
   if l:line =~# '^\k\+.*=\s*\%(do\)\?$'
     return &shiftwidth * 2
   endif
