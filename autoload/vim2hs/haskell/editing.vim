@@ -44,6 +44,14 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return match(l:line, '\<do\>') + 3
   endif
 
+  if l:line =~# '\<let\>'
+    return match(l:line, '\<let\>') + 4
+  endif
+
+  if l:line =~# '\<where\>'
+    return match(l:line, '\<where\>') + 6
+  endif
+
   return -1
 endfunction " }}}
 
