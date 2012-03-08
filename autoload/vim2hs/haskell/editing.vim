@@ -28,6 +28,10 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return match(l:line, '\<case\>') + &shiftwidth
   endif
 
+  if l:line =~# '\<if\>.*\<then\>.*\%(\<else\>\)\@!'
+    return match(l:line, '\<then\>')
+  endif
+
   if l:line =~# '\<if\>'
     return match(l:line, '\<if\>') + &shiftwidth
   endif
@@ -36,8 +40,8 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return match(l:line, '\<where$') + &shiftwidth
   endif
 
-  if l:line =~# '\<\%(do\|let\|in\)$'
-    return indent(a:lnum) + &shiftwidth
+  if l:line =~# '\<\%(do\|let\|in\|then\|else\)$'
+    return indent(a:lnum - 1) + &shiftwidth
   endif
 
   if l:line =~# '\<do\>'
