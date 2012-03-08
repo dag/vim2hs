@@ -209,8 +209,13 @@ function! vim2hs#haskell#syntax#th() " {{{
     \ start="\$(" end=")"
     \ contains=TOP
 
+  syntax region hsTHContent matchgroup=hsTHQuote
+    \ start="\[\$\?[edtp]\?|" end="|\]"
+    \ contains=TOP
+
   highlight! link hsTHMacro Macro
   highlight! link hsTHSplice Macro
+  highlight! link hsTHQuote Delimiter
 endfunction " }}}
 
 

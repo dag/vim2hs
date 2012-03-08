@@ -1,3 +1,6 @@
+th =
+  [| 1 + 1 |]
+
 quote =
   [quasi|
     Arbitrary unknown quasi-quoter.
@@ -13,7 +16,7 @@ interpolate name =
   [istr| Hello, #{name ++ "!"} |]
 
 peano =
-  [rex| ^(?{ length . filter (=='S') } \s* (?:S\s+)* Z) \s* $ |]
+  [rex| ^ (?{ length . filter (=='S') } \s* (?:S\s+)* Z) \s* $ |]
 
 relit =
   [re|\\(foo)\\(bar\.c)|]

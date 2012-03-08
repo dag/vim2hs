@@ -22,12 +22,12 @@ if g:haskell_cpp
   call vim2hs#haskell#syntax#cpp()
 endif
 
-if g:haskell_th
-  call vim2hs#haskell#syntax#th()
-endif
-
 if g:haskell_quasi
   call vim2hs#haskell#quasi#quote()
+endif
+
+if g:haskell_th
+  call vim2hs#haskell#syntax#th()
 endif
 
 if g:haskell_interpolation
