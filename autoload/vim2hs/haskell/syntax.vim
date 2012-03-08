@@ -33,7 +33,7 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
   endif
 
   syntax match hsDelimiter
-    \ "(\|)\|,\|;\|{\|}\|\k\@<!_\k\@!"
+    \ "(\|)\|,\|;\|{\|}\||\|\k\@<!_\k\@!"
 
   highlight! link hsStructure Structure
   highlight! link hsTypedef Typedef
