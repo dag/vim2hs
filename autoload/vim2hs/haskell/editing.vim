@@ -40,6 +40,10 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return indent(a:lnum) + &shiftwidth
   endif
 
+  if l:line =~# '\<do\>'
+    return match(l:line, '\<do\>') + 3
+  endif
+
   return -1
 endfunction " }}}
 
