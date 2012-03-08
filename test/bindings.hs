@@ -20,3 +20,6 @@ instance Functor [] where
   fmap :: (a -> b)
        -> f a -> f b
   fmap = map
+
+($) :: (a -> b) -> a -> b
+f $ x =  f x
