@@ -67,7 +67,7 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#editing#foldtext() " {{{
-  return matchstr(getline(v:foldstart), '\k\+')
+  return matchstr(getline(v:foldstart), '\k\+') . ' '
 endfunction " }}}
 
 
