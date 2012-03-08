@@ -15,3 +15,8 @@ isLarge :: (Ord a, Num a) => a -> String
 isLarge x
   | x > 10    = "yep"
   | otherwise = "nope"
+
+instance Functor [] where
+  fmap :: (a -> b)
+       -> f a -> f b
+  fmap = map

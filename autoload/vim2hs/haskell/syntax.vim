@@ -58,11 +58,7 @@ endfunction " }}}
 
 function! vim2hs#haskell#syntax#bindings() " {{{
   syntax match hsType
-    \ "^\k\+\s*::.*\%(\n\s.*\)*"
-    \ contains=TOP
-
-  syntax match hsType
-    \ "^\s*\k\+\s*::.*"
+    \ "^\(\s*\)\k\+\s*::.*\%(\n\1\s.*\)*"
     \ contains=TOP
 
   syntax match hsIdentifier
