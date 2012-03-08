@@ -78,7 +78,7 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#editing#keywords() " {{{
-  setlocal iskeyword=a-z,A-Z,48-57,_,'
+  setlocal iskeyword=@,48-57,_,'
   setlocal keywordprg=hoogle\ -i
 endfunction " }}}
 
