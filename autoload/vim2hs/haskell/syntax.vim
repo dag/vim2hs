@@ -190,6 +190,13 @@ function! vim2hs#haskell#syntax#haddock() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#syntax#ffi() " {{{
+  syntax case match
+  syntax keyword hsFFI foreign export stdcall ccall unsafe
+  highlight! link hsFFI Keyword
+endfunction " }}}
+
+
 function! vim2hs#haskell#syntax#cpp() " {{{
   syntax match cppPreCondit "^#\s*\%(else\|endif\)$"
 

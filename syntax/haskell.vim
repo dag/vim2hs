@@ -2,6 +2,7 @@ syntax clear
 
 
 call vim2hs#letdefault('g:haskell_haddock'       , 1)
+call vim2hs#letdefault('g:haskell_ffi'           , 1)
 call vim2hs#letdefault('g:haskell_cpp'           , 1)
 call vim2hs#letdefault('g:haskell_th'            , 1)
 call vim2hs#letdefault('g:haskell_quasi'         , 1)
@@ -17,6 +18,10 @@ call vim2hs#letdefault('g:haskell_conceal_bad'   , 0)
 
 
 call vim2hs#haskell#syntax#operators()
+
+if g:haskell_ffi
+  call vim2hs#haskell#syntax#ffi()
+endif
 
 if g:haskell_cpp
   call vim2hs#haskell#syntax#cpp()
