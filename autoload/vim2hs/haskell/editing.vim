@@ -36,11 +36,7 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return match(l:line, '\<if\>') + &shiftwidth
   endif
 
-  if l:line =~# '\<where$'
-    return match(l:line, '\<where$') + &shiftwidth
-  endif
-
-  if l:line =~# '\<\%(do\|let\|in\|then\|else\)$'
+  if l:line =~# '\<\%(do\|let\|where\|in\|then\|else\)$'
     return indent(a:lnum - 1) + &shiftwidth
   endif
 
