@@ -32,6 +32,10 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return match(l:line, '\<case\>') + &shiftwidth
   endif
 
+  if l:line =~# '\<case\>.*\<of\>'
+    return match(l:line, '\<of\>') + 3
+  endif
+
   if l:line =~# '\<if\>.*\<then\>.*\%(\<else\>\)\@!'
     return match(l:line, '\<then\>')
   endif
