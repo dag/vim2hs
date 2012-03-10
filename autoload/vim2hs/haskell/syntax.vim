@@ -71,8 +71,9 @@ endfunction " }}}
 
 function! vim2hs#haskell#syntax#folds() " {{{
   syntax region hsFold
-    \ start="^\k\+\ze.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
-    \ end='\ze\n\+#\@!\S'
+    \ start="^\k\+.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
+    \ skip='\n#\|\n--'
+    \ end='\ze\%(\s*\n\)\+\S'
     \ transparent fold
 endfunction " }}}
 
