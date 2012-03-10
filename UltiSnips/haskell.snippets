@@ -1,63 +1,99 @@
-snippet pragma "Compiler pragma"
+# vim: set foldmethod=marker
+
+# Pragmas {{{
+
+snippet pragma "Compiler pragma" !b
 {-# $1 #-}
 endsnippet
 
-snippet lang "LANGUAGE pragma"
+snippet lang "LANGUAGE pragma" !b
 {-# LANGUAGE $1 #-}
 endsnippet
 
-snippet ghcopt "GHC options"
+snippet ghcopt "GHC options" !b
 {-# OPTIONS_GHC $1 #-}
 endsnippet
 
-snippet preproc "Pre-processor"
-{-# OPTIONS_GHC -F -pgmF ${1:preprocessor} #-}
+snippet preproc "Preprocessor" !b
+{-# OPTIONS_GHC -F -pgmF ${1:executable} #-}
 endsnippet
 
-snippet iq "Qualified module import"
-import qualified ${1:module} as ${0:alias}
+# }}} Pragmas
+
+# Statements {{{
+
+snippet as "Qualified import" !b
+import qualified ${1:Module} as ${0:Alias}
 endsnippet
 
-snippet data "Algebraic data type"
-data ${1:type} ${2:variables} = ${3:constructor} | ${0:constructor}
+snippet data "Algebraic data type" !b
+data ${1:Type} ${2:variables} = ${3:Constructor} | ${0:Constructor}
 endsnippet
 
-snippet rec "Data record"
-data ${1:type} ${2:variables}
+snippet rec "Data record" !b
+data ${1:Type} ${2:variables}
 	= $1
-			{ ${3:field} :: ${4:type}
+			{ ${3:field} :: ${4:Type}
 			}
 endsnippet
 
-snippet nt "Newtype"
-newtype ${1:type} ${2:variables} = $1 ${3:oldtype}
+snippet nt "Newtype" !b
+newtype ${1:Type} ${2:variables} = $1 ${3:Oldtype}
 endsnippet
 
-snippet cls "Type class definition"
-class ${1:name} where
+snippet cls "Type class definition" !b
+class ${1:Name} where
 	$0
 endsnippet
 
-snippet inst "Instance definition"
-instance ${1:class} ${2:type} where
+snippet inst "Instance definition" !b
+instance ${1:Class} ${2:Type} where
 	$0
 endsnippet
 
-snippet def "Function definition / top-level value binding"
--- | ${1:documentation}
-${2:name} :: ${3:type}
-$2 ${4:args} = ${0:error "undefined: $2"}
+# }}} Statements
+
+# Definitions {{{
+
+snippet :: "Type signature" !b
+${1:name} :: ${2:Type}
 endsnippet
 
-snippet if "Boolean conditional"
+snippet => "Class constraint" !w
+${1:Class} ${2:variable} => $2
+endsnippet
+
+snippet fun "Function definition" !b
+-- | ${5:Documentation for $1}
+$1 :: ${3:Type} -> ${4:Type}
+${1:name} ${2:args} = ${0:error "undefined: $1"}
+endsnippet
+
+snippet def "Value definition" !b
+-- | ${4:Documentation for $1}
+$1 :: ${2:Type}
+${1:name} = ${0:error "undefined: $1"}
+endsnippet
+
+# }}} Definitions
+
+# Expressions {{{
+
+snippet \ "Lambda" !w
+\\${1:args} -> ${2:expression}
+endsnippet
+
+snippet if "Boolean conditional" !w
 if ${1:condition} then ${2:true} else ${3:false}
 endsnippet
 
-snippet case "Pattern match"
+snippet case "Pattern match" !w
 case ${1:scrutinee} of
 	${2:pattern} -> ${3:expression}
 endsnippet
 
-snippet qq "Quasi quote"
+snippet qq "Quasi quote" !w
 [${1:quoter}| ${0:content} |]
 endsnippet
+
+# }}} Expressions
