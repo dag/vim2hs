@@ -143,7 +143,7 @@ function! vim2hs#haskell#quasi#sql() " {{{
 
   syntax region hsSQLSplice matchgroup=hsSQLSpliceQuote
     \ start="\$[si]\?(" end=")"
-    \ contains=TOP
+    \ contained contains=TOP
 
   syntax region hsSQL matchgroup=hsSQLQuote
     \ start="\[\$\?\%(sql\|sqlStmts\?\|pgsqlStmts\?\|sqlExpr\)|" end="|\]"
