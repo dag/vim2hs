@@ -160,6 +160,7 @@ function! vim2hs#haskell#quasi#json() " {{{
   catch /^Vim\%((\a\+)\)\=:E484/
     syntax include @json syntax/javascript.vim
   endtry
+  unlet b:current_syntax
 
   syntax region hsJSON matchgroup=hsJSONQuote
     \ start='\[\$\?json|' end='|\]'
