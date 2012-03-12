@@ -12,6 +12,7 @@ call vim2hs#letdefault('g:haskell_jmacro'        , 1)
 call vim2hs#letdefault('g:haskell_shqq'          , 1)
 call vim2hs#letdefault('g:haskell_sql'           , 1)
 call vim2hs#letdefault('g:haskell_json'          , 1)
+call vim2hs#letdefault('g:haskell_xml'           , 1)
 call vim2hs#letdefault('g:haskell_hsp'           , 1)
 call vim2hs#letdefault('g:haskell_conceal'       , 1)
 call vim2hs#letdefault('g:haskell_conceal_wide'  , 0)
@@ -58,6 +59,10 @@ endif
 
 if g:haskell_json
   call vim2hs#haskell#quasi#json()
+endif
+
+if g:haskell_xml
+  call vim2hs#haskell#quasi#xml()
 endif
 
 if g:haskell_hsp

@@ -186,3 +186,29 @@ function! vim2hs#haskell#quasi#json() " {{{
   highlight! link hsJSONQQSpliceQuote PreProc
   highlight! link hsJSONQQKey Identifier
 endfunction " }}}
+
+
+function! vim2hs#haskell#quasi#xml() " {{{
+  syntax include @xml syntax/xml.vim
+  unlet b:current_syntax
+
+  syntax region hsXML matchgroup=hsXMLQuote
+    \ start='\[\$\?xml|' end='|\]'
+    \ keepend contains=@xml
+
+  syntax region hsXMLQQElement matchgroup=hsXMLQQElementQuote
+    \ start='<<' end='>>'
+    \ contained contains=TOP
+
+  syntax region hsXMLQQSplice matchgroup=hsXMLQQSpliceQuote
+    \ start='{' end='}'
+    \ contained contains=TOP containedin=xmlTag,xmlEndTag
+
+  syntax region hsXML matchgroup=hsXMLQuote
+    \ start='\[\$\?xmlQQ|' end='|\]'
+    \ keepend contains=hsXMLQQElement,hsXMLQQSplice,@xml
+
+  highlight! link hsXMLQuote Delimiter
+  highlight! link hsXMLQQElementQuote PreProc
+  highlight! link hsXMLQQSpliceQuote PreProc
+endfunction " }}}

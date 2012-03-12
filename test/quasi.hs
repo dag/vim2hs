@@ -53,3 +53,17 @@ pelle =
   , [jsonQQ| {$age: <<age>>} |]
   , [aesonQQ| {age: <|age + 34 :: Integer|>, name: <|map toUpper name|>} |]
   ]
+
+markup =
+  [xml| <div id="#main"><p>Hello</p></div> |]
+
+xmlqq =
+  [xmlQQ|
+    <{url}:{elem} {attrNs}:{attrName}={attrValue} attr="cool">
+      <elem ns1:elem1="1" ns2:elem2="2"><<elemCont>></elem>
+      <elem/>
+      <el/>
+      <<cont1>>
+      <<cont2>>
+    </{url}:{elem}>
+  |]
