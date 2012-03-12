@@ -152,3 +152,36 @@ function! vim2hs#haskell#quasi#sql() " {{{
   highlight! link hsSQLQuote Delimiter
   highlight! link hsSQLSpliceQuote Preproc
 endfunction " }}}
+
+
+function! vim2hs#haskell#quasi#json() " {{{
+  try
+    syntax include @json syntax/json.vim
+  catch /^Vim\%((\a\+)\)\=:E484/
+    syntax include @json syntax/javascript.vim
+  endtry
+
+  syntax region hsJSON matchgroup=hsJSONQuote
+    \ start='\[\$\?json|' end='|\]'
+    \ keepend contains=@json
+
+  syntax match hsJSONQQKey
+    \ '\$\k\+'
+    \ contained
+
+  syntax region hsJSONQQSplice matchgroup=hsJSONQQSpliceQuote
+    \ start='<<' end='>>'
+    \ contained contains=TOP
+
+  syntax region hsJSONQQSplice matchgroup=hsJSONQQSpliceQuote
+    \ start='<|' end='|>'
+    \ contained contains=TOP
+
+  syntax region hsJSON matchgroup=hsJSONQuote
+    \ start='\[\$\?\%(jsonQQ\|aesonQQ\)|' end='|\]'
+    \ keepend contains=hsJSONQQKey,hsJSONQQSplice,@json
+
+  highlight! link hsJSONQuote Delimiter
+  highlight! link hsJSONQQSpliceQuote PreProc
+  highlight! link hsJSONQQKey Identifier
+endfunction " }}}

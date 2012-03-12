@@ -56,6 +56,7 @@ let g:haskell_regex         = 0
 let g:haskell_jmacro        = 0
 let g:haskell_shqq          = 0
 let g:haskell_sql           = 0
+let g:haskell_json          = 0
 ```
 
 ### HSP

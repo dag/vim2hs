@@ -47,3 +47,9 @@ login user password =
           FROM users
          WHERE name = $s(user)
            AND password = $s(password) |]
+
+pelle =
+  [ [json| {age: 23, name: "Pelle", likes: ["mac","Haskell"] } |]
+  , [jsonQQ| {$age: <<age>>} |]
+  , [aesonQQ| {age: <|age + 34 :: Integer|>, name: <|map toUpper name|>} |]
+  ]
