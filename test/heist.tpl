@@ -4,6 +4,10 @@
   <content/>
 </body>
 
+<ignore>
+  Discarded from rendered output.
+</ignore>
+
 <apply template="default">
   <h1>Home Page</h1>
   <p>Welcome to XYZ Inc</p>

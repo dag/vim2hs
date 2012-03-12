@@ -15,6 +15,9 @@ function! vim2hs#heist#tags() " {{{
     \ 'template='
     \ nextgroup=htmlString contained
 
+  syntax region heistIgnore
+    \ start='<ignore>' end='</ignore>'
+
   syntax match heistBindTag '</bind>'
   syntax match heistApplyTag '</apply>'
   syntax match heistContentTag '<content\s*/>'
@@ -23,6 +26,7 @@ function! vim2hs#heist#tags() " {{{
   highlight! link heistBindAttr Identifier
   highlight! link heistApplyTag Include
   highlight! link heistApplyAttr Identifier
+  highlight! link heistIgnore Comment
   highlight! link heistContentTag Macro
 endfunction " }}}
 
