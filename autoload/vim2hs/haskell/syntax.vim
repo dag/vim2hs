@@ -15,8 +15,8 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
   syntax keyword hsStructure
     \ module let in where do deriving
 
-  syntax keyword hsTypedef
-    \ type newtype data family class instance
+  syntax match hsTypedef
+    \ '\<\%(type\|newtype\|data\|class\|instance\)'
 
   syntax keyword hsStatement
     \ import infix infixl infixr
@@ -25,7 +25,7 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
     \ if then else case of
 
   syntax keyword hsKeyword
-    \ qualified safe as default
+    \ qualified safe as default family
 
   if a:kwdops
     syntax match hsStructure
@@ -71,7 +71,14 @@ endfunction " }}}
 
 function! vim2hs#haskell#syntax#folds() " {{{
   syntax region hsFold
-    \ start="^\k\+.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
+    \ start="^\%(type\|newtype\|class\|instance\|data\)\@!
+            \\k\+.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
+    \ skip='\n#\|\n--'
+    \ end='\ze\%(\s*\n\)\+\S'
+    \ transparent fold
+
+  syntax region hsFold
+    \ start='^\%(type\|newtype\|class\|instance\|data\)\>'
     \ skip='\n#\|\n--'
     \ end='\ze\%(\s*\n\)\+\S'
     \ transparent fold

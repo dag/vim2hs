@@ -71,7 +71,14 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#editing#foldtext() " {{{
-  return matchstr(getline(v:foldstart), '\k\+') . ' '
+  let l:line = getline(v:foldstart)
+  let l:keyword = matchstr(l:line, '\k\+')
+  if count(['type', 'newtype', 'data'], l:keyword)
+    return substitute(l:line, '\s*=.*', '', '') . ' '
+  elseif count(['class', 'instance'], l:keyword)
+    return substitute(l:line, '\s*\<where\>.*', '', '') . ' '
+  endif
+  return l:keyword . ' = '
 endfunction " }}}
 
 

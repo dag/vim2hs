@@ -7,7 +7,9 @@ yell :: String
      -> String
 yell s = map toUpper s
 
-data Something = Something
+data Something
+  = Something
+  | Other
 
 makeLens ''Something
 
