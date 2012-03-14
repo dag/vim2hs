@@ -84,10 +84,11 @@ source files; vim2hs supports highlighting this markup distinctly.
 
 ![Haddock screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/haddock.png)
 
-Enabled by default; to disable, do this:
+This is currently disabled by default because it needs work. To enable it
+try this:
 
 ```vim
-let g:haskell_haddock = 0
+let g:haskell_haddock = 1
 ```
 
 ### Markdown

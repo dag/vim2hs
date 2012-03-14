@@ -1,7 +1,7 @@
 syntax clear
 
 
-call vim2hs#letdefault('g:haskell_haddock'       , 1)
+call vim2hs#letdefault('g:haskell_haddock'       , 0)
 call vim2hs#letdefault('g:haskell_ffi'           , 1)
 call vim2hs#letdefault('g:haskell_cpp'           , 1)
 call vim2hs#letdefault('g:haskell_th'            , 1)
