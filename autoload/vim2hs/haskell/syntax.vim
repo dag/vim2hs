@@ -25,7 +25,7 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
     \ if then else case of
 
   syntax keyword hsKeyword
-    \ qualified safe as default family
+    \ qualified safe as hiding default family
 
   if a:kwdops
     syntax match hsStructure
