@@ -43,7 +43,8 @@ Here are some other Vimscripts that complement vim2hs nicely:
 
 * Omni completion: [neco-ghc](https://github.com/ujihisa/neco-ghc)
 * Syntax checking and linting: [syntastic](https://github.com/scrooloose/syntastic)
-* Type inspection: [haskellmode](https://github.com/lukerandall/haskellmode-vim) or [ghcmod](https://github.com/eagletmt/ghcmod-vim)
+* Type inspection: [haskellmode](https://github.com/lukerandall/haskellmode-vim)
+  or (better) [ghcmod](https://github.com/eagletmt/ghcmod-vim)
 * Shakespeare templates highlighting: [html-template-syntax](https://github.com/pbrisbin/html-template-syntax)
 
 Overview
