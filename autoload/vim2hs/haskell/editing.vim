@@ -20,6 +20,10 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return &shiftwidth
   endif
 
+  if l:line =~# '^newtype\>.*=.\+'
+    return match(l:line, '=') + 2
+  endif
+
   if l:line =~# '^\k\+.*=\s*\%(do\)\?$'
     return &shiftwidth * 2
   endif
