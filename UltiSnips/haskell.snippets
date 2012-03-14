@@ -18,9 +18,17 @@ snippet preproc "Preprocessor" !b
 {-# OPTIONS_GHC -F -pgmF ${1:executable} #-}
 endsnippet
 
+snippet trhsx "HSP/HSX Preprocessor" !b
+{-# OPTIONS_GHC -F -pgmF trhsx #-}
+endsnippet
+
 # }}} Pragmas
 
 # Statements {{{
+
+snippet mod "Module declaration" !b
+module ${1:Name} where
+endsnippet
 
 snippet as "Qualified import" !b
 import qualified ${1:Module} as ${0:Alias}
