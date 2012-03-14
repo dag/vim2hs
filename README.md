@@ -36,6 +36,16 @@ ancient.  Beyond that, just clone this repo and add it to your
 automating that, [Pathogen](https://github.com/tpope/vim-pathogen) is also
 popular.
 
+See Also
+--------
+
+Here are some other Vimscripts that complement vim2hs nicely:
+
+* Omni completion: [neco-ghc](https://github.com/ujihisa/neco-ghc)
+* Syntax checking and linting: [syntastic](https://github.com/scrooloose/syntastic)
+* GHC and Haddock integration: [haskellmode](https://github.com/lukerandall/haskellmode-vim)
+* Shakespeare templates highlighting: [html-template-syntax](https://github.com/pbrisbin/html-template-syntax)
+
 Overview
 --------
 
