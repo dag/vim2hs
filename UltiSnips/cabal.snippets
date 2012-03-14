@@ -37,8 +37,10 @@ endsnippet
 
 snippet exe "Executable"
 Executable ${1:name}
-	GHC-Options   : -Wall
 	Main-Is       : ${2:$1.hs}
+	GHC-Options   :
+		-Wall
+		-threaded -rtsopts -with-rtsopts=-N
 	Build-Depends :
 		base == 4.*,
 		$0
