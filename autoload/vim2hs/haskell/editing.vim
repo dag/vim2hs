@@ -12,6 +12,14 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return 0
   endif
 
+  if l:line =~# '^data\>.*=.\+'
+    return match(l:line, '=')
+  endif
+
+  if l:line =~# '^data\>[^=]\+'
+    return &shiftwidth
+  endif
+
   if l:line =~# '^\k\+.*=\s*\%(do\)\?$'
     return &shiftwidth * 2
   endif
