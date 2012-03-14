@@ -37,7 +37,7 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
   endif
 
   if l:line =~# '([^)]*$'
-    return matchend(l:line, '(\s*')
+    return match(l:line, '(')
   endif
 
   if l:line =~# '\<case\>.*\<of$'
