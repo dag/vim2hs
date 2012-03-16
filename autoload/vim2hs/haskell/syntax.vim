@@ -132,14 +132,15 @@ function! vim2hs#haskell#syntax#comments() " {{{
   syntax match hsComment
     \ /--.*/
 
-  syntax region hsComment
+  syntax region hsBlockComment
     \ start="{-" end="-}"
-    \ contains=hsComment
+    \ contains=hsBlockComment
 
   syntax region hsPragma
     \ start="{-#" end="#-}"
 
   highlight! link hsComment Comment
+  highlight! link hsBlockComment Comment
   highlight! link hsPragma PreProc
 endfunction " }}}
 
