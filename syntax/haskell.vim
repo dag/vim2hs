@@ -82,8 +82,8 @@ if g:haskell_conceal
 endif
 
 call vim2hs#haskell#syntax#numbers()
-call vim2hs#haskell#syntax#bindings()
 call vim2hs#haskell#syntax#keywords(1)
+call vim2hs#haskell#syntax#bindings()
 call vim2hs#haskell#syntax#folds()
 call vim2hs#haskell#syntax#strings()
 call vim2hs#haskell#syntax#comments()
