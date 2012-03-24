@@ -1,3 +1,11 @@
+function! vim2hs#cabal#comments() " {{{
+  syntax match cabalComment
+    \ /--.*/
+
+  highlight! link cabalComment Comment
+endfunction " }}}
+
+
 function! vim2hs#cabal#constants() " {{{
   setlocal iskeyword=a-z,A-Z,-
 
