@@ -6,7 +6,8 @@ def hpaste():
 
     title = vim.eval('input("Title: ")')
     if not title:
-        raise RuntimeError('aborted')
+        print 'aborted'
+        return
 
     author = vim.eval('s:GetHPasteAuthor()')
     language = vim.eval('&filetype')
