@@ -3,7 +3,7 @@ if exists('current_compiler')
 endif
 let current_compiler = 'hlint'
 
-call vim2hs#letdefault('g:hlint_args', '"--language=XmlSyntax"')
+call vim2hs#letdefault('g:hlint_args', '--language=XmlSyntax')
 
 execute 'CompilerSet makeprg=hlint\ ' . g:hlint_args . '\ %'
 
