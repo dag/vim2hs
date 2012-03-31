@@ -1,0 +1,46 @@
+*vim2hs.txt*    Vim to Haskell                                         *vim2hs*
+
+=============================================================================
+COMMANDS                                                    *vim2hs-commands*
+
+                                                                    *:HPaste*
+:{range}HPaste          Paste the contents of the buffer or range
+                        to hpaste.org.  Requires a Vim compiled with a
+                        |Python| interface.
+
+                        See also |g:hpaste_author|.
+
+                                                                     *:HLint*
+:HLint {args}           Run HLint on the buffer.  Requires hlint to be
+                        installed and in $PATH.  This actually sets the
+                        |:compiler| to "hlint" temporarily, and then restores
+                        the |current_compiler|.
+
+                        Only available to Haskell buffers.
+
+                        See also |g:hlint_args|.
+
+                                                                 *:PointFree*
+:PointFree              Suggest a pointfree version of the selected code.
+                        Requires pointfree (available from Hackage) to be
+                        installed and in $PATH.  Accepts a range to make it
+                        easier to run from |Visual| mode, but the range is
+                        actually ignored.
+
+:PointFree!             Like ":PointFree" but replaces the selection with the
+                        suggested pointfree version.
+
+=============================================================================
+OPTIONS                                                      *vim2hs-options*
+
+                                                            *g:hpaste_author*
+Set the author name to use when pasting to hpaste.org: >
+  let g:hpaste_author = 'Your Name'
+<
+                                                               *g:hlint_args*
+Set arguments that are always passed to HLint.  The default adds support
+for HSP: >
+  let g:hlint_args = '--language=XmlSyntax'
+<
+
+ vim:tw=78:et:ft=help:norl:
