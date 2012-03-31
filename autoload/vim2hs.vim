@@ -31,7 +31,7 @@ function! vim2hs#hpaste(line1, line2) " {{{
 
 python <<endpython
 try:
-  import sys, urllib, urllib2
+  import vim, sys, urllib, urllib2
 
   enc = vim.eval('&fileencoding') or vim.eval('&encoding')
   code = vim.eval('l:code').decode(enc, 'ignore').encode('utf-8')
