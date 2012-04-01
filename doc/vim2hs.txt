@@ -1,5 +1,6 @@
 *vim2hs.txt*    Vim to Haskell                                         *vim2hs*
 
+
 =============================================================================
 COMMANDS                                                    *vim2hs-commands*
 
@@ -11,14 +12,14 @@ COMMANDS                                                    *vim2hs-commands*
                         See also |g:hpaste_author|.
 
                                                                      *:HLint*
-:HLint {args}           Run HLint on the buffer.  Requires hlint to be
-                        installed and in $PATH.  This actually sets the
-                        |:compiler| to "hlint" temporarily, and then restores
-                        the |current_compiler|.
+:HLint {args}           Run HLint on the buffer.  Requires hlint (available
+                        from Hackage) to be installed and in $PATH.  This
+                        actually sets the |:compiler| to "hlint" temporarily,
+                        and then restores the |current_compiler|.
 
                         Only available to Haskell buffers.
 
-                        See also |g:hlint_args|.
+                        See also |compiler-hlint| and |g:hlint_args|.
 
                                                                  *:PointFree*
 :PointFree              Suggest a pointfree version of the selected code.
@@ -30,17 +31,70 @@ COMMANDS                                                    *vim2hs-commands*
 :PointFree!             Like ":PointFree" but replaces the selection with the
                         suggested pointfree version.
 
+                        Useful as a mapping, for example: >
+
+                          autocmd FileType haskell
+                            \ vnoremap <buffer> <silent> <Leader>pf
+                            \ :PointFree!<CR>
+<
+
+=============================================================================
+COMPILERS                                                  *vim2hs-compilers*
+
+                                             *quickfix-hlint*  *compiler-hlint*
+:compiler hlint         Configure |:make| for using HLint.  Requires hlint
+                        (available from Hackage) to be installed and in $PATH.
+
+                        See also |g:hlint_args|.
+
+
+=============================================================================
+TABULAR                                                      *vim2hs-tabular*
+
+Requires the Tabular plugin for Vim.  Useful in mappings, for example:
+>
+  autocmd FileType cabal
+    \ nnoremap <buffer> <silent> <Leader>t: :Tabularize colon<CR>
+<
+See also |g:haskell_tabular|.
+
+
+:Tabularize colon       Align by a single colon, useful for Cabal
+                        descriptions.
+
+:Tabularize haskell_bindings
+                        Align a set of bindings by "=".
+
+:Tabularize haskell_do_arrows
+                        Align a set of monadic binds by "<-".
+
+:Tabularize haskell_imports
+                        Align imports by import list and "as".
+
+:Tabularize haskell_pattern_arrows
+                        Align a set of pattern matches by "->".
+
+:Tabularize haskell_types
+                        Align type signatures by "::" in a record.
+
+
+
 =============================================================================
 OPTIONS                                                      *vim2hs-options*
 
                                                             *g:hpaste_author*
-Set the author name to use when pasting to hpaste.org: >
+Author name to use when pasting to hpaste.org, instead of prompting for it
+every time: >
   let g:hpaste_author = 'Your Name'
 <
                                                                *g:hlint_args*
-Set arguments that are always passed to HLint.  The default adds support
-for HSP: >
+Arguments that are always passed to HLint.  The default adds support for HSP: >
   let g:hlint_args = '--language=XmlSyntax'
+<
+                                                          *g:haskell_tabular*
+Whether to add named patterns to Tabular useful for Haskell development.  This
+is enabled by default if Tabular is installed: >
+  let g:haskell_tabular = 1
 <
 
  vim:tw=78:et:ft=help:norl:
