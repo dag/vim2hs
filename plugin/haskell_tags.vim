@@ -11,7 +11,7 @@ endif
 
 if g:haskell_tags_generator ==# 'fast-tags'
   if !executable('fast-tags') | finish | endif
-  autocmd BufWritePost *.hs call vim2hs#haskell#tags#fasttags()
+  autocmd BufWritePost *.hs call vim2hs#haskell#tags#fasttags(expand('%'))
   call vim2hs#haskell#tags#fasttags()
 elseif g:haskell_tags_generator == 'hasktags'
   if !executable('hasktags') | finish | endif
