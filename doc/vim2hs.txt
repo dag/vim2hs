@@ -116,5 +116,19 @@ Whether to add named patterns to Tabular useful for Haskell development.  This
 is enabled by default if Tabular is installed: >
   let g:haskell_tabular = 1
 <
+                                                         *g:haskell_autotags*
+Generate a tags file when Vim is started in a directory containing a "*.cabal"
+file, and update it when saving "*.hs" files.
+
+See also |g:haskell_tags_generator|.
+
+Disabled by default: >
+  let g:haskell_autotags = 0
+<
+                                                   *g:haskell_tags_generator*
+The program to use for |g:haskell_autotags|.  Valid values are "fast-tags" and
+"hasktags" and requires the respective packages from Hackage.  Default: >
+  let g:haskell_tags_generator = 'fast-tags'
+<
 
  vim:tw=78:et:ft=help:norl:
