@@ -41,11 +41,31 @@ COMMANDS                                                    *vim2hs-commands*
 =============================================================================
 COMPILERS                                                  *vim2hs-compilers*
 
+All compilers shipped with vim2hs use |:CompilerSet| and as such can be
+enabled globally using ":compiler!".  Optionally you can use an |autocommand|
+or |ftplugin| to enable a compiler only for Haskell buffers, for example:
+>
+  autocmd FileType haskell compiler cabal
+<
                                              *quickfix-hlint*  *compiler-hlint*
 :compiler hlint         Configure |:make| for using HLint.  Requires hlint
                         (available from Hackage) to be installed and in $PATH.
 
                         See also |g:hlint_args|.
+
+                                             *quickfix-cabal*  *compiler-cabal*
+:compiler cabal         Configure |:make| for using Cabal.  Requires cabal
+                        (available as cabal-install from Hackage) to be
+                        installed and in $PATH.  Runs "cabal build" which also
+                        works with cabal-dev, but you have to install
+                        dependencies and run configure first, for example by
+                        running "cabal-dev install".
+
+                        Warnings from GHC will be parsed as errors due to
+                        limitations of Vim's |errorformat| patterns and the
+                        complexity of GHC's output.  This might be resolved in
+                        the future by filtering Cabal's output through a
+                        script.
 
 
 =============================================================================
