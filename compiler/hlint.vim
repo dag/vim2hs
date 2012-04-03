@@ -7,5 +7,13 @@ call vim2hs#letdefault('g:hlint_args', '--language=XmlSyntax')
 
 execute 'CompilerSet makeprg=hlint\ ' . g:hlint_args . '\ %'
 
-CompilerSet errorformat=%f:%l:%c:\ %t%*[a-zA-Z]:\ %m
+let s:errorformat = join([
+  \ '%W%f:%l:%c: Warning: %m',
+  \ '%E%f:%l:%c: Error: %m',
+  \ '%E%f:%l:%c: Parse error',
+  \ '%+C%m',
+  \ '%-Z',
+  \ ], ',')
+execute 'CompilerSet errorformat=' . escape(s:errorformat, ' ')
+
 CompilerSet shellpipe&
