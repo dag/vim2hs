@@ -56,15 +56,19 @@ function! vim2hs#haskell#syntax#numbers() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#syntax#bindings() " {{{
+function! vim2hs#haskell#syntax#types() " {{{
   syntax match hsType
     \ "^\(\s*\)\%(\k\+\|([^[:alnum:]]\+)\)\s*::.*\%(\n\1\s.*\)*"
     \ contains=TOP
 
+  highlight! link hsType Type
+endfunction " }}}
+
+
+function! vim2hs#haskell#syntax#bindings() " {{{
   syntax match hsIdentifier
     \ "^\k\+\ze.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
 
-  highlight! link hsType Type
   highlight! link hsIdentifier Identifier
 endfunction " }}}
 
