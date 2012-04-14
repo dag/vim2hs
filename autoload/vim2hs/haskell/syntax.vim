@@ -16,7 +16,7 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
     \ module let in where do deriving
 
   syntax match hsTypedef
-    \ '\<\%(type\|newtype\|data\|class\|instance\)'
+    \ '\<\%(type\|newtype\|data\|class\|instance\)\>'
 
   syntax keyword hsStatement
     \ import infix infixl infixr
