@@ -4,8 +4,8 @@ endif
 let current_compiler = 'cabal'
 
 let s:errorformat = join([
-  \ '%E%f:%l:%c:',
-  \ '%E%f:%l:%c: %m',
+  \ '%A%f:%l:%c:',
+  \ '%A%f:%l:%c: %m',
   \ '%+C    %m',
   \ '%-Z%[%^ ]',
   \ ], ',')

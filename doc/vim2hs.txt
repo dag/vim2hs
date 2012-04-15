@@ -61,11 +61,11 @@ or |ftplugin| to enable a compiler only for Haskell buffers, for example:
                         dependencies and run configure first, for example by
                         running "cabal-dev install".
 
-                        Warnings from GHC will be parsed as errors due to
-                        limitations of Vim's |errorformat| patterns and the
-                        complexity of GHC's output.  This might be resolved in
-                        the future by filtering Cabal's output through a
-                        script.
+                        Warnings and errors from GHC will both parse as
+                        unspecified type due to limitations of Vim's
+                        |errorformat| patterns and the complexity of GHC's
+                        output.  This might be resolved in the future by
+                        filtering Cabal's output through a script.
 
 
 =============================================================================
