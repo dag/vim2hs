@@ -1,4 +1,6 @@
 function! vim2hs#cabal#comments() " {{{
+  set commentstring=--%s
+
   syntax match cabalComment
     \ /--.*/
 
