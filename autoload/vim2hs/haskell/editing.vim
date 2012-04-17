@@ -12,67 +12,61 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return 0
   endif
 
+  let l:indent = -1
+
   if l:line =~# '^data\>.*=.\+'
-    return match(l:line, '=')
+    let l:indent = match(l:line, '=')
+
+  elseif l:line =~# '^data\>[^=]\+'
+    let l:indent = &shiftwidth
+
+  elseif l:line =~# '^newtype\>.*=.\+'
+    let l:indent = match(l:line, '=') + 2
+
+  elseif l:line =~# '^\k\+.*=\s*\%(do\)\?$'
+    let l:indent = &shiftwidth * 2
+
+  elseif l:line =~# '\[[^\]]*$'
+    let l:indent = match(l:line, '\[')
+
+  elseif l:line =~# '{[^}]*$'
+    let l:indent = match(l:line, '{')
+
+  elseif l:line =~# '([^)]*$'
+    let l:indent = match(l:line, '(')
+
+  elseif l:line =~# '\<case\>.*\<of$'
+    let l:indent = match(l:line, '\<case\>') + &shiftwidth
+
+  elseif l:line =~# '\<case\>.*\<of\>'
+    let l:indent = match(l:line, '\<of\>') + 3
+
+  elseif l:line =~# '\<if\>.*\<then\>.*\%(\<else\>\)\@!'
+    let l:indent = match(l:line, '\<then\>')
+
+  elseif l:line =~# '\<if\>'
+    let l:indent = match(l:line, '\<if\>') + &shiftwidth
+
+  elseif l:line =~# '\<\%(do\|let\|where\|in\|then\|else\)$'
+    let l:indent = indent(a:lnum - 1) + &shiftwidth
+
+  elseif l:line =~# '\<do\>'
+    let l:indent = match(l:line, '\<do\>') + 3
+
+  elseif l:line =~# '\<let\>'
+    let l:indent = match(l:line, '\<let\>') + 4
+
+  elseif l:line =~# '\<where\>'
+    let l:indent = match(l:line, '\<where\>') + 6
+
   endif
 
-  if l:line =~# '^data\>[^=]\+'
-    return &shiftwidth
+  if synIDattr(synIDtrans(synID(a:lnum - 1, l:indent, 1)), 'name')
+    \ =~# '\%(Comment\|String\)$'
+    return -1
   endif
 
-  if l:line =~# '^newtype\>.*=.\+'
-    return match(l:line, '=') + 2
-  endif
-
-  if l:line =~# '^\k\+.*=\s*\%(do\)\?$'
-    return &shiftwidth * 2
-  endif
-
-  if l:line =~# '\[[^\]]*$'
-    return match(l:line, '\[')
-  endif
-
-  if l:line =~# '{[^}]*$'
-    return match(l:line, '{')
-  endif
-
-  if l:line =~# '([^)]*$'
-    return match(l:line, '(')
-  endif
-
-  if l:line =~# '\<case\>.*\<of$'
-    return match(l:line, '\<case\>') + &shiftwidth
-  endif
-
-  if l:line =~# '\<case\>.*\<of\>'
-    return match(l:line, '\<of\>') + 3
-  endif
-
-  if l:line =~# '\<if\>.*\<then\>.*\%(\<else\>\)\@!'
-    return match(l:line, '\<then\>')
-  endif
-
-  if l:line =~# '\<if\>'
-    return match(l:line, '\<if\>') + &shiftwidth
-  endif
-
-  if l:line =~# '\<\%(do\|let\|where\|in\|then\|else\)$'
-    return indent(a:lnum - 1) + &shiftwidth
-  endif
-
-  if l:line =~# '\<do\>'
-    return match(l:line, '\<do\>') + 3
-  endif
-
-  if l:line =~# '\<let\>'
-    return match(l:line, '\<let\>') + 4
-  endif
-
-  if l:line =~# '\<where\>'
-    return match(l:line, '\<where\>') + 6
-  endif
-
-  return -1
+  return l:indent
 endfunction " }}}
 
 
