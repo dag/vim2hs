@@ -34,7 +34,7 @@ endfunction " }}}
 
 function! vim2hs#pointfree(bang) " {{{
   normal! gv"xy
-  let l:output = system('pointfree ' . shellescape(@x))
+  let l:output = system('pointfree ' . shellescape(split(@x, "\n")[0]))
   if l:output =~# '(line \d\+, column \d\+):'
     for l:line in split(l:output, '\n')
       echoerr l:line
