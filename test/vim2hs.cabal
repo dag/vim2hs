@@ -23,6 +23,13 @@ Test-Suite vim2hs-tests
     test-framework-provider-quickcheck2,
     test-framework-th
 
+Benchmark vim2hs-benchmarks
+  Type          : exitcode-stdio-1.0
+  Main-Is       : vim2hs-benchmarks.hs
+  Build-Depends :
+    base == 4.*,
+    criterion
+
 Executable vim2hs
   GHC-Options   : -Wall
   Main-Is       : vim2hs.hs

@@ -26,7 +26,7 @@ endfunction " }}}
 
 function! vim2hs#cabal#statements() " {{{
   syntax region cabalIdentifier matchgroup=cabalStatement
-    \ start="\c^\%(flag\|source-repository\|test-suite\|executable\|library\)"
+    \ start="\c^\%(flag\|source-repository\|test-suite\|benchmark\|executable\|library\)"
     \ end="$"
 
   highlight! link cabalIdentifier Identifier
