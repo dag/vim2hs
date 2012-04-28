@@ -230,7 +230,7 @@ function! vim2hs#haskell#syntax#th() " {{{
     \ contains=TOP
 
   syntax region hsTHContent matchgroup=hsTHQuote
-    \ start="\[\$\?[edtp]\?|" end="|\]"
+    \ start="\[\$\?\%([edtp]\|hsx\)\?|" end="|\]"
     \ contains=TOP
 
   highlight! link hsTHMacro Macro
