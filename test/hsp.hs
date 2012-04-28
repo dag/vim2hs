@@ -18,3 +18,6 @@ list =
     <p>Hello</p>
     <p>World</p>
   </%>
+
+qq =
+  [hsx| <a href=(Post 123)>Post #123</a> |]

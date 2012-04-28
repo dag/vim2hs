@@ -230,7 +230,7 @@ function! vim2hs#haskell#syntax#th() " {{{
     \ contains=TOP
 
   syntax region hsTHContent matchgroup=hsTHQuote
-    \ start="\[\$\?\%([edtp]\|hsx\)\?|" end="|\]"
+    \ start="\[\$\?[edtp]\?|" end="|\]"
     \ contains=TOP
 
   highlight! link hsTHMacro Macro
@@ -259,7 +259,13 @@ function! vim2hs#haskell#syntax#hsp() " {{{
     \ start="<%>\@!" end="\%(</\)\@!%>"
     \ contains=TOP
 
+  syntax region hspQQContent matchgroup=hspQQuote
+    \ start="\[\$\?hsx|" end="|\]"
+    \ contains=TOP
+
   highlight! link hspTag PreProc
   highlight! link hspAttrName Constant
   highlight! link hspSplice Macro
+  highlight! link hspQQuote Delimiter
+  highlight! link hspQQContent String
 endfunction " }}}
