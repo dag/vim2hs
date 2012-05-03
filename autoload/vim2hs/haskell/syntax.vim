@@ -240,8 +240,11 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#syntax#hsp() " {{{
+  syntax match hspContain
+    \ "<%>\|</%>"
+
   syntax match hspTag
-    \ "<%>\|</%>\|</\w\+>"
+    \ "</\w\+>"
 
   syntax match hspAttrValue
     \ ""
@@ -263,6 +266,7 @@ function! vim2hs#haskell#syntax#hsp() " {{{
     \ start="\[\$\?hsx|" end="|\]"
     \ contains=TOP
 
+  highlight! link hspContain Delimiter
   highlight! link hspTag PreProc
   highlight! link hspAttrName Constant
   highlight! link hspSplice Macro
