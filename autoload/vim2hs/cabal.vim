@@ -51,3 +51,20 @@ function! vim2hs#cabal#conditionals() " {{{
   highlight! link cabalIdentifier Identifier
   highlight! link cabalConditional Conditional
 endfunction " }}}
+
+
+function! vim2hs#cabal#vcs() " {{{
+  if isdirectory('.git')
+    return 'git'
+  elseif isdirectory('_darcs')
+    return 'darcs'
+  elseif isdirectory('.hg')
+    return 'mercurial'
+  elseif isdirectory('.svn')
+    return 'svn'
+  elseif isdirectory('.bzr')
+    return 'bazaar'
+  else
+    return '(unknown)'
+  endif
+endfunction " }}}

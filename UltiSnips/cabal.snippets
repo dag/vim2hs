@@ -1,5 +1,5 @@
 snippet pkg "Package properties"
-Name          : ${1:name}
+Name          : `!v expand('%:t:r')`
 Version       : 0.1.0
 License       : BSD3
 Cabal-Version : >= 1.10
@@ -8,30 +8,30 @@ endsnippet
 
 snippet repo "Source-Repository"
 Source-Repository ${1:head}
-	Type     : ${2:git}
+	Type     : ${2:`!v vim2hs#cabal#vcs()`}
 	Location : $3
 endsnippet
 
 snippet gh "Source-Repository: GitHub"
 Source-Repository head
 	Type     : git
-	Location : git://github.com/${1:user}/${2:repo}.git
+	Location : git://github.com/${1:`!v $USER`}/${2:`!v expand('%:t:r')`}.git
 endsnippet
 
 snippet den "Source-Repository: darcsden"
 Source-Repository head
 	Type     : darcs
-	Location : http://darcsden.com/${1:user}/${2:repo}
+	Location : http://darcsden.com/${1:`!v $USER`}/${2:`!v expand('%:t:r')`}
 endsnippet
 
 snippet pt "Source-Repository: Patch-Tag"
 Source-Repository head
 	Type     : darcs
-	Location : http://patch-tag.com/r/${1:user}/${2:repo}
+	Location : http://patch-tag.com/r/${1:`!v $USER`}/${2:`!v expand('%:t:r')`}
 endsnippet
 
 snippet test "Test-Suite"
-Test-Suite ${1:name}
+Test-Suite test-${1:`!v expand('%:t:r')`}
 	Type             : exitcode-stdio-1.0
 	Main-Is          : ${2:$1.hs}
 	HS-Source-Dirs   : test
@@ -51,7 +51,7 @@ Test-Suite ${1:name}
 endsnippet
 
 snippet bench "Benchmark"
-Benchmark ${1:name}
+Benchmark bench-${1:`!v expand('%:t:r')`}
 	Type             : exitcode-stdio-1.0
 	Main-Is          : ${2:$1.hs}
 	HS-Source-Dirs   : bench
@@ -63,7 +63,7 @@ Benchmark ${1:name}
 endsnippet
 
 snippet exe "Executable"
-Executable ${1:name}
+Executable ${1:`!v expand('%:t:r')`}
 	Main-Is          : ${2:$1.hs}
 	HS-Source-Dirs   : bin
 	Default-Language : Haskell2010
