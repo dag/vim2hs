@@ -22,6 +22,7 @@ snippet test "Test-Suite"
 Test-Suite ${1:name}
 	Type             : exitcode-stdio-1.0
 	Main-Is          : ${2:$1.hs}
+	HS-Source-Dirs   : test
 	Default-Language : Haskell2010
 	GHC-Options      : -Wall
 	Build-Depends    :
@@ -41,6 +42,7 @@ snippet bench "Benchmark"
 Benchmark ${1:name}
 	Type             : exitcode-stdio-1.0
 	Main-Is          : ${2:$1.hs}
+	HS-Source-Dirs   : bench
 	Default-Language : Haskell2010
 	GHC-Options      : -Wall
 	Build-Depends    :
@@ -51,6 +53,7 @@ endsnippet
 snippet exe "Executable"
 Executable ${1:name}
 	Main-Is          : ${2:$1.hs}
+	HS-Source-Dirs   : bin
 	Default-Language : Haskell2010
 	GHC-Options      :
 		-Wall
@@ -62,6 +65,7 @@ endsnippet
 
 snippet lib "Library"
 Library
+	HS-Source-Dirs   : src
 	Default-Language : Haskell2010
 	GHC-Options      : -Wall
 	Exposed-Modules  :
