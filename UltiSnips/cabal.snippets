@@ -18,6 +18,18 @@ Source-Repository head
 	Location : git://github.com/${1:user}/${2:repo}.git
 endsnippet
 
+snippet den "Source-Repository: darcsden"
+Source-Repository head
+	Type     : darcs
+	Location : http://darcsden.com/${1:user}/${2:repo}
+endsnippet
+
+snippet pt "Source-Repository: Patch-Tag"
+Source-Repository head
+	Type     : darcs
+	Location : http://patch-tag.com/r/${1:user}/${2:repo}
+endsnippet
+
 snippet test "Test-Suite"
 Test-Suite ${1:name}
 	Type             : exitcode-stdio-1.0
