@@ -8,8 +8,8 @@ yell :: String
 yell s = map toUpper s
 
 data Something
-  = Something
-  | Other
+    = Something
+    | Other
 
 makeLens ''Something
 
@@ -19,9 +19,9 @@ isLarge x
   | otherwise = "nope"
 
 instance Functor [] where
-  fmap :: (a -> b)
-       -> f a -> f b
-  fmap = map
+    fmap :: (a -> b)
+         -> f a -> f b
+    fmap = map
 
 ($) :: (a -> b) -> a -> b
 f $ x =  f x

@@ -17,8 +17,8 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
   if l:line =~# '^data\>.*=.\+'
     let l:indent = match(l:line, '=')
 
-  elseif l:line =~# '^data\>[^=]\+'
-    let l:indent = &shiftwidth
+  elseif l:line =~# '^data\>[^=]\+\|^class\>\|^instance\>'
+    let l:indent = &shiftwidth * 2
 
   elseif l:line =~# '^newtype\>.*=.\+'
     let l:indent = match(l:line, '=') + 2

@@ -40,9 +40,9 @@ endsnippet
 
 snippet rec "Data record" !b
 data ${1:Type} ${2:variables}
-	= $1
-			{ ${3:field} :: ${4:Type}
-			}
+		= $1
+				{ ${3:field} :: ${4:Type}
+				}
 endsnippet
 
 snippet new "Newtype" !b
@@ -51,12 +51,12 @@ endsnippet
 
 snippet cls "Type class definition" !b
 class ${1:Name} where
-	$0
+		$0
 endsnippet
 
 snippet in "Instance definition" !b
 instance ${1:Class} ${2:Type} where
-	$0
+		$0
 endsnippet
 
 # }}} Statements
