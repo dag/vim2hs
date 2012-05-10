@@ -27,7 +27,7 @@ endsnippet
 # Statements {{{
 
 snippet mod "Module declaration" !b
-module ${1:Name} where
+module ${1:Parent.}`!v expand('%:t:r')` where
 endsnippet
 
 snippet as "Qualified import" !b
