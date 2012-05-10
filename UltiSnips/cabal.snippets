@@ -2,7 +2,7 @@ snippet pkg "Package properties"
 Name          : ${1:name}
 Version       : 0.1.0
 License       : BSD3
-Cabal-Version : >= 1.9.2
+Cabal-Version : >= 1.10
 Build-Type    : Simple
 endsnippet
 
@@ -20,9 +20,11 @@ endsnippet
 
 snippet test "Test-Suite"
 Test-Suite ${1:name}
-	Type          : exitcode-stdio-1.0
-	Main-Is       : ${2:$1.hs}
-	Build-Depends :
+	Type             : exitcode-stdio-1.0
+	Main-Is          : ${2:$1.hs}
+	Default-Language : Haskell2010
+	GHC-Options      : -Wall
+	Build-Depends    :
 		base == 4.*,
 		checkers,
 		HUnit,
@@ -37,30 +39,34 @@ endsnippet
 
 snippet bench "Benchmark"
 Benchmark ${1:name}
-	Type          : exitcode-stdio-1.0
-	Main-Is       : ${2:$1.hs}
-	Build-Depends :
+	Type             : exitcode-stdio-1.0
+	Main-Is          : ${2:$1.hs}
+	Default-Language : Haskell2010
+	GHC-Options      : -Wall
+	Build-Depends    :
 		base == 4.*,
 		criterion
 endsnippet
 
 snippet exe "Executable"
 Executable ${1:name}
-	Main-Is       : ${2:$1.hs}
-	GHC-Options   :
+	Main-Is          : ${2:$1.hs}
+	Default-Language : Haskell2010
+	GHC-Options      :
 		-Wall
 		-threaded -rtsopts -with-rtsopts=-N
-	Build-Depends :
+	Build-Depends    :
 		base == 4.*,
 		$0
 endsnippet
 
 snippet lib "Library"
 Library
-	GHC-Options     : -Wall
-	Exposed-Modules :
+	Default-Language : Haskell2010
+	GHC-Options      : -Wall
+	Exposed-Modules  :
 		$1
-	Build-Depends   :
+	Build-Depends    :
 		base == 4.*,
 		$0
 endsnippet
