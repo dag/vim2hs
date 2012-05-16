@@ -1,3 +1,11 @@
+let vim2hs#jmacro#errorformat = join([
+  \ '(line %l\, column %c):%m',
+  \ '%E(line %l\, column %c):',
+  \ '%+Cunexpected %m',
+  \ '%+Zexpecting %m'
+  \ ], ',')
+
+
 function vim2hs#jmacro#keywords() " {{{
   syntax keyword javaScriptFunction fun
 endfunction " }}}

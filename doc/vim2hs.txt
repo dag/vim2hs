@@ -67,6 +67,17 @@ or |ftplugin| to enable a compiler only for Haskell buffers, for example:
                         output.  This might be resolved in the future by
                         filtering Cabal's output through a script.
 
+                                            *quickfix-jmacro* *compiler-jmacro*
+:compiler jmacro        Configure |:make| for JMacro.  Requires jmacro
+                        (available as jmacro from Hackage) to be installed and
+                        in $PATH.
+
+                        Runs the jmacro executable on the file which will show
+                        the generated JavaScript on success and parse errors
+                        into |quickfix| on failure.
+
+                        This is not useful for QuasiQuoted JMacro code.
+
 
 =============================================================================
 TABULAR                                                      *vim2hs-tabular*
