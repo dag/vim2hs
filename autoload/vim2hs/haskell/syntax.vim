@@ -133,16 +133,24 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#syntax#comments() " {{{
+  syntax case match
+
+  syntax keyword hsTodo
+    \ TODO FIXME XXX
+    \ contained
+
   syntax match hsComment
     \ /--.*/
+    \ contains=hsTodo
 
   syntax region hsBlockComment
     \ start="{-" end="-}"
-    \ contains=hsBlockComment
+    \ contains=hsBlockComment,hsTodo
 
   syntax region hsPragma
     \ start="{-#" end="#-}"
 
+  highlight! link hsTodo Todo
   highlight! link hsComment Comment
   highlight! link hsBlockComment Comment
   highlight! link hsPragma PreProc
