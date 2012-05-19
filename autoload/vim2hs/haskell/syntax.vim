@@ -132,16 +132,27 @@ function! vim2hs#haskell#syntax#strings() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#syntax#comments() " {{{
+function! vim2hs#haskell#syntax#comments(conceal) " {{{
   syntax case match
 
   syntax keyword hsTodo
     \ TODO FIXME XXX
     \ contained
 
-  syntax match hsComment
-    \ /--.*/
-    \ contains=hsTodo
+  if a:conceal
+    syntax match hsComment
+      \ /--.*/
+      \ contains=hsTodo
+      \ conceal cchar=ℹ
+
+    syntax match hsComment
+      \ /^\s*--.*/
+      \ contains=hsTodo
+  else
+    syntax match hsComment
+      \ /--.*/
+      \ contains=hsTodo
+  endif
 
   syntax region hsBlockComment
     \ start="{-" end="-}"
