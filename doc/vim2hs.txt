@@ -96,6 +96,9 @@ See also |g:haskell_tabular|.
 :Tabularize haskell_bindings
                         Align a set of bindings by "=".
 
+:Tabularize haskell_comments
+                        Align line-comments at the end of lines.
+
 :Tabularize haskell_do_arrows
                         Align a set of monadic binds by "<-".
 
