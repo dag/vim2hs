@@ -11,11 +11,11 @@ function! s:InnerOffside() " {{{
       break
     endif
   endfor
-  return (l:start + 1) . 'GV' . (l:end - 1) . 'G'
+  execute 'normal! ' . (l:start + 1) . 'GV' . (l:end - 1) . 'G'
 endfunction " }}}
 
 
-vnoremap <expr> <Plug>InnerOffside <SID>InnerOffside()
+vnoremap <Plug>InnerOffside :<c-u>call <SID>InnerOffside()<cr>
 
 if !hasmapto('<Plug>InnerOffside')
   vmap <unique> <silent> io <Plug>InnerOffside
