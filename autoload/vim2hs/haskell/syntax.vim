@@ -142,21 +142,21 @@ function! vim2hs#haskell#syntax#comments(conceal) " {{{
   if a:conceal
     syntax match hsComment
       \ /--.*/
-      \ contains=hsTodo
+      \ contains=hsTodo,@Spell
       \ conceal cchar=ℹ
 
     syntax match hsComment
       \ /^\s*--.*/
-      \ contains=hsTodo
+      \ contains=hsTodo,@Spell
   else
     syntax match hsComment
       \ /--.*/
-      \ contains=hsTodo
+      \ contains=hsTodo,@Spell
   endif
 
   syntax region hsBlockComment
     \ start="{-" end="-}"
-    \ contains=hsBlockComment,hsTodo
+    \ contains=hsBlockComment,hsTodo,@Spell
 
   syntax region hsPragma
     \ start="{-#" end="#-}"
