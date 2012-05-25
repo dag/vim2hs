@@ -14,13 +14,13 @@ endfunction " }}}
 function! vim2hs#jmacro#conceal() " {{{
   syntax match jmacroConceal
     \ "\\\ze[[:alpha:][:space:]_([]"
-    \ conceal cchar=λ
+    \ display conceal cchar=λ
 
   syntax match jmacroConceal "<|"
-    \ conceal cchar=«
+    \ display conceal cchar=«
 
   syntax match jmacroConceal "|>"
-    \ conceal cchar=»
+    \ display conceal cchar=»
 
   setlocal conceallevel=2
 

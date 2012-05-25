@@ -1,9 +1,11 @@
 function! vim2hs#haskell#syntax#operators() " {{{
   syntax match hsOperator
     \ "\s\zs[-!#$%&\*\+/=\?@\\^|~.<>][-!#$%&\*\+/=\?@\\^|~:.<>]*\ze\_s"
+    \ display
 
   syntax match hsOperator
     \ "`\k\%(\k\|\.\)*`"
+    \ display
 
   highlight! link hsOperator Operator
 endfunction " }}}
@@ -17,6 +19,7 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
 
   syntax match hsTypedef
     \ '\<\%(type\|newtype\|data\|class\|instance\)\>'
+    \ display
 
   syntax keyword hsStatement
     \ import infix infixl infixr
@@ -30,10 +33,12 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
   if a:kwdops
     syntax match hsStructure
       \ "[[:punct:]]\@<!\%(=>\|->\|<-\|=\|::\)[[:punct:]]\@!"
+      \ display
   endif
 
   syntax match hsDelimiter
     \ "(\|)\|,\|;\|{\|}\||\|\k\@<!_\k\@!"
+    \ display
 
   highlight! link hsStructure Structure
   highlight! link hsTypedef Typedef
@@ -47,9 +52,11 @@ endfunction " }}}
 function! vim2hs#haskell#syntax#numbers() " {{{
   syntax match hsNumber
     \ "\<[0-9]\+\>\|\<0[xX][0-9a-fA-F]\+\>\|\<0[oO][0-7]\+\>"
+    \ display
 
   syntax match hsFloat
     \ "\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
+    \ display
 
   highlight! link hsNumber Number
   highlight! link hsFloat Float
@@ -261,17 +268,19 @@ endfunction " }}}
 function! vim2hs#haskell#syntax#hsp() " {{{
   syntax match hspContain
     \ "<%>\|</%>"
+    \ display
 
   syntax match hspTag
     \ "</\w\+>"
+    \ display
 
   syntax match hspAttrValue
     \ ""
-    \ contained contains=TOP
+    \ display contained contains=TOP
 
   syntax match hspAttrName
     \ "\w\+="
-    \ contained
+    \ display contained
 
   syntax region hspAttr matchgroup=hspTag
     \ start="<\w\+" end="/\?>"

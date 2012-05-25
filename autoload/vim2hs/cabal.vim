@@ -3,6 +3,7 @@ function! vim2hs#cabal#comments() " {{{
 
   syntax match cabalComment
     \ /--.*/
+    \ display
 
   highlight! link cabalComment Comment
 endfunction " }}}
@@ -13,11 +14,11 @@ function! vim2hs#cabal#constants() " {{{
 
   syntax match cabalConstant
     \ "^\s*\k\+\s*:\@="
-    \ nextgroup=cabalDelimiter
+    \ display nextgroup=cabalDelimiter
 
   syntax match cabalDelimiter
     \ ":"
-    \ contained
+    \ display contained
 
   highlight! link cabalConstant Constant
   highlight! link cabalDelimiter Delimiter
@@ -28,6 +29,7 @@ function! vim2hs#cabal#statements() " {{{
   syntax region cabalIdentifier matchgroup=cabalStatement
     \ start="\c^\%(flag\|source-repository\|test-suite\|benchmark\|executable\|library\)"
     \ end="$"
+    \ display oneline
 
   highlight! link cabalIdentifier Identifier
   highlight! link cabalStatement Statement
@@ -40,12 +42,12 @@ function! vim2hs#cabal#conditionals() " {{{
   syntax region cabalIdentifier matchgroup=cabalKeyword
     \ start="\%(os\|arch\|impl\|flag\)("
     \ end=")"
-    \ contained contains=cabalIdentifier
+    \ display oneline contained contains=cabalIdentifier
 
   syntax region cabalIdentifier matchgroup=cabalConditional
     \ start="\c^\s*\%(if\|else\|endif\)"
     \ end="$"
-    \ contains=cabalIdentifier,cabalKeyword
+    \ display oneline contains=cabalIdentifier,cabalKeyword
 
   highlight! link cabalKeyword Keyword
   highlight! link cabalIdentifier Identifier
