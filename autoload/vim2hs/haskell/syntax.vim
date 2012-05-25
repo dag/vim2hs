@@ -274,9 +274,8 @@ function! vim2hs#haskell#syntax#hsp() " {{{
     \ "</\w\+>"
     \ display
 
-  syntax match hspAttrValue
-    \ ""
-    \ display contained contains=TOP
+  syntax cluster hspAttrValue
+    \ contains=TOP
 
   syntax match hspAttrName
     \ "\w\+="
@@ -284,7 +283,7 @@ function! vim2hs#haskell#syntax#hsp() " {{{
 
   syntax region hspAttr matchgroup=hspTag
     \ start="<\w\+" end="/\?>"
-    \ contains=hspAttrName,hspAttrValue
+    \ contains=hspAttrName,@hspAttrValue
 
   syntax region hspHaskell matchgroup=hspSplice
     \ start="<%>\@!" end="\%(</\)\@!%>"
