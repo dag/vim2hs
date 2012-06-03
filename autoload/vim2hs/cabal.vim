@@ -70,3 +70,8 @@ function! vim2hs#cabal#vcs() " {{{
     return '(unknown)'
   endif
 endfunction " }}}
+
+
+function! vim2hs#cabal#name() " {{{
+  return substitute(expand('%:t'), '\..*', '', '')
+endfunction " }}}
