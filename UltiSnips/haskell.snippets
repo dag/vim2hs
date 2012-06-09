@@ -27,7 +27,18 @@ endsnippet
 # Statements {{{
 
 snippet mod "Module declaration" !b
-module ${1:Parent.}`!v expand('%:t:r')` where
+module ${1:`!v vim2hs#haskell#snippets#module_name()`}
+	( $2
+	) where
+
+$0
+endsnippet
+
+snippet main "Main module" !b
+module Main where
+
+main :: IO ()
+main = $0
 endsnippet
 
 snippet as "Qualified import" !b
