@@ -284,7 +284,7 @@ function! vim2hs#haskell#syntax#hsp() " {{{
 
   syntax region hspText matchgroup=hspTag
     \ start="<\z(\w\+\)>" end="</\z1>"
-    \ contains=hspHaskell
+    \ contains=hspHaskell,hspTag,hspText,hspAttr
 
   syntax region hspAttr matchgroup=hspTag
     \ start="<\w\+\_s" end="/\?>"
