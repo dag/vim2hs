@@ -28,14 +28,15 @@ endsnippet
 
 snippet mod "Module declaration" !b
 module ${1:`!v vim2hs#haskell#snippets#module_name()`}
-	( $2
-	) where
+		( $2
+		)
+	where
 
 $0
 endsnippet
 
 snippet main "Main module" !b
-module Main where
+module Main (main) where
 
 main :: IO ()
 main = $0
