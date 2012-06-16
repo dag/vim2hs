@@ -30,6 +30,8 @@ if g:haskell_cpp
   call vim2hs#haskell#syntax#cpp()
 endif
 
+call vim2hs#haskell#syntax#delimiters()
+
 if g:haskell_quasi
   call vim2hs#haskell#quasi#quote()
 endif

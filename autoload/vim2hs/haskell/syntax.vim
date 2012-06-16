@@ -11,6 +11,15 @@ function! vim2hs#haskell#syntax#operators() " {{{
 endfunction " }}}
 
 
+function! vim2hs#haskell#syntax#delimiters() " {{{
+  syntax match hsDelimiter
+    \ '(\|)\|\[\|\]\|,\|;\|{\|}\||\|\k\@<!_\k\@!'
+    \ display
+
+  highlight! link hsDelimiter Delimiter
+endfunction " }}}
+
+
 function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
   syntax case match
 
@@ -36,16 +45,11 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
       \ display
   endif
 
-  syntax match hsDelimiter
-    \ "(\|)\|,\|;\|{\|}\||\|\k\@<!_\k\@!"
-    \ display
-
   highlight! link hsStructure Structure
   highlight! link hsTypedef Typedef
   highlight! link hsStatement Statement
   highlight! link hsConditional Conditional
   highlight! link hsKeyword Keyword
-  highlight! link hsDelimiter Delimiter
 endfunction " }}}
 
 
