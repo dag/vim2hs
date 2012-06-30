@@ -24,7 +24,7 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
   syntax case match
 
   syntax keyword hsStructure
-    \ module let in where do deriving
+    \ module let in where do deriving proc
 
   syntax match hsTypedef
     \ '\<\%(type\|newtype\|data\|class\|instance\)\>'
@@ -41,7 +41,7 @@ function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
 
   if a:kwdops
     syntax match hsStructure
-      \ "[[:punct:]]\@<!\%(=>\|->\|<-\|=\|::\)[[:punct:]]\@!"
+      \ "[[:punct:]]\@<!\%(=>\|->\|<-\|-<<\?\|=\|::\)[[:punct:]]\@!"
       \ display
   endif
 
