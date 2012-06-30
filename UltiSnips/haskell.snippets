@@ -43,11 +43,15 @@ main = ${1:error "undefined: \`main' in `!v expand('%')`"}
 endsnippet
 
 snippet qual "Qualified import, name by last module" !b
-import qualified ${1:Module} as ${2:`!p snip.rv = t[1].rsplit('.', 1)[-1]`}
+import qualified ${1:Module} as ${2:`!p
+snip.rv = t[1].rsplit('.', 1)[-1]
+`}
 endsnippet
 
 snippet as "Qualified import, name by first character of last module" !b
-import qualified ${1:Module} as ${2:`!p snip.rv = t[1].rstrip('.').rsplit('.', 1)[-1][0]`}
+import qualified ${1:Module} as ${2:`!p
+snip.rv = t[1].rstrip('.').rsplit('.', 1)[-1][0]
+`}
 endsnippet
 
 snippet data "Algebraic data type" !b
