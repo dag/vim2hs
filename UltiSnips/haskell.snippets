@@ -29,6 +29,9 @@ endsnippet
 global !p
 def last_module(mod):
 	return mod.rstrip('.').rsplit('.', 1)[-1]
+
+def space_if(p):
+	return " " if p else ""
 endglobal
 
 snippet mod "Module declaration" !b
@@ -56,7 +59,7 @@ import qualified ${1:Module} as ${2:`!p snip.rv = last_module(t[1])[0]`}
 endsnippet
 
 snippet data "Algebraic data type" !b
-data ${1:Type} ${2:variables} = ${3:Constructor} | ${0:Constructor}
+data ${1:Type} ${2:variables}`!p snip.rv = space_if(t[2])`= ${3:Constructor} | ${0:Constructor}
 endsnippet
 
 snippet rec "Data record" !b
@@ -66,7 +69,7 @@ data ${1:Type} = $1
 endsnippet
 
 snippet new "Newtype" !b
-newtype ${1:Type} ${2:variables} = $1 ${3:Oldtype}
+newtype ${1:Type} ${2:variables}`!p snip.rv = space_if(t[2])`= $1 ${3:Oldtype}
 endsnippet
 
 snippet cls "Type class definition" !b
