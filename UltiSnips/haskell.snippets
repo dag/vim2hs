@@ -55,10 +55,9 @@ data ${1:Type} ${2:variables} = ${3:Constructor} | ${0:Constructor}
 endsnippet
 
 snippet rec "Data record" !b
-data ${1:Type} ${2:variables}
-		= $1
-				{ ${3:field} :: ${4:Type}
-				}
+data ${1:Type} = $1
+		{ ${3:field} :: ${4:Type}
+		} deriving (${5:Classes})
 endsnippet
 
 snippet new "Newtype" !b
