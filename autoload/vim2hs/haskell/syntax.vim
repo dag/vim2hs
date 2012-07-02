@@ -20,11 +20,17 @@ function! vim2hs#haskell#syntax#delimiters() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#syntax#keywords(kwdops) " {{{
+function! vim2hs#haskell#syntax#keywords(kwdops, conceal_enumerations) " {{{
   syntax case match
 
   syntax keyword hsStructure
     \ module let in where do deriving proc
+
+  if a:conceal_enumerations
+    syntax match hsDeriving
+      \ '\%(deriving\s*(\)\@<=.*)\@='
+      \ conceal cchar=…
+  endif
 
   syntax match hsTypedef
     \ '\<\%(type\|newtype\|data\|class\|instance\)\>'
@@ -143,14 +149,14 @@ function! vim2hs#haskell#syntax#strings() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#syntax#comments(conceal) " {{{
+function! vim2hs#haskell#syntax#comments(conceal_comments, conceal_enumerations) " {{{
   syntax case match
 
   syntax keyword hsTodo
     \ TODO FIXME XXX
     \ contained
 
-  if a:conceal
+  if a:conceal_comments
     syntax match hsComment
       \ /--.*/
       \ contains=hsTodo,@Spell
@@ -169,12 +175,23 @@ function! vim2hs#haskell#syntax#comments(conceal) " {{{
     \ start="{-" end="-}"
     \ contains=hsBlockComment,hsTodo,@Spell
 
-  syntax region hsPragma
-    \ start="{-#" end="#-}"
+  if a:conceal_enumerations
+    syntax match hsLANGUAGE
+      \ '\%(LANGUAGE\s\+\)\@<=.*\%(\s\+\)\@='
+      \ contained conceal cchar=…
+
+    syntax region hsPragma
+      \ start="{-#" end="#-}"
+      \ contains=hsLANGUAGE
+  else
+    syntax region hsPragma
+      \ start="{-#" end="#-}"
+  endif
 
   highlight! link hsTodo Todo
   highlight! link hsComment Comment
   highlight! link hsBlockComment Comment
+  highlight! link hsLANGUAGE PreProc
   highlight! link hsPragma PreProc
 endfunction " }}}
 

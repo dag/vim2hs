@@ -1,23 +1,24 @@
 syntax clear
 
 
-call vim2hs#letdefault('g:haskell_haddock'          , 0)
-call vim2hs#letdefault('g:haskell_ffi'              , 1)
-call vim2hs#letdefault('g:haskell_cpp'              , 1)
-call vim2hs#letdefault('g:haskell_th'               , 1)
-call vim2hs#letdefault('g:haskell_quasi'            , 1)
-call vim2hs#letdefault('g:haskell_interpolation'    , 1)
-call vim2hs#letdefault('g:haskell_regex'            , 1)
-call vim2hs#letdefault('g:haskell_jmacro'           , 1)
-call vim2hs#letdefault('g:haskell_shqq'             , 1)
-call vim2hs#letdefault('g:haskell_sql'              , 1)
-call vim2hs#letdefault('g:haskell_json'             , 1)
-call vim2hs#letdefault('g:haskell_xml'              , 1)
-call vim2hs#letdefault('g:haskell_hsp'              , 1)
-call vim2hs#letdefault('g:haskell_conceal'          , 1)
-call vim2hs#letdefault('g:haskell_conceal_comments' , 0)
-call vim2hs#letdefault('g:haskell_conceal_wide'     , 0)
-call vim2hs#letdefault('g:haskell_conceal_bad'      , 0)
+call vim2hs#letdefault('g:haskell_haddock'              , 0)
+call vim2hs#letdefault('g:haskell_ffi'                  , 1)
+call vim2hs#letdefault('g:haskell_cpp'                  , 1)
+call vim2hs#letdefault('g:haskell_th'                   , 1)
+call vim2hs#letdefault('g:haskell_quasi'                , 1)
+call vim2hs#letdefault('g:haskell_interpolation'        , 1)
+call vim2hs#letdefault('g:haskell_regex'                , 1)
+call vim2hs#letdefault('g:haskell_jmacro'               , 1)
+call vim2hs#letdefault('g:haskell_shqq'                 , 1)
+call vim2hs#letdefault('g:haskell_sql'                  , 1)
+call vim2hs#letdefault('g:haskell_json'                 , 1)
+call vim2hs#letdefault('g:haskell_xml'                  , 1)
+call vim2hs#letdefault('g:haskell_hsp'                  , 1)
+call vim2hs#letdefault('g:haskell_conceal'              , 1)
+call vim2hs#letdefault('g:haskell_conceal_comments'     , 0)
+call vim2hs#letdefault('g:haskell_conceal_enumerations' , 1)
+call vim2hs#letdefault('g:haskell_conceal_wide'         , 0)
+call vim2hs#letdefault('g:haskell_conceal_bad'          , 0)
 
 
 call vim2hs#haskell#syntax#operators()
@@ -86,12 +87,14 @@ endif
 
 call vim2hs#haskell#syntax#numbers()
 call vim2hs#haskell#syntax#bindings()
-call vim2hs#haskell#syntax#keywords(1)
+call vim2hs#haskell#syntax#keywords(1, g:haskell_conceal && g:haskell_conceal_enumerations)
 call vim2hs#haskell#syntax#types()
 call vim2hs#haskell#syntax#folds()
 call vim2hs#haskell#syntax#strings()
 call vim2hs#haskell#syntax#comments(g:haskell_conceal
-                               \ && g:haskell_conceal_comments)
+                               \ && g:haskell_conceal_comments,
+                               \    g:haskell_conceal
+                               \ && g:haskell_conceal_enumerations)
 
 if g:haskell_haddock
   call vim2hs#haskell#syntax#haddock()
