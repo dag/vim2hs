@@ -86,15 +86,22 @@ if g:haskell_conceal
 endif
 
 call vim2hs#haskell#syntax#numbers()
+
 call vim2hs#haskell#syntax#bindings()
-call vim2hs#haskell#syntax#keywords(1, g:haskell_conceal && g:haskell_conceal_enumerations)
+
+call vim2hs#haskell#syntax#keywords(
+  \ g:haskell_conceal && g:haskell_conceal_wide,
+  \ g:haskell_conceal && g:haskell_conceal_enumerations)
+
 call vim2hs#haskell#syntax#types()
+
 call vim2hs#haskell#syntax#folds()
+
 call vim2hs#haskell#syntax#strings()
-call vim2hs#haskell#syntax#comments(g:haskell_conceal
-                               \ && g:haskell_conceal_comments,
-                               \    g:haskell_conceal
-                               \ && g:haskell_conceal_enumerations)
+
+call vim2hs#haskell#syntax#comments(
+  \ g:haskell_conceal && g:haskell_conceal_comments,
+  \ g:haskell_conceal && g:haskell_conceal_enumerations)
 
 if g:haskell_haddock
   call vim2hs#haskell#syntax#haddock()

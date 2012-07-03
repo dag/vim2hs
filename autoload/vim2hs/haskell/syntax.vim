@@ -20,7 +20,7 @@ function! vim2hs#haskell#syntax#delimiters() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#syntax#keywords(kwdops, conceal_enumerations) " {{{
+function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations) " {{{
   syntax case match
 
   syntax keyword hsStructure
@@ -45,7 +45,11 @@ function! vim2hs#haskell#syntax#keywords(kwdops, conceal_enumerations) " {{{
   syntax keyword hsKeyword
     \ qualified safe as hiding default family
 
-  if a:kwdops
+  if a:conceal_wide
+    syntax match hsStructure
+      \ "[[:punct:]]\@<!\%(=>\|-<<\?\|=\)[[:punct:]]\@!"
+      \ display
+  else
     syntax match hsStructure
       \ "[[:punct:]]\@<!\%(=>\|->\|<-\|-<<\?\|=\|::\)[[:punct:]]\@!"
       \ display
