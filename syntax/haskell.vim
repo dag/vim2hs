@@ -91,7 +91,8 @@ call vim2hs#haskell#syntax#bindings()
 
 call vim2hs#haskell#syntax#keywords(
   \ g:haskell_conceal && g:haskell_conceal_wide,
-  \ g:haskell_conceal && g:haskell_conceal_enumerations)
+  \ g:haskell_conceal && g:haskell_conceal_enumerations,
+  \ g:haskell_conceal && g:haskell_conceal_bad)
 
 call vim2hs#haskell#syntax#types()
 
