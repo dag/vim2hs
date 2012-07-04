@@ -86,7 +86,7 @@ endfunction " }}}
 function! vim2hs#haskell#syntax#types() " {{{
   syntax match hsType
     \ "^\(\s*\)\%(\k\+\|([^[:alnum:]]\+)\)\s*::.*\%(\n\1\s.*\)*"
-    \ contains=TOP
+    \ contains=TOP,@Spell
 
   highlight! link hsType Type
 endfunction " }}}
