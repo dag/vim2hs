@@ -105,6 +105,7 @@ function! vim2hs#haskell#editing#comments() " {{{
   setlocal commentstring=--%s
   setlocal formatoptions+=croql1
   setlocal formatoptions-=t
+  silent! setlocal formatoptions+=j
   setlocal textwidth=75
 endfunction " }}}
 
