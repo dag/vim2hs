@@ -11,10 +11,12 @@ source-repository head
 test-suite test-vim2hs
   type             : exitcode-stdio-1.0
   main-is          : vim2hs-tests.hs
-  hs-source-dirs   : test
+  hs-source-dirs   : test bin
   default-language : Haskell2010
   ghc-options      : -Wall
+  other-modules    : Editor.Vim.Test
   build-depends    : base == 4.*,
+                     vim2hs,
                      checkers,
                      HUnit,
                      QuickCheck,
@@ -28,10 +30,12 @@ test-suite test-vim2hs
 benchmark bench-vim2hs
   type             : exitcode-stdio-1.0
   main-is          : vim2hs.hs
-  hs-source-dirs   : bench
+  hs-source-dirs   : bench bin
   default-language : Haskell2010
   ghc-options      : -Wall
+  other-modules    : Editor.Vim.Benchmark
   build-depends    : base == 4.*,
+                     vim2hs,
                      criterion
 
 executable vim2hs
@@ -41,6 +45,7 @@ executable vim2hs
   ghc-options      : -Wall
                      -threaded -rtsopts -with-rtsopts=-N
   build-depends    : base == 4.*,
+                     vim2hs
 
 library
   hs-source-dirs   : src
