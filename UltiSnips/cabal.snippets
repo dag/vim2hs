@@ -1,88 +1,82 @@
 snippet pkg "Package properties"
-Name          : `!v vim2hs#cabal#name()`
-Version       : 0.1.0
-License       : BSD3
-Cabal-Version : >= 1.10
-Build-Type    : Simple
+name          : `!v vim2hs#cabal#name()`
+version       : 0.1.0
+license       : BSD3
+cabal-version : >= 1.10
+build-type    : Simple
 endsnippet
 
 snippet repo "Source-Repository"
-Source-Repository ${1:head}
-	Type     : ${2:`!v vim2hs#cabal#vcs()`}
-	Location : $3
+source-repository ${1:head}
+	type     : ${2:`!v vim2hs#cabal#vcs()`}
+	location : $3
 endsnippet
 
 snippet gh "Source-Repository: GitHub"
-Source-Repository head
-	Type     : git
-	Location : git://github.com/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}.git
+source-repository head
+	type     : git
+	location : git://github.com/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}.git
 endsnippet
 
 snippet den "Source-Repository: darcsden"
-Source-Repository head
-	Type     : darcs
-	Location : http://darcsden.com/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}
+source-repository head
+	type     : darcs
+	location : http://darcsden.com/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}
 endsnippet
 
 snippet pt "Source-Repository: Patch-Tag"
-Source-Repository head
-	Type     : darcs
-	Location : http://patch-tag.com/r/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}
+source-repository head
+	type     : darcs
+	location : http://patch-tag.com/r/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}
 endsnippet
 
 snippet test "Test-Suite"
-Test-Suite test-${1:`!v vim2hs#cabal#name()`}
-	Type             : exitcode-stdio-1.0
-	Main-Is          : ${2:$1-tests.hs}
-	HS-Source-Dirs   : test
-	Default-Language : Haskell2010
-	GHC-Options      : -Wall
-	Build-Depends    :
-		base == 4.*,
-		checkers,
-		HUnit,
-		QuickCheck,
-		quickcheck-instances,
-		quickcheck-properties,
-		test-framework,
-		test-framework-hunit,
-		test-framework-quickcheck2,
-		test-framework-th
+test-suite test-${1:`!v vim2hs#cabal#name()`}
+	type             : exitcode-stdio-1.0
+	main-is          : ${2:$1-tests.hs}
+	hs-source-dirs   : test
+	default-language : Haskell2010
+	ghc-options      : -Wall
+	build-depends    : base == 4.*,
+	                   checkers,
+	                   HUnit,
+	                   QuickCheck,
+	                   quickcheck-instances,
+	                   quickcheck-properties,
+	                   test-framework,
+	                   test-framework-hunit,
+	                   test-framework-quickcheck2,
+	                   test-framework-th
 endsnippet
 
 snippet bench "Benchmark"
-Benchmark bench-${1:`!v vim2hs#cabal#name()`}
-	Type             : exitcode-stdio-1.0
-	Main-Is          : ${2:$1.hs}
-	HS-Source-Dirs   : bench
-	Default-Language : Haskell2010
-	GHC-Options      : -Wall
-	Build-Depends    :
-		base == 4.*,
-		criterion
+benchmark bench-${1:`!v vim2hs#cabal#name()`}
+	type             : exitcode-stdio-1.0
+	main-is          : ${2:$1.hs}
+	hs-source-dirs   : bench
+	default-language : Haskell2010
+	ghc-options      : -Wall
+	build-depends    : base == 4.*,
+	                   criterion
 endsnippet
 
 snippet exe "Executable"
-Executable ${1:`!v vim2hs#cabal#name()`}
-	Main-Is          : ${2:$1.hs}
-	HS-Source-Dirs   : bin
-	Default-Language : Haskell2010
-	GHC-Options      :
-		-Wall
-		-threaded -rtsopts -with-rtsopts=-N
-	Build-Depends    :
-		base == 4.*,
-		$0
+executable ${1:`!v vim2hs#cabal#name()`}
+	main-is          : ${2:$1.hs}
+	hs-source-dirs   : bin
+	default-language : Haskell2010
+	ghc-options      : -Wall
+	                   -threaded -rtsopts -with-rtsopts=-N
+	build-depends    : base == 4.*,
+	                   $0
 endsnippet
 
 snippet lib "Library"
-Library
-	HS-Source-Dirs   : src
-	Default-Language : Haskell2010
-	GHC-Options      : -Wall
-	Exposed-Modules  :
-		$1
-	Build-Depends    :
-		base == 4.*,
-		$0
+library
+	hs-source-dirs   : src
+	default-language : Haskell2010
+	ghc-options      : -Wall
+	exposed-modules  : $1
+	build-depends    : base == 4.*,
+	                   $0
 endsnippet
