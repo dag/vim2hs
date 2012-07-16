@@ -58,6 +58,17 @@ snippet as "Qualified import, name by first character of last module" !b
 import qualified ${1:Module} as ${2:`!p snip.rv = last_module(t[1])[0]`}
 endsnippet
 
+snippet containers "Import modules for data structures, qualified" !b
+import qualified Data.HashMap.Lazy as HashMap
+import qualified Data.HashSet      as HashSet
+import qualified Data.IntMap       as IntMap
+import qualified Data.IntSet       as IntSet
+import qualified Data.IxSet        as IxSet
+import qualified Data.Map          as Map
+import qualified Data.Sequence     as Seq
+import qualified Data.Set          as Set
+endsnippet
+
 snippet data "Algebraic data type" !b
 data ${1:Type} ${2:variables}`!p snip.rv = space_if(t[2])`= ${3:Constructor} | ${0:Constructor}
 endsnippet
