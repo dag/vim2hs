@@ -186,13 +186,13 @@ function! vim2hs#haskell#syntax#comments(conceal_comments, conceal_enumerations)
     \ contains=hsBlockComment,hsTodo,@Spell
 
   if a:conceal_enumerations
-    syntax match hsLANGUAGE
+    syntax match hsLANGUAGEPragma
       \ '\%(LANGUAGE\s\+\)\@<=.*\%(\s\+\)\@='
       \ contained conceal cchar=…
 
     syntax region hsPragma
       \ start="{-#" end="#-}"
-      \ contains=hsLANGUAGE
+      \ contains=hsLANGUAGEPragma
   else
     syntax region hsPragma
       \ start="{-#" end="#-}"
@@ -201,7 +201,7 @@ function! vim2hs#haskell#syntax#comments(conceal_comments, conceal_enumerations)
   highlight! link hsTodo Todo
   highlight! link hsComment Comment
   highlight! link hsBlockComment Comment
-  highlight! link hsLANGUAGE PreProc
+  highlight! link hsLANGUAGEPragma PreProc
   highlight! link hsPragma PreProc
 endfunction " }}}
 
