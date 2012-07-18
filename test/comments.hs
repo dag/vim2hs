@@ -33,3 +33,9 @@ hello
 -- Some /emphasis/...
 
 -- #A-label# can be Module#linked-to
+
+-- the following arrows do not start line comments
+myManageHook = composeAll
+    [ foo --> bar
+    , baz --> bat
+    ]
