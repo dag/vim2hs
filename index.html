@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="vim2hs ⦂ Vim → Haskell : A collection of vimscripts for Haskell development" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>vim2hs ⦂ Vim → Haskell</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/dag/vim2hs">View on GitHub</a>
+
+          <h1 id="project_title">vim2hs ⦂ Vim → Haskell</h1>
+          <h2 id="project_tagline">A collection of vimscripts for Haskell development</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/dag/vim2hs/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/dag/vim2hs/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>Features</h2>
+
+<ul>
+<li>Written from scratch for clean and organized code, though some parts are
+borrowed from existing vimscripts.</li>
+<li>Highlights Haskell code in GitHub Flavored Markdown, and Literate Haskell
+documents as Markdown.</li>
+<li>Improved syntax highlighting including Haddock markup in comments,
+support for HSP and many quasi-quotes such as jmacro, shqq, regex, sql,
+string interpolation...</li>
+<li>Liberal syntax highlighting for Cabal package descriptions, yielding less
+false-positives for mistakes than other syntax files for Cabal.</li>
+<li>Makes Vim aware of Haskell modules and imports allowing you to <code>gf</code> with
+the cursor on a module to "go" to its source "file", etc.</li>
+<li>Support for using HLint both as a compiler and a command, integrated into
+the quickfix system in Vim.</li>
+<li>Unicode conceals for various operators and syntax, such as lambda and
+function composition.</li>
+<li>Integrates with third-party plugins, but doesn't require them:
+snippets for UltiSnips and patterns for Tabular.</li>
+<li>Posts buffers and line-ranges to <a href="http://hpaste.org">hpaste.org</a>.</li>
+<li>Highly configurable, most of the above can be disabled if it gets in the
+way.</li>
+</ul><h2>Installation</h2>
+
+<p>You need at least Vim 7.3, and for the HPaste command Python 2, not too
+ancient.  Beyond that, just clone this repo and add it to your
+<code>'runtimepath'</code>.  <a href="https://github.com/gmarik/vundle">Vundle</a> is great for
+automating that, <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> is also
+popular.</p>
+
+<h2>See Also</h2>
+
+<p>Here are some other Vimscripts that complement vim2hs nicely:</p>
+
+<ul>
+<li>Omni completion: <a href="https://github.com/ujihisa/neco-ghc">neco-ghc</a>
+</li>
+<li>Syntax checking and linting:
+<a href="https://github.com/scrooloose/syntastic">syntastic</a>
+</li>
+<li>Type inspection:
+<a href="https://github.com/lukerandall/haskellmode-vim">haskellmode</a> or (better)
+<a href="https://github.com/eagletmt/ghcmod-vim">ghcmod</a>
+</li>
+<li>Shakespeare templates highlighting:
+<a href="https://github.com/pbrisbin/html-template-syntax">html-template-syntax</a>
+</li>
+<li>Layout as text objects:
+<a href="https://github.com/kana/vim-textobj-indent">textobj-indent</a> <em>(vim2hs
+includes a less powerful version of this that I wrote before I discovered
+this Vimscript; it might be removed in favor of this one in the future)</em>
+</li>
+</ul><h2>Overview</h2>
+
+<h3>Top-level Definitions</h3>
+
+<p>The syntax highlighting of top-level definitions are improved in vim2hs:</p>
+
+<p><img src="https://github.com/dag/vim2hs/raw/master/screenshots/bindings.png" alt="Bindings screenshot"></p>
+
+<p>This screenshot showcases a number of nice features:</p>
+
+<ul>
+<li>Type signatures are highlighted as a whole, even if spanning multiple
+lines.</li>
+<li>In function definitions, the name of the function is highlighted
+differently from its arguments, even if the equal sign is on another line
+(most or all other syntax highlighters get this wrong).</li>
+<li>Template Haskell declaration splices are highlighted as pre-processor
+macros, without conflicting with the highlighting of function definitions
+or data declarations etc (again, most others get this wrong)</li>
+<li>Top-level definitions such as functions, classes and instances and data
+declarations form folds, as you can see in the <code>foldcolumn</code> to the left
+of the line numbers.  Closed folds are given a consistent <code>foldtext</code>
+producing a nice overview of the code.  Type signatures are intentionally
+not included in the folds, so as to allow you to read the type of folded
+definitions.</li>
+</ul><p>In this screenshot, "wide conceals" are enabled, which is what makes the
+type colons and function arrows display as unicode.  This option is
+disabled by default, since it can mess up the visual alignment between
+lines.  To enable it like I have done here, try this:</p>
+
+<div class="highlight">
+<pre><span class="k">let</span> <span class="k">g</span>:haskell_conceal_wide <span class="p">=</span> <span class="m">1</span>
+</pre>
+</div>
+
+
+<p>Other options like this that are safer are enabled by default, and can be
+disabled should you so desire:</p>
+
+<div class="highlight">
+<pre><span class="c">" disable all conceals, including the simple ones like</span>
+<span class="c">" lambda and composition</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_conceal              <span class="p">=</span> <span class="m">0</span>
+
+<span class="c">" disable concealing of "enumerations": commatized lists like</span>
+<span class="c">" deriving clauses and LANGUAGE pragmas,</span>
+<span class="c">" otherwise collapsed into a single ellipsis</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_conceal_enumerations <span class="p">=</span> <span class="m">0</span>
+</pre>
+</div>
+
+
+<h3>Quasi Quoting</h3>
+
+<p>Haskell supports embedding arbitrary syntax that is processed at
+compile-time.  Vim supports embedding external syntax highlighting.</p>
+
+<p><img src="https://github.com/dag/vim2hs/raw/master/screenshots/quasi.png" alt="Quasi Quotes screenshot"></p>
+
+<p>These are all enabled by default but you can selectively opt out by adding
+the relevant configuration overrides to your <code>~/.vimrc</code>:</p>
+
+<div class="highlight">
+<pre><span class="k">let</span> <span class="k">g</span>:haskell_quasi         <span class="p">=</span> <span class="m">0</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_interpolation <span class="p">=</span> <span class="m">0</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_regex         <span class="p">=</span> <span class="m">0</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_jmacro        <span class="p">=</span> <span class="m">0</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_shqq          <span class="p">=</span> <span class="m">0</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_sql           <span class="p">=</span> <span class="m">0</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_json          <span class="p">=</span> <span class="m">0</span>
+<span class="k">let</span> <span class="k">g</span>:haskell_xml           <span class="p">=</span> <span class="m">0</span>
+</pre>
+</div>
+
+
+<h3>HSP &amp; Heist</h3>
+
+<p><a href="http://hackage.haskell.org/package/hsp">Haskell Server Pages</a> and
+<a href="http://hackage.haskell.org/package/hsx">Haskell Source with XML</a>
+pre-processes literal XML in Haskell source code into function application
+and vim2hs provides limited support for this syntax - I have yet to figure
+out how to highlight the body of XML elements differently while still
+highlighting the attributes as Haskell.</p>
+
+<p><img src="https://github.com/dag/vim2hs/raw/master/screenshots/hsp.png" alt="HSP screenshot"></p>
+
+<p>This is enabled by default and can be disabled thusly:</p>
+
+<div class="highlight">
+<pre><span class="k">let</span> <span class="k">g</span>:haskell_hsp <span class="p">=</span> <span class="m">0</span>
+</pre>
+</div>
+
+
+<p><a href="http://hackage.haskell.org/package/heist">Heist</a> is a simple XML/HTML
+templating system; simple enough that you could simply use the <code>xml</code> or
+<code>html</code> filetype in Vim for these templates.  However, it includes a number
+of pre-defined "splices" and a special syntax for "splice interpolation" in
+attributes.  Included with vim2hs is a syntax file for Heist HTML templates
+and automatic filetype detection for <code>*.tpl</code> files.</p>
+
+<p><img src="https://github.com/dag/vim2hs/raw/master/screenshots/heist.png" alt="Heist screenshot"></p>
+
+<h3>Strings</h3>
+
+<p>Haskell actually supports multi-line strings by escaping the newline, but I
+don't think it's a widely used feature and I think quasi quoting is better
+for such purposes.  Thus I have opted to keep string literals from crossing
+lines so half your source file doesn't highlight as a string while you're
+entering one, and instead, string literals without a matching end quote
+highlight as errors.</p>
+
+<p><img src="https://github.com/dag/vim2hs/raw/master/screenshots/strings.png" alt="Strings screenshot"></p>
+
+<p>There are currently no configuration options for this, but I might add one
+in the future if anyone is actually using the escaped newline syntax.</p>
+
+<h3>HLint</h3>
+
+<p>HLint is provided as a compiler for Vim.</p>
+
+<div class="highlight">
+<pre><span class="p">:</span><span class="k">compiler</span> hlint
+<span class="p">:</span><span class="k">make</span>
+</pre>
+</div>
+
+
+<p>As a convenience there's also a command that does the above and then resets
+the compiler to its previous value.</p>
+
+<div class="highlight">
+<pre><span class="p">:</span>HLint
+</pre>
+</div>
+
+
+<p>Either way any HLint suggestions and warnings will be put in Vim's quickfix
+list and you can jump between them with <code>:cn</code> and <code>:cp</code>, although I
+recommend setting up
+<a href="https://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a> and using its
+<code>:FufQuickfix</code> command instead.</p>
+
+<h3>HPaste</h3>
+
+<p>To pastebin the contents of the current buffer do this:</p>
+
+<div class="highlight">
+<pre><span class="p">:</span>HPaste
+</pre>
+</div>
+
+
+<p>The newly created paste URL will be put in the <code>+</code> register, meaning your
+normal desktop clipboard.</p>
+
+<p>Alternatively, you can select a range of lines with Vim's VISUAL modes and
+type the same as above, which should result in this:</p>
+
+<pre><code>:'&lt;,'&gt;HPaste
+</code></pre>
+
+<p>Which of course will paste the selected lines only.</p>
+
+<p>If you get tired of entering your author name every time you can configure
+it globally like so:</p>
+
+<div class="highlight">
+<pre><span class="k">let</span> <span class="k">g</span>:hpaste_author <span class="p">=</span> <span class="s1">'donri'</span>
+</pre>
+</div>
+
+
+<h3>UltiSnips</h3>
+
+<p>If you're using the excellent
+<a href="https://github.com/sirver/ultisnips">UltiSnips</a> Vimscript, vim2hs provides
+some useful snippets for Haskell programming.  You can list all active
+snippets by hitting <code>Ctrl+Tab</code> in INPUT mode.</p>
+
+<h3>Tabular</h3>
+
+<p>Another useful Vimscript is
+<a href="https://github.com/godlygeek/tabular">Tabular</a>.  If it's installed, vim2hs
+adds some named patterns useful for maintaining layout in Haskell code.
+You can list all named patterns by tab-completing after entering the
+<code>:Tabularize</code> command.  You probably want to configure some mappings or
+commands for the ones you find useful.</p>
+
+<p>To disable them, use this configuration:</p>
+
+<div class="highlight">
+<pre><span class="k">let</span> <span class="k">g</span>:haskell_tabular <span class="p">=</span> <span class="m">0</span>
+</pre>
+</div>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">vim2hs ⦂ Vim → Haskell maintained by <a href="https://github.com/dag">dag</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
