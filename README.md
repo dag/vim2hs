@@ -1,5 +1,5 @@
-`vim2hs :: Vim -> Haskell`
-==========================
+`vim2hs ⦂ Vim → Haskell`
+========================
 
 *"Vim to Haskell": A collection of vimscripts for Haskell development.*
 
@@ -177,7 +177,7 @@ normal desktop clipboard.
 Alternatively, you can select a range of lines with Vim's VISUAL modes and
 type the same as above, which should result in this:
 
-```vim
+```
 :'<,'>HPaste
 ```
 
