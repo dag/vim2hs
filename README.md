@@ -57,6 +57,52 @@ Here are some other Vimscripts that complement vim2hs nicely:
 Overview
 --------
 
+### Top-level Definitions
+
+The syntax highlighting of top-level definitions are improved in vim2hs:
+
+![Bindings screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/bindings.png)
+
+This screenshot showcases a number of nice features:
+
+* Type signatures are highlighted as a whole, even if spanning multiple
+  lines.
+* In function definitions, the name of the function is highlighted
+  differently from its arguments, even if the equal sign is on another line
+  (most or all other syntax highlighters get this wrong).
+* Template Haskell declaration splices are highlighted as pre-processor
+  macros, without conflicting with the highlighting of function definitions
+  or data declarations etc (again, most others get this wrong)
+* Top-level definitions such as functions, classes and instances and data
+  declarations form folds, as you can see in the `foldcolumn` to the left
+  of the line numbers.  Closed folds are given a consistent `foldtext`
+  producing a nice overview of the code.  Type signatures are intentionally
+  not included in the folds, so as to allow you to read the type of folded
+  definitions.
+
+In this screenshot, "wide conceals" are enabled, which is what makes the
+type colons and function arrows display as unicode.  This option is
+disabled by default, since it can mess up the visual alignment between
+lines.  To enable it like I have done here, try this:
+
+```vim
+let g:haskell_conceal_wide = 1
+```
+
+Other options like this that are safer are enabled by default, and can be
+disabled should you so desire:
+
+```vim
+" disable all conceals, including the simple ones like
+" lambda and composition
+let g:haskell_conceal              = 0
+
+" disable concealing of "enumerations": commatized lists like
+" deriving clauses and LANGUAGE pragmas,
+" otherwise collapsed into a single ellipsis
+let g:haskell_conceal_enumerations = 0
+```
+
 ### Quasi Quoting
 
 Haskell supports embedding arbitrary syntax that is processed at
@@ -78,7 +124,7 @@ let g:haskell_json          = 0
 let g:haskell_xml           = 0
 ```
 
-### HSP
+### HSP & Heist
 
 [Haskell Server Pages](http://hackage.haskell.org/package/hsp) and
 [Haskell Source with XML](http://hackage.haskell.org/package/hsx)
@@ -95,33 +141,14 @@ This is enabled by default and can be disabled thusly:
 let g:haskell_hsp = 0
 ```
 
-### Haddock
+[Heist](http://hackage.haskell.org/package/heist) is a simple XML/HTML
+templating system; simple enough that you could simply use the `xml` or
+`html` filetype in Vim for these templates.  However, it includes a number
+of pre-defined "splices" and a special syntax for "splice interpolation" in
+attributes.  Included with vim2hs is a syntax file for Heist HTML templates
+and automatic filetype detection for `*.tpl` files.
 
-Haddock generates API documentation from markup in the comments of Haskell
-source files; vim2hs supports highlighting this markup distinctly.
-
-![Haddock screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/haddock.png)
-
-This is currently disabled by default because it needs work. To enable it
-try this:
-
-```vim
-let g:haskell_haddock = 1
-```
-
-### Markdown
-
-It is common to mark up the Literate in Literate Haskell using Markdown,
-and vim2hs substitutes the TeX-centric lhaskell filetype with a
-Markdown-centric one.  TeX might be supported in the future.
-
-GitHub's custom-flavored Markdown supports pygmented code blocks; vim2hs
-extends your existing markdown filetype to highlight haskell in such
-blocks.
-
-![Markdown screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/markdown.png)
-
-There aren't yet any configuration options for these features.
+![Heist screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/heist.png)
 
 ### Strings
 
@@ -132,11 +159,7 @@ lines so half your source file doesn't highlight as a string while you're
 entering one, and instead, string literals without a matching end quote
 highlight as errors.
 
-The bottom half of this screenshot is just for filling the empty space and
-tests that keywords are case sensitive - something many Vim syntax files
-gets wrong.
-
-![Strings and Keywords screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/strings-and-keywords.png)
+![Strings screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/strings.png)
 
 There are currently no configuration options for this, but I might add one
 in the future if anyone is actually using the escaped newline syntax.
