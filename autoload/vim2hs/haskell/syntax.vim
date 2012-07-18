@@ -168,16 +168,16 @@ function! vim2hs#haskell#syntax#comments(conceal_comments, conceal_enumerations)
 
   if a:conceal_comments
     syntax match hsComment
-      \ '---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$'
+      \ '---*\%([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$'
       \ contains=hsTodo,@Spell
       \ conceal cchar=ℹ
 
     syntax match hsComment
-      \ '^\s*---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$'
+      \ '^\s*---*\%([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$'
       \ contains=hsTodo,@Spell
   else
     syntax match hsComment
-      \ '---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$'
+      \ '---*\%([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$'
       \ contains=hsTodo,@Spell
   endif
 
