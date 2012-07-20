@@ -110,7 +110,6 @@ function! vim2hs#haskell#syntax#folds() " {{{
 
   syntax region hsFold
     \ start='^\%(type\|newtype\|class\|instance\|data\)\>'
-    \ skip='\n#\|\n--'
     \ end='\ze\%(\s*\n\)\+\S'
     \ transparent fold
 endfunction " }}}
