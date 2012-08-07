@@ -28,7 +28,7 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
 
   if a:conceal_enumerations
     syntax match hsDeriving
-      \ '\%(deriving\s*(\)\@<=.*)\@='
+      \ '\%(deriving\s*(\)\@<=.*,.*)\@='
       \ conceal cchar=…
   endif
 
@@ -186,7 +186,7 @@ function! vim2hs#haskell#syntax#comments(conceal_comments, conceal_enumerations)
 
   if a:conceal_enumerations
     syntax match hsLANGUAGEPragma
-      \ '\%(LANGUAGE\s\+\)\@<=.*\%(\s\+\)\@='
+      \ '\%(LANGUAGE\s\+\)\@<=.*,.*\%(\s\+\)\@='
       \ contained conceal cchar=…
 
     syntax region hsPragma
