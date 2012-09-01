@@ -1,6 +1,6 @@
 call vim2hs#haskell#editing#includes()
 call vim2hs#haskell#editing#keywords()
-call vim2hs#haskell#editing#comments()
+call vim2hs#haskell#editing#formatting()
 
 call vim2hs#haskell#editing#folding()
 

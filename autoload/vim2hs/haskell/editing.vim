@@ -100,7 +100,10 @@ function! vim2hs#haskell#editing#keywords() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#editing#comments() " {{{
+function! vim2hs#haskell#editing#formatting() " {{{
+  if executable('pointfree')
+    setlocal formatprg=xargs\ pointfree
+  endif
   setlocal comments=s1:{-,mb:-,ex:-},:--
   setlocal commentstring=--%s
   setlocal formatoptions+=croql1
