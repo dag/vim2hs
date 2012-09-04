@@ -186,7 +186,7 @@ function! vim2hs#haskell#syntax#comments(conceal_comments, conceal_enumerations)
 
   if a:conceal_enumerations
     syntax match hsLANGUAGEPragma
-      \ '\%(LANGUAGE\s\+\)\@<=.*,.*\%(\s\+\)\@='
+      \ 'LANGUAGE\s\+\zs.*,.*\ze\s\+#-}'
       \ contained conceal cchar=…
 
     syntax region hsPragma
