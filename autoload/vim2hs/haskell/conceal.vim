@@ -97,7 +97,11 @@ function! vim2hs#haskell#conceal#bad() " {{{
 
   syntax match hsStructure
     \ '\s-<\s'ms=s+1,me=e-1
-    \ display conceal cchar=⇷
+    \ display conceal cchar=↢
+
+  syntax match hsStructure
+    \ '\s>-\s'ms=s+1,me=e-1
+    \ display conceal cchar=↣
 
   syntax match hsStructure
     \ '\s-<<\s'ms=s+1,me=e-1
