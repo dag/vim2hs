@@ -12,7 +12,7 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     return 0
   endif
 
-  let l:indent = -1
+  let l:indent = indent(a:lnum - 1)
 
   if l:line =~# '^data\>.*=.\+'
     let l:indent = match(l:line, '=')
@@ -63,7 +63,7 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
 
   if synIDattr(synIDtrans(synID(a:lnum - 1, l:indent, 1)), 'name')
     \ =~# '\%(Comment\|String\)$'
-    return -1
+    return indent(a:lnum - 1)
   endif
 
   return l:indent
