@@ -47,11 +47,14 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
   elseif l:line =~# '\<if\>'
     let l:indent = match(l:line, '\<if\>') + &shiftwidth
 
-  elseif l:line =~# '\<\%(do\|let\|where\|in\|then\|else\)$'
+  elseif l:line =~# '\<\%(do\|let\|where\|in\|then\|else\)$\|\s=$'
     let l:indent = indent(a:lnum - 1) + &shiftwidth
 
   elseif l:line =~# '\<do\>'
     let l:indent = match(l:line, '\<do\>') + 3
+
+  elseif l:line =~# '\<let\>.*\s=$'
+    let l:indent = match(l:line, '\<let\>') + 4 + &shiftwidth
 
   elseif l:line =~# '\<let\>'
     let l:indent = match(l:line, '\<let\>') + 4
