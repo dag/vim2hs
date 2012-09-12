@@ -54,12 +54,22 @@ or |ftplugin| to enable a compiler only for Haskell buffers, for example:
                         See also |g:hlint_args|.
 
                                              *quickfix-cabal*  *compiler-cabal*
-:compiler cabal         Configure |:make| for using Cabal.  Requires cabal
-                        (available as cabal-install from Hackage) to be
-                        installed and in $PATH.  Runs "cabal build" which also
-                        works with cabal-dev, but you have to install
-                        dependencies and run configure first, for example by
-                        running "cabal-dev install".
+:compiler cabal         Configure |:make| for type-checking using Cabal.
+                        Requires cabal (available as cabal-install from
+                        Hackage) to be installed and in $PATH.  Runs "cabal
+                        build" which also works with cabal-dev, but you have
+                        to install dependencies and run configure first, for
+                        example by running "cabal-dev install".
+
+                        The option "-fno-code" is passed to GHC which means
+                        the compilation phase is skipped and the code is only
+                        type checked.  This can be much faster, but also means
+                        you can't use this to build your project from Vim.
+                        Instead, it is recommended that you run "cabal
+                        install" or similar from a terminal manually to
+                        properly build and install a project that you already
+                        know should type check.  If you prefer, you can always
+                        override |'makeprg'| yourself.
 
                         Warnings and errors from GHC will both parse as
                         unspecified type due to limitations of Vim's

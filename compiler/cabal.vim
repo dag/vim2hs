@@ -11,5 +11,5 @@ let s:errorformat = join([
   \ ], ',')
 execute 'CompilerSet errorformat=' . escape(s:errorformat, ' ')
 
-CompilerSet makeprg=cabal\ build
+CompilerSet makeprg=cabal\ build\ --ghc-option=-fno-code
 CompilerSet shellpipe&
