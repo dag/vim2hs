@@ -55,6 +55,18 @@ function! vim2hs#cabal#conditionals() " {{{
 endfunction " }}}
 
 
+function! vim2hs#cabal#folds() " {{{
+  syntax region cabalFold
+    \ start='\c^\%(flag\|source-repository\|test-suite\|benchmark\|executable\|library\)\>'
+    \ skip='\n#\|\n--'
+    \ end='\ze\%(\s*\n\)\+\S'
+    \ transparent fold
+
+  setlocal foldmethod=syntax
+  setlocal foldtext=getline(v:foldstart)
+endfunction " }}}
+
+
 function! vim2hs#cabal#vcs() " {{{
   if isdirectory('.git')
     return 'git'
