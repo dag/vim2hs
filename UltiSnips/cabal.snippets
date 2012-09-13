@@ -4,6 +4,7 @@ version       : 0.1.0
 license       : BSD3
 cabal-version : >= 1.10
 build-type    : Simple
+
 endsnippet
 
 snippet repo "Source-Repository"
@@ -13,18 +14,24 @@ source-repository ${1:head}
 endsnippet
 
 snippet gh "Source-Repository: GitHub"
+homepage      : https://github.com/$1/$2
+
 source-repository head
 	type     : git
 	location : git://github.com/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}.git
 endsnippet
 
 snippet den "Source-Repository: darcsden"
+homepage      : http://darcsden.com/$1/$2
+
 source-repository head
 	type     : darcs
 	location : http://darcsden.com/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}
 endsnippet
 
 snippet pt "Source-Repository: Patch-Tag"
+homepage      : http://patch-tag.com/r/$1/$2
+
 source-repository head
 	type     : darcs
 	location : http://patch-tag.com/r/${1:`!v $USER`}/${2:`!v vim2hs#cabal#name()`}
