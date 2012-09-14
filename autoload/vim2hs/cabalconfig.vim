@@ -14,7 +14,7 @@ function! vim2hs#cabalconfig#constants() " {{{
 
   syntax case match
 
-  syntax match ccKeyword
+  syntax match ccDefine
     \ "^\s*\k\+\s*:\@="
     \ display nextgroup=ccDelimiter
 
@@ -33,7 +33,7 @@ function! vim2hs#cabalconfig#constants() " {{{
     \ '\<[0-9]\+\.[0-9]\+'
     \ display
 
-  highlight! link ccKeyword Keyword
+  highlight! link ccDefine Define
   highlight! link ccDelimiter Delimiter
   highlight! link ccBoolean Boolean
   highlight! link ccNumber Number

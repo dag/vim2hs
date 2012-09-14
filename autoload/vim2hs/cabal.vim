@@ -9,10 +9,10 @@ function! vim2hs#cabal#comments() " {{{
 endfunction " }}}
 
 
-function! vim2hs#cabal#constants() " {{{
+function! vim2hs#cabal#defines() " {{{
   setlocal iskeyword=a-z,A-Z,-
 
-  syntax match cabalConstant
+  syntax match cabalDefine
     \ "^\s*\k\+\s*:\@="
     \ display nextgroup=cabalDelimiter
 
@@ -20,7 +20,7 @@ function! vim2hs#cabal#constants() " {{{
     \ ":"
     \ display contained
 
-  highlight! link cabalConstant Constant
+  highlight! link cabalDefine Define
   highlight! link cabalDelimiter Delimiter
 endfunction " }}}
 
