@@ -1,36 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="vim2hs ⦂ Vim → Haskell : A collection of vimscripts for Haskell development" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>vim2hs ⦂ Vim → Haskell by dag</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>vim2hs ⦂ Vim → Haskell</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">vim2hs ⦂ Vim → Haskell</h1>
+        <p class="header">A collection of vimscripts for Haskell development</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/dag/vim2hs">View on GitHub</a>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/dag/vim2hs/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/dag/vim2hs/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/dag/vim2hs">View On GitHub</a></li>
+        </ul>
 
-          <h1 id="project_title">vim2hs ⦂ Vim → Haskell</h1>
-          <h2 id="project_tagline">A collection of vimscripts for Haskell development</h2>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/dag">dag</a></p>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/dag/vim2hs/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/dag/vim2hs/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+      </header>
+      <section>
         <h2>Features</h2>
 
 <ul>
@@ -114,17 +113,13 @@ type colons and function arrows display as unicode.  This option is
 disabled by default, since it can mess up the visual alignment between
 lines.  To enable it like I have done here, try this:</p>
 
-<div class="highlight">
-<pre><span class="k">let</span> <span class="k">g</span>:haskell_conceal_wide <span class="p">=</span> <span class="m">1</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="k">let</span> <span class="k">g</span>:haskell_conceal_wide <span class="p">=</span> <span class="m">1</span>
+</pre></div>
 
 <p>Other options like this that are safer are enabled by default, and can be
 disabled should you so desire:</p>
 
-<div class="highlight">
-<pre><span class="c">" disable all conceals, including the simple ones like</span>
+<div class="highlight"><pre><span class="c">" disable all conceals, including the simple ones like</span>
 <span class="c">" lambda and composition</span>
 <span class="k">let</span> <span class="k">g</span>:haskell_conceal              <span class="p">=</span> <span class="m">0</span>
 
@@ -132,9 +127,7 @@ disabled should you so desire:</p>
 <span class="c">" deriving clauses and LANGUAGE pragmas,</span>
 <span class="c">" otherwise collapsed into a single ellipsis</span>
 <span class="k">let</span> <span class="k">g</span>:haskell_conceal_enumerations <span class="p">=</span> <span class="m">0</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3>Quasi Quoting</h3>
 
@@ -146,8 +139,7 @@ compile-time.  Vim supports embedding external syntax highlighting.</p>
 <p>These are all enabled by default but you can selectively opt out by adding
 the relevant configuration overrides to your <code>~/.vimrc</code>:</p>
 
-<div class="highlight">
-<pre><span class="k">let</span> <span class="k">g</span>:haskell_quasi         <span class="p">=</span> <span class="m">0</span>
+<div class="highlight"><pre><span class="k">let</span> <span class="k">g</span>:haskell_quasi         <span class="p">=</span> <span class="m">0</span>
 <span class="k">let</span> <span class="k">g</span>:haskell_interpolation <span class="p">=</span> <span class="m">0</span>
 <span class="k">let</span> <span class="k">g</span>:haskell_regex         <span class="p">=</span> <span class="m">0</span>
 <span class="k">let</span> <span class="k">g</span>:haskell_jmacro        <span class="p">=</span> <span class="m">0</span>
@@ -155,9 +147,7 @@ the relevant configuration overrides to your <code>~/.vimrc</code>:</p>
 <span class="k">let</span> <span class="k">g</span>:haskell_sql           <span class="p">=</span> <span class="m">0</span>
 <span class="k">let</span> <span class="k">g</span>:haskell_json          <span class="p">=</span> <span class="m">0</span>
 <span class="k">let</span> <span class="k">g</span>:haskell_xml           <span class="p">=</span> <span class="m">0</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3>HSP &amp; Heist</h3>
 
@@ -172,11 +162,8 @@ highlighting the attributes as Haskell.</p>
 
 <p>This is enabled by default and can be disabled thusly:</p>
 
-<div class="highlight">
-<pre><span class="k">let</span> <span class="k">g</span>:haskell_hsp <span class="p">=</span> <span class="m">0</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="k">let</span> <span class="k">g</span>:haskell_hsp <span class="p">=</span> <span class="m">0</span>
+</pre></div>
 
 <p><a href="http://hackage.haskell.org/package/heist">Heist</a> is a simple XML/HTML
 templating system; simple enough that you could simply use the <code>xml</code> or
@@ -205,21 +192,15 @@ in the future if anyone is actually using the escaped newline syntax.</p>
 
 <p>HLint is provided as a compiler for Vim.</p>
 
-<div class="highlight">
-<pre><span class="p">:</span><span class="k">compiler</span> hlint
+<div class="highlight"><pre><span class="p">:</span><span class="k">compiler</span> hlint
 <span class="p">:</span><span class="k">make</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>As a convenience there's also a command that does the above and then resets
 the compiler to its previous value.</p>
 
-<div class="highlight">
-<pre><span class="p">:</span>HLint
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="p">:</span>HLint
+</pre></div>
 
 <p>Either way any HLint suggestions and warnings will be put in Vim's quickfix
 list and you can jump between them with <code>:cn</code> and <code>:cp</code>, although I
@@ -231,11 +212,8 @@ recommend setting up
 
 <p>To pastebin the contents of the current buffer do this:</p>
 
-<div class="highlight">
-<pre><span class="p">:</span>HPaste
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="p">:</span>HPaste
+</pre></div>
 
 <p>The newly created paste URL will be put in the <code>+</code> register, meaning your
 normal desktop clipboard.</p>
@@ -251,11 +229,8 @@ type the same as above, which should result in this:</p>
 <p>If you get tired of entering your author name every time you can configure
 it globally like so:</p>
 
-<div class="highlight">
-<pre><span class="k">let</span> <span class="k">g</span>:hpaste_author <span class="p">=</span> <span class="s1">'donri'</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="k">let</span> <span class="k">g</span>:hpaste_author <span class="p">=</span> <span class="s1">'donri'</span>
+</pre></div>
 
 <h3>UltiSnips</h3>
 
@@ -275,23 +250,14 @@ commands for the ones you find useful.</p>
 
 <p>To disable them, use this configuration:</p>
 
-<div class="highlight">
-<pre><span class="k">let</span> <span class="k">g</span>:haskell_tabular <span class="p">=</span> <span class="m">0</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="k">let</span> <span class="k">g</span>:haskell_tabular <span class="p">=</span> <span class="m">0</span>
+</pre></div>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">vim2hs ⦂ Vim → Haskell maintained by <a href="https://github.com/dag">dag</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-
-    
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
