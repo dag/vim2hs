@@ -62,6 +62,22 @@ function! vim2hs#haskell#conceal#wide() " {{{
   syntax match hsOperator
     \ "\s!!\_s"ms=s+1,me=e-1
     \ display conceal cchar=‼
+
+  syntax match hsOperator
+    \ "\s&&\_s"ms=s+1,me=e-1
+    \ display conceal cchar=∧
+
+  syntax match hsOperator
+    \ "\s||\_s"ms=s+1,me=e-1
+    \ display conceal cchar=∨
+
+  syntax match hsOperator
+    \ "`intersect\%(ion\)\?`"
+    \ display conceal cchar=∩
+
+  syntax match hsOperator
+    \ "`union`"
+    \ display conceal cchar=∪
 endfunction " }}}
 
 
