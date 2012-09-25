@@ -1,7 +1,8 @@
 function! vim2hs#haskell#quasi#quote() " {{{
-  syntax region hsQuasi matchgroup=hsQuasiQuote
-    \ start="\[\$\?\k\+|" end="|\]"
-    \ keepend
+
+  syntax match hsQuasiQuote /\[\$\?\k\+|\%(\_.\%(|]\)\@!\)*\_.|\]/ contains=hsQuasi
+  syntax match hsQuasi /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsQuasiQuote
 
   highlight! link hsQuasiQuote Delimiter
   highlight! link hsQuasi Macro
@@ -9,9 +10,11 @@ endfunction " }}}
 
 
 function! vim2hs#haskell#quasi#interpolation() " {{{
-  syntax region hsStringQQ matchgroup=hsStringQQuote
-    \ start="\[\$\?[sq]|" end="|\]"
-    \ keepend contains=@Spell
+  syntax match hsStringQQuote /\[\$\?[sq]|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsStringQQ
+
+  syntax match hsStringQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsStringQQuote contains=@Spell
 
   syntax region hsP6Interpolation matchgroup=hsP6AntiQuote
     \ start="{" end="}"
@@ -21,21 +24,27 @@ function! vim2hs#haskell#quasi#interpolation() " {{{
     \ "\$\k\+"
     \ contained
 
-  syntax region hsP6QQ matchgroup=hsP6QQuote
-    \ start="\[\$\?qc|" end="|\]"
-    \ keepend contains=hsP6Interpolation,@Spell
+  syntax match hsP6QQuote /\[\$\?qc|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsP6QQ
 
-  syntax region hsP6QQ matchgroup=hsP6QQuote
-    \ start="\[\$\?qq|" end="|\]"
-    \ keepend contains=hsP6Identifier,hsP6Interpolation,@Spell
+  syntax match hsP6QQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsP6QQuote contains=hsP6Interpolation,@Spell
+
+  syntax match hsP6QQuote /\[\$\?qq|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsP6QQ
+
+  syntax match hsP6QQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsP6QQuote contains=hsP6Identifier,hsP6Interpolation,@Spell
 
   syntax region hsRubyInterpolation matchgroup=hsRubyAntiQuote
     \ start="#{" end="}"
     \ keepend contained contains=TOP
 
-  syntax region hsRubyQQ matchgroup=hsRubyQQuote
-    \ start="\[\$\?istr|" end="|\]"
-    \ keepend contains=hsRubyInterpolation,@Spell
+  syntax match hsRubyQQuote /\[\$\?istr|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsRubyQQ
+
+  syntax match hsRubyQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsRubyQQuote contains=hsRubyInterpolation,@Spell
 
   highlight! link hsStringQQuote Delimiter
   highlight! link hsStringQQ String
@@ -74,17 +83,23 @@ function! vim2hs#haskell#quasi#regex() " {{{
     \ start="(\@<=?{" end="}\%(.*)\)\@="
     \ keepend contained contains=TOP
 
-  syntax region hsRex matchgroup=hsRexQuote
-    \ start="\[\$\?b\?rex|" end="|\]"
-    \ keepend contains=@regex,hsRexMap
+  syntax match hsRexQuote /\[\$\?b\?rex|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsRex
 
-  syntax region hsRelit matchgroup=hsRelitQuote
-    \ start="\[\$\?b\?re|" end="|\]"
-    \ keepend contains=@regex
+  syntax match hsRexQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsRexQuote contains=@regex,hsRexMap
 
-  syntax region hsRegexQQ matchgroup=hsRegexQQuote
-    \ start="\[\$\?b\?rx|" end="|\]"
-    \ keepend contains=@regex
+  syntax match hsRelitQuote /\[\$\?b\?re|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsRelit
+
+  syntax match hsRelit /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsRelitQuote contains=@regex
+
+  syntax match hsRegexQQuote /\[\$\?b\?rx|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsRegexQQ
+
+  syntax match hsRegexQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsRegexQQuote contains=@regex
 
   highlight! link regexSpecialChar SpecialChar
   highlight! link regexOperator Operator
@@ -111,9 +126,11 @@ function! vim2hs#haskell#quasi#jmacro() " {{{
     \ start="`(" end=")`"
     \ keepend contained contains=TOP
 
-  syntax region hsJmacro matchgroup=hsJmacroQuote
-    \ start="\[\$\?jmacroE\?|" end="|\]"
-    \ keepend contains=hsJmacroSplice,@jmacro
+  syntax match hsJmacroQuote /\[\$\?jmacroE\?|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsJmacro
+
+  syntax match hsJmacro /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsJmacroQuote contains=hsJmacroSplice,@jmacro
 
   highlight! link hsJmacroQuote Delimiter
   highlight! link hsJmacroAntiQuote PreProc
@@ -128,9 +145,11 @@ function! vim2hs#haskell#quasi#shqq() " {{{
     \ "\$+\?\%({\k\+}\|\k\+\)"
     \ contained
 
-  syntax region hsShQQ matchgroup=hsShQQuote
-    \ start="\[\$\?shc\?|" end="|\]"
-    \ keepend contains=hsShQQInterpolation,@shell
+  syntax match hsShQQuote /\[\$\?shc\?|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsShQQ
+
+  syntax match hsShQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsShQQuote contains=hsShQQInterpolation,@shell
 
   highlight! link hsShQQuote Delimiter
   highlight! link hsShQQInterpolation Identifier
@@ -145,9 +164,11 @@ function! vim2hs#haskell#quasi#sql() " {{{
     \ start="\$[si]\?(" end=")"
     \ contained contains=TOP
 
-  syntax region hsSQL matchgroup=hsSQLQuote
-    \ start="\[\$\?\%(sql\|sqlStmts\?\|pgsqlStmts\?\|sqlExpr\)|" end="|\]"
-    \ keepend contains=hsSQLSplice,@sql
+  syntax match hsSQLQuote /\[\$\?\%(sql\|sqlStmts\?\|pgsqlStmts\?\|sqlExpr\)|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsSQL
+
+  syntax match hsSQL /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsSQLQuote contains=hsSQLSplice,@sql
 
   highlight! link hsSQLQuote Delimiter
   highlight! link hsSQLSpliceQuote Preproc
@@ -162,9 +183,11 @@ function! vim2hs#haskell#quasi#json() " {{{
   endtry
   unlet b:current_syntax
 
-  syntax region hsJSON matchgroup=hsJSONQuote
-    \ start='\[\$\?json|' end='|\]'
-    \ keepend contains=@json
+  syntax match hsJSONQuote /\[\$\?json|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsJSON
+
+  syntax match hsJSON /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsJSONQuote contains=@json
 
   syntax match hsJSONQQKey
     \ '\$\k\+'
@@ -178,9 +201,11 @@ function! vim2hs#haskell#quasi#json() " {{{
     \ start='<|' end='|>'
     \ contained contains=TOP
 
-  syntax region hsJSON matchgroup=hsJSONQuote
-    \ start='\[\$\?\%(jsonQQ\|aesonQQ\)|' end='|\]'
-    \ keepend contains=hsJSONQQKey,hsJSONQQSplice,@json
+  syntax match hsJSONQuote /\[\$\?\%(jsonQQ\|aesonQQ\)|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsJSON
+
+  syntax match hsJSON /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsJSONQuote contains=hsJSONQQKey,hsJSONQQSplice,@json
 
   highlight! link hsJSONQuote Delimiter
   highlight! link hsJSONQQSpliceQuote PreProc
@@ -192,9 +217,11 @@ function! vim2hs#haskell#quasi#xml() " {{{
   syntax include @xml syntax/xml.vim
   unlet b:current_syntax
 
-  syntax region hsXML matchgroup=hsXMLQuote
-    \ start='\[\$\?xml|' end='|\]'
-    \ keepend contains=@xml
+  syntax match hsXMLQuote /\[\$\?xml|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsXML
+
+  syntax match hsXML /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsXMLQuote contains=@xml
 
   syntax region hsXMLQQElement matchgroup=hsXMLQQElementQuote
     \ start='<<' end='>>'
@@ -204,9 +231,11 @@ function! vim2hs#haskell#quasi#xml() " {{{
     \ start='{' end='}'
     \ contained contains=TOP containedin=xmlTag,xmlEndTag
 
-  syntax region hsXML matchgroup=hsXMLQuote
-    \ start='\[\$\?xmlQQ|' end='|\]'
-    \ keepend contains=hsXMLQQElement,hsXMLQQSplice,@xml
+  syntax match hsXMLQuote /\[\$\?xmlQQ|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsXML
+
+  syntax match hsXML /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsXMLQuote contains=hsXMLQQElement,hsXMLQQSplice,@xml
 
   highlight! link hsXMLQuote Delimiter
   highlight! link hsXMLQQElementQuote PreProc
