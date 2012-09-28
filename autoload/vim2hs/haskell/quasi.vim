@@ -76,7 +76,7 @@ function! vim2hs#haskell#quasi#regex() " {{{
     \ contained
 
   syntax cluster regex
-    \ contains=regexSpecialChar,regexOperator,
+    \ contains=regexSpecialChar,regexOperator, 
               \regexDelimiter,regexStructure
 
   syntax region hsRexMap matchgroup=hsRexMapQuote
