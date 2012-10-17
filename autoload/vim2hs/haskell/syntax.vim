@@ -274,7 +274,12 @@ function! vim2hs#haskell#syntax#cpp() " {{{
     \ skip="\\$"
     \ end="$"
 
+  syntax region cppDefine
+    \ start='^#\s*\%(define\)\>'
+    \ end='$'
+
   highlight! link cppPreCondit PreCondit
+  highlight! link cppDefine Define
 endfunction "}}}
 
 
