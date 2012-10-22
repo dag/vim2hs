@@ -278,8 +278,13 @@ function! vim2hs#haskell#syntax#cpp() " {{{
     \ start='^#\s*\%(define\)\>'
     \ end='$'
 
+  syntax region cppInclude
+    \ start='^#\s*\%(include\)\>\s*\%("\f\+"\|<\f\+>\)$'
+    \ end='$'
+
   highlight! link cppPreCondit PreCondit
   highlight! link cppDefine Define
+  highlight! link cppInclude Include
 endfunction "}}}
 
 
