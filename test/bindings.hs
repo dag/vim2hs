@@ -25,3 +25,7 @@ instance Functor [] where
 
 ($) :: (a -> b) -> a -> b
 f $ x =  f x
+
+buildLib
+  :: Verbosity -> PackageDescription -> LocalBuildInfo
+  -> Library -> ComponentLocalBuildInfo -> IO ()
