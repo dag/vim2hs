@@ -70,9 +70,6 @@ This screenshot showcases a number of nice features:
 * In function definitions, the name of the function is highlighted
   differently from its arguments, even if the equal sign is on another line
   (most or all other syntax highlighters get this wrong).
-* Template Haskell declaration splices are highlighted as pre-processor
-  macros, without conflicting with the highlighting of function definitions
-  or data declarations etc (again, most others get this wrong)
 * Top-level definitions such as functions, classes and instances and data
   declarations form folds, as you can see in the `foldcolumn` to the left
   of the line numbers.  Closed folds are given a consistent `foldtext`

@@ -11,8 +11,6 @@ data Something
     = Something
     | Other
 
-makeLens ''Something
-
 isLarge :: (Ord a, Num a) => a -> String
 isLarge x
   | x > 10    = "yep"

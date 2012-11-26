@@ -289,8 +289,6 @@ endfunction "}}}
 
 
 function! vim2hs#haskell#syntax#th() " {{{
-  syntax match hsTHMacro "^\k\+\%(.*=\|.*::\)\@!"
-
   syntax region hsTHContent matchgroup=hsTHSplice
     \ start="\$(" end=")"
     \ contains=TOP
@@ -299,7 +297,6 @@ function! vim2hs#haskell#syntax#th() " {{{
     \ start="\[\$\?[edtp]\?|" end="|\]"
     \ contains=TOP
 
-  highlight! link hsTHMacro Macro
   highlight! link hsTHSplice Macro
   highlight! link hsTHQuote Delimiter
 endfunction " }}}
