@@ -7,10 +7,6 @@ function! vim2hs#haskell#conceal#simple() " {{{
     \ "\s\.\_s"ms=s+1,me=e-1
     \ display conceal cchar=∘
 
-  syntax match hsNormal
-    \ "'"
-    \ display conceal cchar=′
-
   setlocal conceallevel=2
 
   highlight! link Conceal Operator
