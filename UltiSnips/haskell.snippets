@@ -18,8 +18,12 @@ snippet preproc "Preprocessor" !b
 {-# OPTIONS_GHC -F -pgmF ${1:executable} #-}
 endsnippet
 
-snippet trhsx "HSP/HSX Preprocessor" !b
+snippet trhsx "HSP/HSX Preprocessor (trhsx)" !b
 {-# OPTIONS_GHC -F -pgmF trhsx #-}
+endsnippet
+
+snippet hsx "HSP/HSX Preprocessor (hsx2hs)" !b
+{-# OPTIONS_GHC -F -pgmF hsx2hs #-}
 endsnippet
 
 # }}} Pragmas
