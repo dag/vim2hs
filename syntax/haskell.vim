@@ -19,6 +19,7 @@ call vim2hs#letdefault('g:haskell_conceal_comments'     , 0)
 call vim2hs#letdefault('g:haskell_conceal_enumerations' , 1)
 call vim2hs#letdefault('g:haskell_conceal_wide'         , 0)
 call vim2hs#letdefault('g:haskell_conceal_bad'          , 0)
+call vim2hs#letdefault('g:haskell_multiline_strings'    , 0)
 
 
 call vim2hs#haskell#syntax#operators()
@@ -98,7 +99,8 @@ call vim2hs#haskell#syntax#types()
 
 call vim2hs#haskell#syntax#folds()
 
-call vim2hs#haskell#syntax#strings()
+call vim2hs#haskell#syntax#strings(
+  \ g:haskell_multiline_strings)
 
 call vim2hs#haskell#syntax#comments(
   \ g:haskell_conceal && g:haskell_conceal_comments,
