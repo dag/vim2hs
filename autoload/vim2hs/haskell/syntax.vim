@@ -115,7 +115,7 @@ function! vim2hs#haskell#syntax#folds() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#syntax#strings() " {{{
+function! vim2hs#haskell#syntax#strings(multiline_strings) " {{{
   syntax match hsSpecialChar
     \ contained
     \ "\\\%([0-9]\+\|o[0-7]\+\|
@@ -142,7 +142,7 @@ function! vim2hs#haskell#syntax#strings() " {{{
     \ "^'\%([^\\]\|\\[^']\+\|\\'\)'"
     \ contains=hsSpecialChar,hsSpecialCharError
 
-  if exists('g:haskell_multiline_strings') && g:haskell_multiline_strings
+  if a:multiline_strings
     syntax match hsLineContinuation
       \ "\%(\\$\|^\s*\\\)"
       \ contained
