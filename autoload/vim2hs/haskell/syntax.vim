@@ -142,15 +142,26 @@ function! vim2hs#haskell#syntax#strings() " {{{
     \ "^'\%([^\\]\|\\[^']\+\|\\'\)'"
     \ contains=hsSpecialChar,hsSpecialCharError
 
-  syntax region hsStringError
-    \ start=+"+ skip=+\\\\\|\\"+ end=+"\@!$+
-    \ contains=hsSpecialChar,@Spell
+  if exists('g:haskell_multiline_strings') && g:haskell_multiline_strings
+      syntax match hsLineContinuation
+        \ "\%(\\$\|^\s*\\\)"
+        \ contained
 
-  syntax region hsString
-    \ start=+"+ skip=+\\\\\|\\"+ end=+"+
-    \ oneline contains=hsSpecialChar,@Spell
+      syntax region hsString
+        \ start=+"+ skip=+\\\\\|\\"+ end=+"+
+        \ contains=hsSpecialChar,@Spell,hsLineContinuation
+  else
+      syntax region hsStringError
+        \ start=+"+ skip=+\\\\\|\\"+ end=+"\@!$+
+        \ contains=hsSpecialChar,@Spell
+
+      syntax region hsString
+        \ start=+"+ skip=+\\\\\|\\"+ end=+"+
+        \ oneline contains=hsSpecialChar,@Spell
+  endif
 
   highlight! link hsSpecialChar SpecialChar
+  highlight! link hsLineContinuation SpecialChar
   highlight! link hsSpecialCharError Error
   highlight! link hsCharacter Character
   highlight! link hsStringError Error
