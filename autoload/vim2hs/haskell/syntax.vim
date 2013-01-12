@@ -143,21 +143,23 @@ function! vim2hs#haskell#syntax#strings() " {{{
     \ contains=hsSpecialChar,hsSpecialCharError
 
   if exists('g:haskell_multiline_strings') && g:haskell_multiline_strings
-      syntax match hsLineContinuation
-        \ "\%(\\$\|^\s*\\\)"
-        \ contained
+    syntax match hsLineContinuation
+      \ "\%(\\$\|^\s*\\\)"
+      \ contained
 
-      syntax region hsString
-        \ start=+"+ skip=+\\\\\|\\"+ end=+"+
-        \ contains=hsSpecialChar,@Spell,hsLineContinuation
+    syntax region hsString
+      \ start=+"+ skip=+\\\\\|\\"+ end=+"+
+      \ contains=hsSpecialChar,@Spell,hsLineContinuation
+
   else
-      syntax region hsStringError
-        \ start=+"+ skip=+\\\\\|\\"+ end=+"\@!$+
-        \ contains=hsSpecialChar,@Spell
+    syntax region hsStringError
+      \ start=+"+ skip=+\\\\\|\\"+ end=+"\@!$+
+      \ contains=hsSpecialChar,@Spell
 
-      syntax region hsString
-        \ start=+"+ skip=+\\\\\|\\"+ end=+"+
-        \ oneline contains=hsSpecialChar,@Spell
+    syntax region hsString
+      \ start=+"+ skip=+\\\\\|\\"+ end=+"+
+      \ oneline contains=hsSpecialChar,@Spell
+
   endif
 
   highlight! link hsSpecialChar SpecialChar
