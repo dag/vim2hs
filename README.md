@@ -151,15 +151,19 @@ and automatic filetype detection for `*.tpl` files.
 
 Haskell actually supports multi-line strings by escaping the newline, but I
 don't think it's a widely used feature and I think quasi quoting is better
-for such purposes.  Thus I have opted to keep string literals from crossing
-lines so half your source file doesn't highlight as a string while you're
-entering one, and instead, string literals without a matching end quote
+for such purposes.  Thus, by default, I have opted to keep string literals from
+crossing lines so half your source file doesn't highlight as a string while
+you're entering one. Instead, string literals without a matching end quote
 highlight as errors.
 
 ![Strings screenshot](https://github.com/dag/vim2hs/raw/master/screenshots/strings.png)
 
-There are currently no configuration options for this, but I might add one
-in the future if anyone is actually using the escaped newline syntax.
+There is a configuration option for this. To enable multi-line strings, use
+this:
+
+```vim
+:let g:haskell_multiline_strings = 1
+```
 
 ### HLint
 
