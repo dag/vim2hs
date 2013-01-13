@@ -115,7 +115,7 @@ function! vim2hs#haskell#syntax#folds() " {{{
 endfunction " }}}
 
 
-function! vim2hs#haskell#syntax#strings() " {{{
+function! vim2hs#haskell#syntax#strings(multiline_strings) " {{{
   syntax match hsSpecialChar
     \ contained
     \ "\\\%([0-9]\+\|o[0-7]\+\|
@@ -142,15 +142,28 @@ function! vim2hs#haskell#syntax#strings() " {{{
     \ "^'\%([^\\]\|\\[^']\+\|\\'\)'"
     \ contains=hsSpecialChar,hsSpecialCharError
 
-  syntax region hsStringError
-    \ start=+"+ skip=+\\\\\|\\"+ end=+"\@!$+
-    \ contains=hsSpecialChar,@Spell
+  if a:multiline_strings
+    syntax match hsLineContinuation
+      \ "\%(\\$\|^\s*\\\)"
+      \ contained
 
-  syntax region hsString
-    \ start=+"+ skip=+\\\\\|\\"+ end=+"+
-    \ oneline contains=hsSpecialChar,@Spell
+    syntax region hsString
+      \ start=+"+ skip=+\\\\\|\\"+ end=+"+
+      \ contains=hsSpecialChar,@Spell,hsLineContinuation
+
+  else
+    syntax region hsStringError
+      \ start=+"+ skip=+\\\\\|\\"+ end=+"\@!$+
+      \ contains=hsSpecialChar,@Spell
+
+    syntax region hsString
+      \ start=+"+ skip=+\\\\\|\\"+ end=+"+
+      \ oneline contains=hsSpecialChar,@Spell
+
+  endif
 
   highlight! link hsSpecialChar SpecialChar
+  highlight! link hsLineContinuation SpecialChar
   highlight! link hsSpecialCharError Error
   highlight! link hsCharacter Character
   highlight! link hsStringError Error
