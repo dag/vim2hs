@@ -51,13 +51,13 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
 
   if !a:conceal_wide
     syntax match hsStructure
-      \ "[[:punct:]]\@<!\%(->\|<-\|::\)[[:punct:]]\@!"
+      \ "[[:punct:]]\@<!\%(->\|→\|<-\|←\|::\|∷\)[[:punct:]]\@!"
       \ display
   endif
 
   if !a:conceal_bad
     syntax match hsStructure
-      \ "[[:punct:]]\@<!\%(=>\|-<<\?\)[[:punct:]]\@!"
+      \ "[[:punct:]]\@<!\%(=>\|⇒\|-<<\?\)[[:punct:]]\@!"
       \ display
   endif
 
@@ -85,7 +85,7 @@ endfunction " }}}
 
 function! vim2hs#haskell#syntax#types() " {{{
   syntax match hsType
-    \ "^\(\s*\)\%(default\s\+\)\?\%(\k\+\|([^[:alnum:]]\+)\)\_s*::.*\%(\n\1\s.*\)*"
+    \ "^\(\s*\)\%(default\s\+\)\?\%(\k\+\|([^[:alnum:]]\+)\)\_s*\(::\|∷\).*\%(\n\1\s.*\)*"
     \ contains=TOP,@Spell
 
   highlight! link hsType Type
