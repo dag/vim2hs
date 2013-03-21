@@ -26,6 +26,34 @@ snippet hsx "HSP/HSX Preprocessor (hsx2hs)" !b
 {-# OPTIONS_GHC -F -pgmF hsx2hs #-}
 endsnippet
 
+snippet inline "INLINE pragma" !b
+{-# INLINE ${1:name} #-}
+endsnippet
+
+snippet inlinable "INLINABLE pragma" !b
+{-# INLINABLE ${1:name} #-}
+endsnippet
+
+snippet noinline "NOINLINE pragma" !b
+{-# NOINLINE ${1:name} #-}
+endsnippet
+
+snippet specialize "SPECIALIZE pragma" !b
+{-# SPECIALIZE ${1:name} :: ${2:type} #-}
+endsnippet
+
+snippet rules "RULES pragma" !b
+{-# RULES "${1:name}" ${2:rule} #-}
+endsnippet
+
+snippet unpack "UNPACK pragma" !w
+{-# UNPACK #-}
+endsnippet
+
+snippet nounpack "NOUNPACK pragma" !w
+{-# NOUNPACK #-}
+endsnippet
+
 # }}} Pragmas
 
 # Statements {{{
