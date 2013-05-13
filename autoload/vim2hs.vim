@@ -17,21 +17,6 @@ function! vim2hs#with_compiler(name, args) " {{{
 endfunction " }}}
 
 
-function! s:GetHPasteAuthor() " {{{
-  if exists('g:hpaste_author')
-    return g:hpaste_author
-  else
-    return input('Author: ')
-  endif
-endfunction " }}}
-
-
-function! vim2hs#hpaste(line1, line2) " {{{
-  let l:code = join(getline(a:line1, a:line2), "\n")
-  python hpaste()
-endfunction " }}}
-
-
 function! vim2hs#pointfree(bang) " {{{
   normal! gv"xy
   let l:output = system('pointfree ' . shellescape(split(@x, "\n")[0]))
