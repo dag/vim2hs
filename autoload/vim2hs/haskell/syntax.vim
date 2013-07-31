@@ -88,6 +88,69 @@ function! vim2hs#haskell#syntax#types() " {{{
     \ "^\(\s*\)\%(default\s\+\)\?\%(\k\+\|([^[:alnum:]]\+)\)\_s*\(::\|∷\).*\%(\n\1\s.*\)*"
     \ contains=TOP,@Spell
 
+  " Types from the standard prelude.
+  syn match hsType        "\<\(Bool\|Maybe\|Either\|Ordering\)\>"
+  syn match hsType        "\<\(Char\|String\|Int\|Integer\|Float\|Double\|Rational\|IO\)\>"
+  syn match hsType        "\<\(ReadS\|ShowS\)\>"
+  syn match hsType        "\<\(FilePath\|IOError\)\>"
+
+  " Classes from the standard prelude
+  syn match hsType        "\<\(Eq\|Ord\|Enum\|Bounded\|Num\|Real\|Integral\|Fractional\|Floating\|RealFrac\|RealFloat\|Monad\|Functor\)\>"
+  syn match hsType        "\<\(Show\|Read\)\>"
+
+
+  " Constants from the standard prelude.
+  syn match hsBoolean     "\<\(True\|False\)\>"
+  syn match hsMaybe       "\<\(Nothing\|Just\)\>"
+  syn match hsConstant    "\<\(Left\|Right\)\>"
+  syn match hsOrdering    "\<\(LT\|EQ\|GT\)\>"
+
+
+  " Functions from the standard prelude.
+  syn match hsFunction    "\<\(compare\|max\|min\)\>"
+  syn match hsFunction    "\<\(succ\|pred\|toEnum\|fromEnum\|enumFrom\|enumFromThen\|enumFromTo\|enumFromThenTo\)\>"
+  syn match hsFunction    "\<\(minBound\|maxBound\)\>"
+  syn match hsFunction    "\<\(negate\|abs\|signum\|fromInteger\)\>"
+  syn match hsFunction    "\<toRational\>"
+  syn match hsFunction    "\<\(quot\|rem\|div\|mod\|quotRem\|divMod\|toInteger\)\>"
+  syn match hsFunction    "\<\(recip\|fromRational\)\>"
+  syn match hsFunction    "\<\(pi\|exp\|log\|sqrt\|logBase\|sin\|cos\|tan\|asin\|acos\|atan\|sinh\|cosh\|tanh\|asinh\|acosh\|atanh\)\>"
+  syn match hsFunction    "\<\(properFraction\|truncate\|round\|ceiling\|floor\)\>"
+  syn match hsFunction    "\<\(floatRadix\|floatDigits\|floatRange\|decodeFloat\|encodeFloat\|exponent\|significand\|scaleFloat\|isNaN\|isInfinite\|isDenormalized\|isIEEE\|isNegativeZero\|atan2\)\>"
+  syn match hsFunction    "\<\(return\|fail\)\>"
+  syn match hsFunction    "\<\(fmap\)\>"
+  syn match hsFunction    "\<\(mapM\|mapM_\|sequence\|sequence_\)\>"
+  syn match hsFunction    "\<\(maybe\|either\)\>"
+  syn match hsFunction    "\<\(not\|otherwise\)\>"
+  syn match hsFunction    "\<\(subtract\|even\|odd\|gcd\|lcm\)\>"
+  syn match hsFunction    "\<\(fromIntegral\|realToFrac\)\>"
+  syn match hsFunction    "\<\(fst\|snd\|curry\|uncurry\|id\|const\|flip\|until\)\>"
+  syn match hsFunction    "\<\(asTypeOf\|error\|undefined\)\>"
+  syn match hsFunction    "\<\(seq\)\>"
+  syn match hsFunction    "\<\(map\|filter\|concat\|concatMap\)\>"
+  syn match hsFunction    "\<\(head\|last\|tail\|init\|null\|length\)\>"
+  syn match hsFunction    "\<\(foldl\|foldl1\|scanl\|scanl1\|foldr\|foldr1\|scanr\|scanr1\)\>"
+  syn match hsFunction    "\<\(iterate\|repeat\|replicate\|cycle\)\>"
+  syn match hsFunction    "\<\(take\|drop\|splitAt\|takeWhile\|dropWhile\|span\|break\)\>"
+  syn match hsFunction    "\<\(lines\|words\|unlines\|unwords\|reverse\|and\|or\)\>"
+  syn match hsFunction    "\<\(any\|all\|elem\|notElem\|lookup\)\>"
+  syn match hsFunction    "\<\(sum\|product\|maximum\|minimum\)\>"
+  syn match hsFunction    "\<\(zip\|zip3\|zipWith\|zipWith3\|unzip\|unzip3\)\>"
+  syn match hsFunction    "\<\(readsPrec\|readList\)\>"
+  syn match hsFunction    "\<\(showsPrec\|show\|showList\)\>"
+  syn match hsFunction    "\<\(reads\|shows\|read\|lex\)\>"
+  syn match hsFunction    "\<\(showChar\|showString\|readParen\|showParen\)\>"
+  syn match hsFunction    "\<\(ioError\|userError\|catch\)\>"
+  syn match hsFunction    "\<\(putChar\|putStr\|putStrLn\|print\)\>"
+  syn match hsFunction    "\<\(getChar\|getLine\|getContents\|interact\)\>"
+  syn match hsFunction    "\<\(readFile\|writeFile\|appendFile\|readIO\|readLn\)\>"
+
+  hi link hsFunction Function
+  hi link hsBoolean Boolean
+  hi link hsMaybe hsEnumConst
+  hi link hsConstant Constant
+  hi link hsOrdering hsEnumConst
+  
   highlight! link hsType Type
 endfunction " }}}
 
