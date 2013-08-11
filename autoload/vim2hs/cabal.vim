@@ -5,7 +5,7 @@ function! vim2hs#cabal#comments() " {{{
     \ /--.*/
     \ display
 
-  highlight! link cabalComment Comment
+  highlight default link cabalComment Comment
 endfunction " }}}
 
 
@@ -20,8 +20,8 @@ function! vim2hs#cabal#defines() " {{{
     \ ":"
     \ display contained
 
-  highlight! link cabalDefine Define
-  highlight! link cabalDelimiter Delimiter
+  highlight default link cabalDefine Define
+  highlight default link cabalDelimiter Delimiter
 endfunction " }}}
 
 
@@ -31,8 +31,8 @@ function! vim2hs#cabal#statements() " {{{
     \ end="$"
     \ display oneline
 
-  highlight! link cabalIdentifier Identifier
-  highlight! link cabalStatement Statement
+  highlight default link cabalIdentifier Identifier
+  highlight default link cabalStatement Statement
 endfunction " }}}
 
 
@@ -49,9 +49,9 @@ function! vim2hs#cabal#conditionals() " {{{
     \ end="$"
     \ display oneline contains=cabalIdentifier,cabalKeyword
 
-  highlight! link cabalKeyword Keyword
-  highlight! link cabalIdentifier Identifier
-  highlight! link cabalConditional Conditional
+  highlight default link cabalKeyword Keyword
+  highlight default link cabalIdentifier Identifier
+  highlight default link cabalConditional Conditional
 endfunction " }}}
 
 
