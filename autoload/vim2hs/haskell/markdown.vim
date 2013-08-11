@@ -10,7 +10,7 @@ function! vim2hs#haskell#markdown#literate() " {{{
     \ start="^>" end="\%(^[^>]\)\@="
     \ contains=hsLiterateDelimiter,@haskell
 
-  highlight! link hsLiterateDelimiter Delimiter
+  highlight default link hsLiterateDelimiter Delimiter
 endfunction " }}}
 
 
@@ -22,5 +22,5 @@ function! vim2hs#haskell#markdown#gfm() " {{{
     \ start="^```\%(haskell\|hs\)$" end="^```$"
     \ contains=@haskell
 
-  highlight! link mkdnHaskellBlock Delimiter
+  highlight default link mkdnHaskellBlock Delimiter
 endfunction " }}}

@@ -7,7 +7,7 @@ function! vim2hs#haskell#syntax#operators() " {{{
     \ "`\k\%(\k\|\.\)*`"
     \ display
 
-  highlight! link hsOperator Operator
+  highlight default link hsOperator Operator
 endfunction " }}}
 
 
@@ -16,7 +16,7 @@ function! vim2hs#haskell#syntax#delimiters() " {{{
     \ '(\|)\|\[\|\]\|,\|;\|{\|}\||\|\k\@<!_\k\@!\|[[:punct:]]\@<!@[[:punct:]]\@!'
     \ display
 
-  highlight! link hsDelimiter Delimiter
+  highlight default link hsDelimiter Delimiter
 endfunction " }}}
 
 
@@ -61,11 +61,11 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
       \ display
   endif
 
-  highlight! link hsStructure Structure
-  highlight! link hsTypedef Typedef
-  highlight! link hsStatement Statement
-  highlight! link hsConditional Conditional
-  highlight! link hsKeyword Keyword
+  highlight default link hsStructure Structure
+  highlight default link hsTypedef Typedef
+  highlight default link hsStatement Statement
+  highlight default link hsConditional Conditional
+  highlight default link hsKeyword Keyword
 endfunction " }}}
 
 
@@ -78,8 +78,8 @@ function! vim2hs#haskell#syntax#numbers() " {{{
     \ "\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
     \ display
 
-  highlight! link hsNumber Number
-  highlight! link hsFloat Float
+  highlight default link hsNumber Number
+  highlight default link hsFloat Float
 endfunction " }}}
 
 
@@ -88,7 +88,7 @@ function! vim2hs#haskell#syntax#types() " {{{
     \ "^\(\s*\)\%(default\s\+\)\?\%(\k\+\|([^[:alnum:]]\+)\)\_s*\(::\|∷\).*\%(\n\1\s.*\)*"
     \ contains=TOP,@Spell
 
-  highlight! link hsType Type
+  highlight default link hsType Type
 endfunction " }}}
 
 
@@ -96,7 +96,7 @@ function! vim2hs#haskell#syntax#bindings() " {{{
   syntax match hsIdentifier
     \ "^\k\+\ze.*\%(\n\s.*\|\n\)*[[:punct:]]\@<!=[[:punct:]]\@!"
 
-  highlight! link hsIdentifier Identifier
+  highlight default link hsIdentifier Identifier
 endfunction " }}}
 
 
@@ -158,12 +158,12 @@ function! vim2hs#haskell#syntax#strings(multiline_strings) " {{{
 
   endif
 
-  highlight! link hsSpecialChar SpecialChar
-  highlight! link hsLineContinuation SpecialChar
-  highlight! link hsSpecialCharError Error
-  highlight! link hsCharacter Character
-  highlight! link hsStringError Error
-  highlight! link hsString String
+  highlight default link hsSpecialChar SpecialChar
+  highlight default link hsLineContinuation SpecialChar
+  highlight default link hsSpecialCharError Error
+  highlight default link hsCharacter Character
+  highlight default link hsStringError Error
+  highlight default link hsString String
 endfunction " }}}
 
 
@@ -206,11 +206,11 @@ function! vim2hs#haskell#syntax#comments(conceal_comments, conceal_enumerations)
       \ start="{-#" end="#-}"
   endif
 
-  highlight! link hsTodo Todo
-  highlight! link hsComment Comment
-  highlight! link hsBlockComment Comment
-  highlight! link hsLANGUAGEPragma PreProc
-  highlight! link hsPragma PreProc
+  highlight default link hsTodo Todo
+  highlight default link hsComment Comment
+  highlight default link hsBlockComment Comment
+  highlight default link hsLANGUAGEPragma PreProc
+  highlight default link hsPragma PreProc
 endfunction " }}}
 
 
@@ -255,23 +255,23 @@ function! vim2hs#haskell#syntax#haddock() " {{{
     \ "[A-Z]\%(\k\|\.\)\+#\S\+"
     \ contained containedin=hsComment
 
-  highlight! link haddockHeading Title
-  highlight! link haddockChunk PreProc
-  highlight! link haddockAnnotation Title
-  highlight! link haddockIdentifier Underlined
-  highlight! link haddockModule Underlined
-  highlight! link haddockEmphasis Todo
-  highlight! link haddockURL Underlined
-  highlight! link haddockREPL Delimiter
-  highlight! link haddockLabel Label
-  highlight! link haddockAnchor Underlined
+  highlight default link haddockHeading Title
+  highlight default link haddockChunk PreProc
+  highlight default link haddockAnnotation Title
+  highlight default link haddockIdentifier Underlined
+  highlight default link haddockModule Underlined
+  highlight default link haddockEmphasis Todo
+  highlight default link haddockURL Underlined
+  highlight default link haddockREPL Delimiter
+  highlight default link haddockLabel Label
+  highlight default link haddockAnchor Underlined
 endfunction " }}}
 
 
 function! vim2hs#haskell#syntax#ffi() " {{{
   syntax case match
   syntax keyword hsFFI foreign export stdcall ccall unsafe
-  highlight! link hsFFI Keyword
+  highlight default link hsFFI Keyword
 endfunction " }}}
 
 
@@ -291,9 +291,9 @@ function! vim2hs#haskell#syntax#cpp() " {{{
     \ start='^#\s*\%(include\)\>\s*\%("\f\+"\|<\f\+>\)$'
     \ end='$'
 
-  highlight! link cppPreCondit PreCondit
-  highlight! link cppDefine Define
-  highlight! link cppInclude Include
+  highlight default link cppPreCondit PreCondit
+  highlight default link cppDefine Define
+  highlight default link cppInclude Include
 endfunction "}}}
 
 
@@ -306,8 +306,8 @@ function! vim2hs#haskell#syntax#th() " {{{
     \ start="\[\$\?[edtp]\?|" end="|\]"
     \ contains=TOP
 
-  highlight! link hsTHSplice Macro
-  highlight! link hsTHQuote Delimiter
+  highlight default link hsTHSplice Macro
+  highlight default link hsTHQuote Delimiter
 endfunction " }}}
 
 
@@ -344,11 +344,11 @@ function! vim2hs#haskell#syntax#hsp() " {{{
     \ start="\[\$\?hsx|" end="|\]"
     \ contains=TOP
 
-  highlight! link hspContain Delimiter
-  highlight! link hspTag PreProc
-  highlight! link hspAttrName Constant
-  highlight! link hspSplice Macro
-  highlight! link hspQQuote Delimiter
-  highlight! link hspQQContent String
-  highlight! link hspText String
+  highlight default link hspContain Delimiter
+  highlight default link hspTag PreProc
+  highlight default link hspAttrName Constant
+  highlight default link hspSplice Macro
+  highlight default link hspQQuote Delimiter
+  highlight default link hspQQContent String
+  highlight default link hspText String
 endfunction " }}}
