@@ -5,7 +5,7 @@ function! vim2hs#cabalconfig#comments() " {{{
     \ /--.*/
     \ display
 
-  highlight! link ccComment Comment
+  highlight default link ccComment Comment
 endfunction " }}}
 
 
@@ -33,11 +33,11 @@ function! vim2hs#cabalconfig#constants() " {{{
     \ '\<[0-9]\+\.[0-9]\+'
     \ display
 
-  highlight! link ccDefine Define
-  highlight! link ccDelimiter Delimiter
-  highlight! link ccBoolean Boolean
-  highlight! link ccNumber Number
-  highlight! link ccFloat Float
+  highlight default link ccDefine Define
+  highlight default link ccDelimiter Delimiter
+  highlight default link ccBoolean Boolean
+  highlight default link ccNumber Number
+  highlight default link ccFloat Float
 endfunction " }}}
 
 
@@ -47,8 +47,8 @@ function! vim2hs#cabalconfig#statements() " {{{
     \ end='$'
     \ display oneline
 
-  highlight! link ccIdentifier Identifier
-  highlight! link ccStatement Statement
+  highlight default link ccIdentifier Identifier
+  highlight default link ccStatement Statement
 endfunction " }}}
 
 

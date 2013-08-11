@@ -9,7 +9,7 @@ function! vim2hs#haskell#conceal#simple() " {{{
 
   setlocal conceallevel=2
 
-  highlight! link Conceal Operator
+  highlight default link Conceal Operator
 endfunction " }}}
 
 

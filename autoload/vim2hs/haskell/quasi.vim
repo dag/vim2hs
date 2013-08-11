@@ -4,8 +4,8 @@ function! vim2hs#haskell#quasi#quote() " {{{
   syntax match hsQuasi /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsQuasiQuote
 
-  highlight! link hsQuasiQuote Delimiter
-  highlight! link hsQuasi Macro
+  highlight default link hsQuasiQuote Delimiter
+  highlight default link hsQuasi Macro
 endfunction " }}}
 
 
@@ -46,15 +46,15 @@ function! vim2hs#haskell#quasi#interpolation() " {{{
   syntax match hsRubyQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsRubyQQuote contains=hsRubyInterpolation,@Spell
 
-  highlight! link hsStringQQuote Delimiter
-  highlight! link hsStringQQ String
-  highlight! link hsP6QQuote Delimiter
-  highlight! link hsP6QQ String
-  highlight! link hsP6AntiQuote PreProc
-  highlight! link hsP6Identifier Identifier
-  highlight! link hsRubyQQuote Delimiter
-  highlight! link hsRubyQQ String
-  highlight! link hsRubyAntiQuote PreProc
+  highlight default link hsStringQQuote Delimiter
+  highlight default link hsStringQQ String
+  highlight default link hsP6QQuote Delimiter
+  highlight default link hsP6QQ String
+  highlight default link hsP6AntiQuote PreProc
+  highlight default link hsP6Identifier Identifier
+  highlight default link hsRubyQQuote Delimiter
+  highlight default link hsRubyQQ String
+  highlight default link hsRubyAntiQuote PreProc
 endfunction " }}}
 
 
@@ -101,20 +101,20 @@ function! vim2hs#haskell#quasi#regex() " {{{
   syntax match hsRegexQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsRegexQQuote contains=@regex
 
-  highlight! link regexSpecialChar SpecialChar
-  highlight! link regexOperator Operator
-  highlight! link regexDelimiter Delimiter
-  highlight! link regexStructure Structure
+  highlight default link regexSpecialChar SpecialChar
+  highlight default link regexOperator Operator
+  highlight default link regexDelimiter Delimiter
+  highlight default link regexStructure Structure
 
-  highlight! link hsRexQuote Delimiter
-  highlight! link hsRex String
-  highlight! link hsRexMapQuote PreProc
+  highlight default link hsRexQuote Delimiter
+  highlight default link hsRex String
+  highlight default link hsRexMapQuote PreProc
 
-  highlight! link hsRelitQuote Delimiter
-  highlight! link hsRelit String
+  highlight default link hsRelitQuote Delimiter
+  highlight default link hsRelit String
 
-  highlight! link hsRegexQQuote Delimiter
-  highlight! link hsRegexQQ String
+  highlight default link hsRegexQQuote Delimiter
+  highlight default link hsRegexQQ String
 endfunction " }}}
 
 
@@ -132,8 +132,8 @@ function! vim2hs#haskell#quasi#jmacro() " {{{
   syntax match hsJmacro /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsJmacroQuote contains=hsJmacroSplice,@jmacro
 
-  highlight! link hsJmacroQuote Delimiter
-  highlight! link hsJmacroAntiQuote PreProc
+  highlight default link hsJmacroQuote Delimiter
+  highlight default link hsJmacroAntiQuote PreProc
 endfunction " }}}
 
 
@@ -151,8 +151,8 @@ function! vim2hs#haskell#quasi#shqq() " {{{
   syntax match hsShQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsShQQuote contains=hsShQQInterpolation,@shell
 
-  highlight! link hsShQQuote Delimiter
-  highlight! link hsShQQInterpolation Identifier
+  highlight default link hsShQQuote Delimiter
+  highlight default link hsShQQInterpolation Identifier
 endfunction " }}}
 
 
@@ -170,8 +170,8 @@ function! vim2hs#haskell#quasi#sql() " {{{
   syntax match hsSQL /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsSQLQuote contains=hsSQLSplice,@sql
 
-  highlight! link hsSQLQuote Delimiter
-  highlight! link hsSQLSpliceQuote Preproc
+  highlight default link hsSQLQuote Delimiter
+  highlight default link hsSQLSpliceQuote Preproc
 endfunction " }}}
 
 
@@ -207,9 +207,9 @@ function! vim2hs#haskell#quasi#json() " {{{
   syntax match hsJSON /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsJSONQuote contains=hsJSONQQKey,hsJSONQQSplice,@json
 
-  highlight! link hsJSONQuote Delimiter
-  highlight! link hsJSONQQSpliceQuote PreProc
-  highlight! link hsJSONQQKey Identifier
+  highlight default link hsJSONQuote Delimiter
+  highlight default link hsJSONQQSpliceQuote PreProc
+  highlight default link hsJSONQQKey Identifier
 endfunction " }}}
 
 
@@ -237,7 +237,7 @@ function! vim2hs#haskell#quasi#xml() " {{{
   syntax match hsXML /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
     \ contained containedin=hsXMLQuote contains=hsXMLQQElement,hsXMLQQSplice,@xml
 
-  highlight! link hsXMLQuote Delimiter
-  highlight! link hsXMLQQElementQuote PreProc
-  highlight! link hsXMLQQSpliceQuote PreProc
+  highlight default link hsXMLQuote Delimiter
+  highlight default link hsXMLQQElementQuote PreProc
+  highlight default link hsXMLQQSpliceQuote PreProc
 endfunction " }}}

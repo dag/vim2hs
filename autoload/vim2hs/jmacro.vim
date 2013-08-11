@@ -24,6 +24,6 @@ function! vim2hs#jmacro#conceal() " {{{
 
   setlocal conceallevel=2
 
-  highlight! link jmacroConceal Operator
-  highlight! link Conceal Operator
+  highlight default link jmacroConceal Operator
+  highlight default link Conceal Operator
 endfunction " }}}

@@ -22,12 +22,12 @@ function! vim2hs#heist#tags() " {{{
   syntax match heistApplyTag '</apply>' display
   syntax match heistContentTag '<content\s*/>' display
 
-  highlight! link heistBindTag Define
-  highlight! link heistBindAttr Identifier
-  highlight! link heistApplyTag Include
-  highlight! link heistApplyAttr Identifier
-  highlight! link heistIgnore Comment
-  highlight! link heistContentTag Macro
+  highlight default link heistBindTag Define
+  highlight default link heistBindAttr Identifier
+  highlight default link heistApplyTag Include
+  highlight default link heistApplyAttr Identifier
+  highlight default link heistIgnore Comment
+  highlight default link heistContentTag Macro
 endfunction " }}}
 
 
@@ -36,5 +36,5 @@ function! vim2hs#heist#substitution() " {{{
     \ start='${' end='}'
     \ contained containedin=htmlString
 
-  highlight! link heistSubstitution PreProc
+  highlight default link heistSubstitution PreProc
 endfunction " }}}
