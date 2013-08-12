@@ -24,7 +24,12 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
   syntax case match
 
   syntax keyword hsStructure
-    \ module let in where do deriving proc
+    \ module where deriving
+
+  syntax keyword hsExprKeyword
+    \ let in do proc
+
+  highlight default link hsExprKeyword hsStructure
 
   if a:conceal_enumerations
     syntax match hsDeriving
