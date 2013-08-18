@@ -24,7 +24,12 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
   syntax case match
 
   syntax keyword hsStructure
-    \ module let in where do deriving proc
+    \ module where deriving
+
+  syntax keyword hsExprKeyword
+    \ let in do proc
+
+  highlight default link hsExprKeyword hsStructure
 
   if a:conceal_enumerations
     syntax match hsDeriving
@@ -37,13 +42,23 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
     \ display
 
   syntax keyword hsStatement
-    \ import infix infixl infixr
+    \ infix infixl infixr
 
   syntax keyword hsConditional
     \ if then else case of
 
   syntax keyword hsKeyword
-    \ qualified safe as hiding default family
+    \ safe default family
+
+  syntax match hsImport
+    \ "\<import\>.*"he=s+6
+    \ contains=hsImportKeyword,hsComment,hsBlockComment
+
+  syntax match hsImportKeyword
+    \ contained "\<\(as\|qualified\|hiding\)\>"
+
+  highlight default link hsImport hsStatement
+  highlight default link hsImportKeyword hsKeyword
 
   syntax match hsStructure
     \ "[[:punct:]]\@<!\%(=\)[[:punct:]]\@!"
