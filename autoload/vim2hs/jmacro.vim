@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 let vim2hs#jmacro#errorformat = join([
   \ '(line %l\, column %c):%m',
   \ '%E(line %l\, column %c):',

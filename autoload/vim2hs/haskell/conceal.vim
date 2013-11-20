@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 function! vim2hs#haskell#conceal#simple() " {{{
   syntax match hsStructure
     \ "\\\ze[[:alpha:][:space:]_([]"
