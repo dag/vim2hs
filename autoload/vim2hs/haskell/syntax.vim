@@ -13,7 +13,10 @@ endfunction " }}}
 
 function! vim2hs#haskell#syntax#delimiters() " {{{
   syntax match hsDelimiter
-    \ '(\|)\|\[\|\]\|,\|;\|{\|}\||\|\k\@<!_\k\@!\|[[:punct:]]\@<!@[[:punct:]]\@!'
+    \ '(\|)\|\[\|\]\|,\|;\|{\|}\|\k\@<!_\k\@!\|[[:punct:]]\@<!@[[:punct:]]\@!'
+    \ display
+  syntax match hsDelimiter
+    \ '[-!#$%&\*\+/=\?@\\^|~.<>]\@<!|[-!#$%&\*\+/=\?@\\^|~.<>]\@!'
     \ display
 
   highlight default link hsDelimiter Delimiter
