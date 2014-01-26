@@ -61,7 +61,7 @@ function! vim2hs#haskell#quasi#rlangqq() " {{{
   syntax include @r syntax/r.vim
   unlet b:current_syntax
 
-  syntax match hsRlangQQuote /\[\$\?r|\%(\_.\%(|]\)\@!\)*\_.|\]/
+  syntax match hsRlangQQuote /\[\$\?r\(Chan\)\?|\%(\_.\%(|]\)\@!\)*\_.|\]/
     \ contains=hsRlangQQ
 
   syntax match hsRlangQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
@@ -72,7 +72,7 @@ function! vim2hs#haskell#quasi#rlangqq() " {{{
     \ keepend contained contains=TOP
 
   syntax match hsRlangIdentifier
-    \ "hs_\w*"
+    \ "\(hs\|ch\)_\w*"
     \ contained
 
   highlight default link hsRlangIdentifier Identifier
