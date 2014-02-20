@@ -23,7 +23,7 @@ def hpaste():
     })
 
     try:
-        res = urllib2.urlopen('http://hpaste.org/new', data)
+        res = urllib2.urlopen('http://lpaste.net/new', data)
         paste = res.geturl()
         print 'Created new paste %s' % paste
         vim.command('call setreg("+", %r)' % paste)
