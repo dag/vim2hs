@@ -10,6 +10,7 @@ call vim2hs#letdefault('g:haskell_interpolation'        , 1)
 call vim2hs#letdefault('g:haskell_regex'                , 1)
 call vim2hs#letdefault('g:haskell_jmacro'               , 1)
 call vim2hs#letdefault('g:haskell_shqq'                 , 1)
+call vim2hs#letdefault('g:haskell_rlangqq'              , 1)
 call vim2hs#letdefault('g:haskell_sql'                  , 1)
 call vim2hs#letdefault('g:haskell_json'                 , 1)
 call vim2hs#letdefault('g:haskell_xml'                  , 1)
@@ -108,6 +109,10 @@ call vim2hs#haskell#syntax#comments(
 
 if g:haskell_haddock
   call vim2hs#haskell#syntax#haddock()
+endif
+
+if g:haskell_rlangqq
+  call vim2hs#haskell#quasi#rlangqq()
 endif
 
 

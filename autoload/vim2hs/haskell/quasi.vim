@@ -57,6 +57,29 @@ function! vim2hs#haskell#quasi#interpolation() " {{{
   highlight default link hsRubyAntiQuote PreProc
 endfunction " }}}
 
+function! vim2hs#haskell#quasi#rlangqq() " {{{
+  syntax include @r syntax/r.vim
+  unlet b:current_syntax
+
+  syntax match hsRlangQQuote /\[\$\?r\(Chan\)\?|\%(\_.\%(|]\)\@!\)*\_.|\]/
+    \ contains=hsRlangQQ
+
+  syntax match hsRlangQQ /|\%(\_.\%(|]\)\@!\)*\_.|/hs=s+1,he=e-1
+    \ contained containedin=hsRlangQQuote contains=hsRlangIdentifier,hsRlangInterpolation,@r
+
+  syntax region hsRlangInterpolation matchgroup=hsRlangQQAntiQuote
+    \ start="$(" end=")"
+    \ keepend contained contains=TOP
+
+  syntax match hsRlangIdentifier
+    \ "\(hs\|ch\)_\w*"
+    \ contained
+
+  highlight default link hsRlangIdentifier Identifier
+  highlight default link hsRlangQQuote Delimiter
+  highlight default link hsRlangQQ String
+  highlight default link hsRlangAntiQuote PreProc
+endfunction " }}}
 
 function! vim2hs#haskell#quasi#regex() " {{{
   syntax match regexSpecialChar
