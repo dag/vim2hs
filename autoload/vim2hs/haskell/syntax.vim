@@ -41,7 +41,7 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
   endif
 
   syntax match hsTypedef
-    \ '\<\%(type\|newtype\|data\|class\|instance\)\>'
+    \ '\<\%(type\|newtype\|data\|class\|instance\|pattern\)\>'
     \ display
 
   syntax keyword hsStatement
