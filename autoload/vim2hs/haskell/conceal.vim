@@ -21,10 +21,6 @@ function! vim2hs#haskell#conceal#wide() " {{{
     \ "\s/=\_s"ms=s+1,me=e-1
     \ display conceal cchar=≠
 
-  syntax match hsStructure
-    \ "\s::\_s"ms=s+1,me=e-1
-    \ display conceal cchar=⦂
-
   syntax match hsOperator
     \ "\s>>\_s"ms=s+1,me=e-1
     \ display conceal cchar=»
