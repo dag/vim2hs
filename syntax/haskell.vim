@@ -1,5 +1,8 @@
-syntax clear
+if exists('b:current_syntax')
+  finish
+endif
 
+syntax clear
 
 call vim2hs#letdefault('g:haskell_haddock'              , 0)
 call vim2hs#letdefault('g:haskell_ffi'                  , 1)
