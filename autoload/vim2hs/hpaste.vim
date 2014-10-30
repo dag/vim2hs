@@ -1,7 +1,7 @@
 if has('python') 
   pyfile <sfile>:p:h/hpaste.py
 elseif has('python3') 
-  py3file <sfile>:p:h/hpaste3.py
+  py3file <sfile>:p:h/hpaste.py3
 endif
 
 function! s:GetHPasteAuthor() " {{{
