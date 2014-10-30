@@ -1,5 +1,7 @@
-if has('python')
+if has('python') 
   pyfile <sfile>:p:h/hpaste.py
+elseif has('python3') 
+  py3file <sfile>:p:h/hpaste.py3
 endif
 
 function! s:GetHPasteAuthor() " {{{
@@ -13,6 +15,11 @@ endfunction " }}}
 
 function! vim2hs#hpaste#hpaste(line1, line2) " {{{
   let l:code = join(getline(a:line1, a:line2), "\n")
-  python hpaste()
+  if has('python')
+    python hpaste()
+  elseif has('python3')
+    python3 hpaste()
+  endif
+  
 endfunction " }}}
 
