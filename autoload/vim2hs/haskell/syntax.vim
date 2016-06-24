@@ -103,7 +103,7 @@ endfunction " }}}
 
 function! vim2hs#haskell#syntax#types() " {{{
   syntax match hsType
-    \ "^\(\s*\)\%(default\s\+\)\?\%(\k\+\|([^[:alnum:]]\+)\)\_s*\(::\|∷\).*\%(\n\1\s.*\)*"
+    \ "^\(\s*\)\%(default\s\+\)\?\%(\k\+\|([^[:alnum:]]\+)\)'*\_s*\(::\|∷\).*\%(\n\1\s.*\)*"
     \ contains=TOP,@Spell
 
   highlight default link hsType Type
