@@ -1,9 +1,13 @@
 function! vim2hs#haskell#editing#includes() " {{{
   setlocal include=^import\\s*\\(qualified\\)\\?\\s*
-  setlocal includeexpr=substitute(v:fname,'\\.','/','g').'.'
+  setlocal includeexpr=vim2hs#haskell#editing#includeexpr(v:fname)
   setlocal suffixesadd=hs,lhs,hsc,hsx
 endfunction " }}}
 
+function! vim2hs#haskell#editing#includeexpr(mname)
+  let l:path = substitute(a:mname,'\.','/','g').'.'
+  return substitute(expand('%:r'), '/\u.*', '/'.l:path, '')
+endfunction
 
 function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
   let l:line = getline(a:lnum - 1)
