@@ -18,13 +18,21 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
     let l:indent = match(l:line, '=')
 
   elseif l:line =~# '^data\>[^=]\+\|^class\>\|^instance\>'
-    let l:indent = &shiftwidth * 2
+    if get(g:, "haskell_indent_double", 1)
+        let l:indent = &shiftwidth * 2
+    else
+        let l:indent = &shiftwidth
+    end
 
   elseif l:line =~# '^newtype\>.*=.\+'
     let l:indent = match(l:line, '=') + 2
 
   elseif l:line =~# '^\k\+.*=\s*\%(do\)\?$'
-    let l:indent = &shiftwidth * 2
+    if get(g:, "haskell_indent_double", 1)
+        let l:indent = &shiftwidth * 2
+    else
+        let l:indent = &shiftwidth
+    end
 
   elseif l:line =~# '\[[^\]]*$'
     let l:indent = match(l:line, '\[')
